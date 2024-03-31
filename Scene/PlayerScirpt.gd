@@ -1,11 +1,25 @@
 extends CharacterBody2D
 
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
 
+var MovementSpeed : float = 100
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	pass
+	
+	#Movement
+	if Input.is_action_pressed("left"):
+		position.x -= MovementSpeed
+	if Input.is_action_pressed("Right"):
+		position.x += MovementSpeed
+		
+		
+		
+	#GUN
+	Gun()	
+		
+
+func Gun():
+	if Input.is_action_just_pressed("Primary"):
+		print("Primary")
+	if Input.is_action_just_pressed("Secondary"):
+		print("Secondary")			
