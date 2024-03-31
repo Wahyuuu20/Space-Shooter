@@ -1,0 +1,37 @@
+[gd_scene load_steps=4 format=3 uid="uid://gucyibcu53et"]
+
+[ext_resource type="Texture2D" uid="uid://dhfxtmhvbdfe2" path="res://Asset/Space Shooter Redux/Vector/spaceShooter_vector.svg" id="1_b3x80"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vj3h5"]
+atlas = ExtResource("1_b3x80")
+region = Rect2(0, 0, 100, 78)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ed1b8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vj3h5")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Player" type="CharacterBody2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_ed1b8")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-8, -38, 7, -38, 11, -13, 35, 1, 40, -1, 44, -7, 49, -7, 46, 24, 42, 24, 40, 20, 35, 23, 13, 27, 6, 37, -7, 37, -14, 26, -36, 23, -42, 20, -43, 23, -45, 24, -47, 23, -50, -6, -45, -6, -42, -1, -37, 1, -12, -13)
+
+[node name="Gun" type="Node2D" parent="."]
+
+[node name="GunLeft" type="Marker2D" parent="Gun"]
+position = Vector2(-36, 0)
+
+[node name="GunMid" type="Marker2D" parent="Gun"]
+position = Vector2(0, -38)
+
+[node name="GunRight" type="Marker2D" parent="Gun"]
+position = Vector2(37, 0)
