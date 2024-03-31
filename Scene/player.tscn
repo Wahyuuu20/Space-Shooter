@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://gucyibcu53et"]
 
+[ext_resource type="Script" path="res://Script/PlayerScirpt.gd" id="1_58nv7"]
 [ext_resource type="Texture2D" uid="uid://dhfxtmhvbdfe2" path="res://Asset/Space Shooter Redux/Vector/spaceShooter_vector.svg" id="1_b3x80"]
-[ext_resource type="Script" path="res://Scene/PlayerScirpt.gd" id="1_qhxy4"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_vj3h5"]
 atlas = ExtResource("1_b3x80")
@@ -19,7 +19,7 @@ animations = [{
 }]
 
 [node name="Player" type="CharacterBody2D"]
-script = ExtResource("1_qhxy4")
+script = ExtResource("1_58nv7")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_ed1b8")
