@@ -1,3 +1,11 @@
-[gd_scene format=3 uid="uid://b0ud2xjim63py"]
+[gd_scene load_steps=3 format=3 uid="uid://b0ud2xjim63py"]
+
+[ext_resource type="PackedScene" uid="uid://dcfl8al3yj8d0" path="res://Scene/background_world.tscn" id="1_3ppqx"]
+[ext_resource type="PackedScene" uid="uid://gucyibcu53et" path="res://Scene/player.tscn" id="2_2ta76"]
 
 [node name="Space Shooter" type="Node2D"]
+
+[node name="Background_World" parent="." instance=ExtResource("1_3ppqx")]
+
+[node name="Player" parent="." instance=ExtResource("2_2ta76")]
+position = Vector2(665, 567)
