@@ -65,7 +65,7 @@ scale = Vector2(1, 1)
 [node name="MarkLeft" type="Marker2D" parent="GunStartProjectile"]
 position = Vector2(-32.5, -15)
 
-[node name="MarkRight" type="Marker2D" parent="GunStartProjectile"]
+[node name="GunRight" type="Marker2D" parent="GunStartProjectile"]
 position = Vector2(32.5, -15)
 
 [node name="Gun" type="Node2D" parent="."]

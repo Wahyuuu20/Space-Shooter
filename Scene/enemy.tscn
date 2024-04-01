@@ -36,5 +36,6 @@ texture = ExtResource("2_8bb27")
 texture = ExtResource("3_pjgu6")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2(0, 2)
 shape = SubResource("CapsuleShape2D_2mfts")
