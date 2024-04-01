@@ -2,7 +2,8 @@ extends CharacterBody2D
 
 # Preload Variabel
 var PlProjcetilePlayer = preload("res://Scene/Projectile/projectile_player.tscn")
-@onready var GunNodeFirePosition = $GunStartProjectile
+@onready var GunNodeLeft = $GunStartProjectile/MarkLeft
+@onready var GunNodeRight = $GunStartProjectile/MarkRight
 
 # Var Player
 var MovementSpeed : float = 100
@@ -24,22 +25,19 @@ func _process(delta):
 		
 	#GUN
 	Gun()	
-		
-
 
 func Damge(values):
 	life -= values
 	if life < 0:
 		Death()
 		
-
-
+		
 func Gun():
-	if Input.is_action_just_pressed("Primary"):
-		AnimateProjectile()
+	if Input.is_action_pressed("Primary"):
+		AnimateProjectileGunLeft()
 		
 		
-	if Input.is_action_just_pressed("Secondary"):
+	if Input.is_action_pressed("Secondary"):
 		print("Secondary")			
 
 		
@@ -50,10 +48,9 @@ func DeleteNode():
 	queue_free()		
 
 
-func AnimateProjectile():
-	for child in GunNodeFirePosition.get_children():
-		var Projcetile = PlProjcetilePlayer.instantiate()
-		Projcetile.global_position = child.global_position
-		get_tree().current_scene.add_child(Projcetile)
+func AnimateProjectileGunLeft():
+		var ProjcetileL = PlProjcetilePlayer.instantiate()
+		ProjcetileL.global_position = GunNodeLeft.global_position
+		get_tree().current_scene.add_child(ProjcetileL)
 	
 
