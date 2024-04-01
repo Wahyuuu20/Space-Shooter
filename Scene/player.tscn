@@ -1,7 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://gucyibcu53et"]
+[gd_scene load_steps=11 format=3 uid="uid://gucyibcu53et"]
 
 [ext_resource type="Script" path="res://Script/PlayerScirpt.gd" id="1_58nv7"]
 [ext_resource type="Texture2D" uid="uid://dhfxtmhvbdfe2" path="res://Asset/Space Shooter Redux/Vector/spaceShooter_vector.svg" id="1_b3x80"]
+[ext_resource type="Texture2D" uid="uid://b3jdo1y7aqqoi" path="res://Asset/Space Shooter Redux/PNG/Parts/gun10.png" id="2_a6s16"]
+[ext_resource type="Texture2D" uid="uid://chdsjdtba85e7" path="res://Asset/Space Shooter Redux/PNG/Parts/gun09.png" id="3_4qavr"]
 [ext_resource type="Texture2D" uid="uid://bdlr5g66ebdmy" path="res://Asset/Space Shooter Redux/PNG/Damage/playerShip1_damage1.png" id="3_txboj"]
 [ext_resource type="Texture2D" uid="uid://dcnn6ylqbiixx" path="res://Asset/Space Shooter Redux/PNG/Damage/playerShip1_damage2.png" id="4_maqeg"]
 [ext_resource type="Texture2D" uid="uid://ks0q3fhxtbm" path="res://Asset/Space Shooter Redux/PNG/Damage/playerShip1_damage3.png" id="5_qd2w3"]
@@ -57,6 +59,34 @@ animations = [{
 scale = Vector2(0.4, 0.4)
 script = ExtResource("1_58nv7")
 
+[node name="GunStartProjectile" type="Node2D" parent="."]
+scale = Vector2(1, 1)
+
+[node name="MarkLeft" type="Marker2D" parent="GunStartProjectile"]
+position = Vector2(-32.5, -15)
+
+[node name="MarkMid" type="Marker2D" parent="GunStartProjectile"]
+position = Vector2(0, -38)
+
+[node name="GunRight" type="Marker2D" parent="GunStartProjectile"]
+position = Vector2(32.5, -15)
+
+[node name="Gun" type="Node2D" parent="."]
+position = Vector2(0, -37.5)
+scale = Vector2(1, 1)
+
+[node name="GunLeft" type="Sprite2D" parent="Gun"]
+position = Vector2(30, 35.5)
+rotation = 3.14159
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_a6s16")
+
+[node name="GunRight" type="Sprite2D" parent="Gun"]
+position = Vector2(-30, 35.5)
+rotation = 3.14159
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_4qavr")
+
 [node name="AnimatedPlayer" type="AnimatedSprite2D" parent="."]
 scale = Vector2(1, 1)
 sprite_frames = SubResource("SpriteFrames_qkyjp")
@@ -70,14 +100,3 @@ animation = &"0"
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 visible = false
 polygon = PackedVector2Array(-8, -38, 7, -38, 11, -13, 35, 1, 40, -1, 44, -7, 49, -7, 46, 24, 42, 24, 40, 20, 35, 23, 13, 27, 6, 37, -7, 37, -14, 26, -36, 23, -42, 20, -43, 23, -45, 24, -47, 23, -50, -6, -45, -6, -42, -1, -37, 1, -12, -13)
-
-[node name="Gun" type="Node2D" parent="."]
-
-[node name="GunLeft" type="Marker2D" parent="Gun"]
-position = Vector2(-36, 0)
-
-[node name="GunMid" type="Marker2D" parent="Gun"]
-position = Vector2(0, -38)
-
-[node name="GunRight" type="Marker2D" parent="Gun"]
-position = Vector2(37, 0)
