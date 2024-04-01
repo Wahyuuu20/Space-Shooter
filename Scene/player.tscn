@@ -1,7 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://gucyibcu53et"]
+[gd_scene load_steps=10 format=3 uid="uid://gucyibcu53et"]
 
 [ext_resource type="Script" path="res://Script/PlayerScirpt.gd" id="1_58nv7"]
 [ext_resource type="Texture2D" uid="uid://dhfxtmhvbdfe2" path="res://Asset/Space Shooter Redux/Vector/spaceShooter_vector.svg" id="1_b3x80"]
+[ext_resource type="Texture2D" uid="uid://bdlr5g66ebdmy" path="res://Asset/Space Shooter Redux/PNG/Damage/playerShip1_damage1.png" id="3_txboj"]
+[ext_resource type="Texture2D" uid="uid://dcnn6ylqbiixx" path="res://Asset/Space Shooter Redux/PNG/Damage/playerShip1_damage2.png" id="4_maqeg"]
+[ext_resource type="Texture2D" uid="uid://ks0q3fhxtbm" path="res://Asset/Space Shooter Redux/PNG/Damage/playerShip1_damage3.png" id="5_qd2w3"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_vj3h5"]
 atlas = ExtResource("1_b3x80")
@@ -15,6 +18,45 @@ animations = [{
 }],
 "loop": true,
 "name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nh3p5"]
+atlas = ExtResource("1_b3x80")
+region = Rect2(0, 0, 100, 82)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qkyjp"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nh3p5")
+}],
+"loop": true,
+"name": &"0",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_txboj")
+}],
+"loop": true,
+"name": &"1",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_maqeg")
+}],
+"loop": true,
+"name": &"2",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_qd2w3")
+}],
+"loop": true,
+"name": &"3",
 "speed": 5.0
 }]
 
@@ -39,3 +81,7 @@ position = Vector2(0, -38)
 
 [node name="GunRight" type="Marker2D" parent="Gun"]
 position = Vector2(37, 0)
+
+[node name="AnimatedPlayer" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_qkyjp")
+animation = &"0"
