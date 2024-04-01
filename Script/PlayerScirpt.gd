@@ -30,8 +30,7 @@ func Damge(values):
 	life -= values
 	if life < 0:
 		Death()
-		
-		
+				
 func Gun():
 	if Input.is_action_pressed("Primary"):
 		AnimateProjectileGunLeft()
@@ -39,7 +38,6 @@ func Gun():
 		
 	if Input.is_action_pressed("Secondary"):
 		print("Secondary")			
-
 		
 func Death():
 	queue_free()		
@@ -47,10 +45,14 @@ func Death():
 func DeleteNode():
 	queue_free()		
 
-
+# Gun Left	
 func AnimateProjectileGunLeft():
 		var ProjcetileL = PlProjcetilePlayer.instantiate()
 		ProjcetileL.global_position = GunNodeLeft.global_position
 		get_tree().current_scene.add_child(ProjcetileL)
 	
-
+# Gun Right	
+func AnimateProjectileGunRight():
+		var ProjcetileR = PlProjcetilePlayer.instantiate()
+		ProjcetileR.global_position = GunNodeRight.global_position
+		get_tree().current_scene.add_child(ProjcetileR)
