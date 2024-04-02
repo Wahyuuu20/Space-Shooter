@@ -14,3 +14,4 @@ texture = SubResource("CanvasTexture_yyf5p")
 
 [node name="Player" parent="." instance=ExtResource("1_i7w8g")]
 position = Vector2(690, 368)
+MovementSpeed = 120.0

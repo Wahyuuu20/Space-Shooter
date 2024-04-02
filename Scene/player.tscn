@@ -58,9 +58,9 @@ animations = [{
 [node name="Player" type="CharacterBody2D"]
 scale = Vector2(0.4, 0.4)
 script = ExtResource("1_58nv7")
+MovementSpeed = 30.0
 
 [node name="GunStartProjectile" type="Node2D" parent="."]
-scale = Vector2(1, 1)
 
 [node name="MarkLeft" type="Marker2D" parent="GunStartProjectile"]
 position = Vector2(-32.5, -15)
@@ -70,7 +70,6 @@ position = Vector2(32.5, -15)
 
 [node name="Gun" type="Node2D" parent="."]
 position = Vector2(0, -37.5)
-scale = Vector2(1, 1)
 
 [node name="GunRight" type="Sprite2D" parent="Gun"]
 position = Vector2(30, 35.5)
@@ -85,12 +84,10 @@ scale = Vector2(0.5, 0.5)
 texture = ExtResource("3_4qavr")
 
 [node name="AnimatedPlayer" type="AnimatedSprite2D" parent="."]
-scale = Vector2(1, 1)
 sprite_frames = SubResource("SpriteFrames_qkyjp")
 animation = &"Atas"
 
 [node name="DamageAnimatePlayer" type="AnimatedSprite2D" parent="."]
-scale = Vector2(1, 1)
 sprite_frames = SubResource("SpriteFrames_iw6yl")
 animation = &"0"
 
