@@ -12,7 +12,7 @@ var PlProjcetilePlayer = preload("res://Scene/Projectile/projectile_player.tscn"
 @export var AccelBoost : float = 120
 var life: int  = 10
 
-
+var smooth_Mouse_pos : Vector2
 
 func _process(delta):
 	
@@ -81,7 +81,8 @@ func Boost():
 
 func AimPlayer():
 	if Input.is_action_pressed("Aim"):
-		look_at(get_global_mouse_position())
+		smooth_Mouse_pos = lerp(smooth_Mouse_pos,get_global_mouse_position(),0.1)
+		look_at(smooth_Mouse_pos)
 	
 	
 	
