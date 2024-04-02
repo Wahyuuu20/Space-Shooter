@@ -20,7 +20,6 @@ func _process(delta):
 	
 	
 	#Movement
-	look_at(get_global_mouse_position())
 	var direction:Vector2 = Input.get_vector("left","Right","Up","Down")
 	velocity.x = move_toward(velocity.x,Speed * direction.x ,accel)
 	velocity.y = move_toward(velocity.y,Speed * direction.y ,accel)
