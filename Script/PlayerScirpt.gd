@@ -6,11 +6,10 @@ var PlProjcetilePlayer = preload("res://Scene/Projectile/projectile_player.tscn"
 @onready var GunNodeRight = $GunStartProjectile/MarkRight
 
 # Var Player
-@export var Speed : float = 150
-@export var accel: float = 15
-
-@export var BoostSpeed : float = 500
-@export var AccelBoost : float = 500
+@export var Speed : float = 250
+@export var accel: float = 60
+@export var BoostSpeed : float = 800
+@export var AccelBoost : float = 120
 var life: int  = 10
 
 
@@ -36,12 +35,13 @@ func _process(delta):
 	#Aim
 	AimPlayer()
 	
-	
+#Damage	
 func Damge(values):
 	life -= values
 	if life < 0:
 		Death()
-				
+			
+# Gun				
 func Gun():
 	if Input.is_action_pressed("Primary"):
 		AnimateProjectileGunLeft()
@@ -49,10 +49,12 @@ func Gun():
 		
 	if Input.is_action_pressed("Secondary"):
 		print("Secondary")			
-		
+
+#Player Death		
 func Death():
 	queue_free()		
-			
+	
+# DeleteNode			
 func DeleteNode():
 	queue_free()		
 
@@ -68,7 +70,7 @@ func AnimateProjectileGunRight():
 		ProjcetileR.global_position = GunNodeRight.global_position
 		get_tree().current_scene.add_child(ProjcetileR)
 
-
+#MovementBoost
 func Boost():
 	#Movement Boost
 	var direction:Vector2 = Input.get_vector("left","Right","Up","Down")	
