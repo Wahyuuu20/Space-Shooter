@@ -61,11 +61,15 @@ script = ExtResource("1_58nv7")
 
 [node name="GunStartProjectile" type="Node2D" parent="."]
 
-[node name="MarkLeft" type="Marker2D" parent="GunStartProjectile"]
-position = Vector2(-32.5, -15)
-
-[node name="MarkRight" type="Marker2D" parent="GunStartProjectile"]
+[node name="RaycastGunRight" type="RayCast2D" parent="GunStartProjectile"]
 position = Vector2(32.5, -15)
+scale = Vector2(1, 1)
+target_position = Vector2(0, -17.5)
+
+[node name="RayCastGunleft" type="RayCast2D" parent="GunStartProjectile"]
+position = Vector2(-32.5, -15)
+scale = Vector2(1, 1)
+target_position = Vector2(0, -17.5)
 
 [node name="Gun" type="Node2D" parent="."]
 position = Vector2(0, -37.5)

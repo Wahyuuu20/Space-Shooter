@@ -2,8 +2,8 @@ extends CharacterBody2D
 
 # Preload Variabel
 var PlProjcetilePlayer = preload("res://Scene/Projectile/projectile_player.tscn")
-@onready var GunNodeLeft = $GunStartProjectile/MarkLeft
-@onready var GunNodeRight = $GunStartProjectile/MarkRight
+@onready var GunNodeLeft = $GunStartProjectile/RayCastGunleft
+@onready var GunNodeRight = $GunStartProjectile/RaycastGunRight
 
 # Var Player
 @export var Speed : float = 250
