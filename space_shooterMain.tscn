@@ -9,7 +9,8 @@
 [node name="Background_World" parent="." instance=ExtResource("1_3ppqx")]
 
 [node name="Player" parent="." instance=ExtResource("2_2ta76")]
-position = Vector2(665, 567)
+position = Vector2(682, 681)
+scale = Vector2(0.398745, 0.4)
 
 [node name="Enemy" parent="." instance=ExtResource("3_641l3")]
 position = Vector2(685, 118)

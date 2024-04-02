@@ -72,13 +72,13 @@ position = Vector2(32.5, -15)
 position = Vector2(0, -37.5)
 scale = Vector2(1, 1)
 
-[node name="GunLeft" type="Sprite2D" parent="Gun"]
+[node name="GunRight" type="Sprite2D" parent="Gun"]
 position = Vector2(30, 35.5)
 rotation = 3.14159
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("2_a6s16")
 
-[node name="GunRight" type="Sprite2D" parent="Gun"]
+[node name="GunLeft" type="Sprite2D" parent="Gun"]
 position = Vector2(-30, 35.5)
 rotation = 3.14159
 scale = Vector2(0.5, 0.5)
