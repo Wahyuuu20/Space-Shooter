@@ -13,6 +13,8 @@ var PlProjcetilePlayer = preload("res://Scene/Projectile/projectile_player.tscn"
 @export var AccelBoost : float = 500
 var life: int  = 10
 
+
+
 func _process(delta):
 	
 	#Animate Damage Player
@@ -30,7 +32,11 @@ func _process(delta):
 	
 	#GUN
 	Gun()	
-
+	
+	#Aim
+	AimPlayer()
+	
+	
 func Damge(values):
 	life -= values
 	if life < 0:
@@ -70,3 +76,10 @@ func Boost():
 		velocity.x = move_toward(velocity.x,BoostSpeed * direction.x ,AccelBoost)	
 		velocity.y = move_toward(velocity.y,BoostSpeed * direction.y ,AccelBoost)
 		
+
+func AimPlayer():
+	if Input.is_action_pressed("Aim"):
+		look_at(get_global_mouse_position())
+	
+	
+	
