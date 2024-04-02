@@ -6,7 +6,11 @@ var PlProjcetilePlayer = preload("res://Scene/Projectile/projectile_player.tscn"
 @onready var GunNodeRight = $GunStartProjectile/MarkRight
 
 # Var Player
-@export var MovementSpeed : float = 120
+@export var Speed : float = 150
+@export var accel: float = 15
+
+@export var BoostSpeed : float = 500
+@export var AccelBoost : float = 500
 var life: int  = 10
 
 func _process(delta):
@@ -16,13 +20,15 @@ func _process(delta):
 	
 	
 	#Movement
-	if Input.is_action_pressed("left"):
-		position.x -= MovementSpeed * delta
-	if Input.is_action_pressed("Right"):
-		position.x += MovementSpeed * delta
-		
-		
-		
+	look_at(get_global_mouse_position())
+	var direction:Vector2 = Input.get_vector("left","Right","Up","Down")
+	velocity.x = move_toward(velocity.x,Speed * direction.x ,accel)
+	velocity.y = move_toward(velocity.y,Speed * direction.y ,accel)
+	move_and_slide()
+	
+	#Movement Boost
+	Boost()
+	
 	#GUN
 	Gun()	
 
@@ -56,3 +62,12 @@ func AnimateProjectileGunRight():
 		var ProjcetileR = PlProjcetilePlayer.instantiate()
 		ProjcetileR.global_position = GunNodeRight.global_position
 		get_tree().current_scene.add_child(ProjcetileR)
+
+
+func Boost():
+	#Movement Boost
+	var direction:Vector2 = Input.get_vector("left","Right","Up","Down")	
+	if Input.is_action_pressed("Boost"):
+		velocity.x = move_toward(velocity.x,BoostSpeed * direction.x ,AccelBoost)	
+		velocity.y = move_toward(velocity.y,BoostSpeed * direction.y ,AccelBoost)
+		
