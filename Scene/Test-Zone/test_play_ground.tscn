@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://bjv588hsldhjm"]
+
+[ext_resource type="PackedScene" uid="uid://gucyibcu53et" path="res://Scene/player.tscn" id="1_i7w8g"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_yyf5p"]
+
+[node name="Test-PlayGround" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0.333333, 0.584314, 1, 1)
+position = Vector2(684.5, 385)
+scale = Vector2(1385, 786)
+texture = SubResource("CanvasTexture_yyf5p")
+
+[node name="Player" parent="." instance=ExtResource("1_i7w8g")]
+position = Vector2(690, 368)
