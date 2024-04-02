@@ -6,7 +6,7 @@ var PlProjcetilePlayer = preload("res://Scene/Projectile/projectile_player.tscn"
 @onready var GunNodeRight = $GunStartProjectile/MarkRight
 
 # Var Player
-var MovementSpeed : float = 100
+@export var MovementSpeed : float = 120
 var life: int  = 10
 
 func _process(delta):
@@ -17,9 +17,9 @@ func _process(delta):
 	
 	#Movement
 	if Input.is_action_pressed("left"):
-		position.x -= MovementSpeed
+		position.x -= MovementSpeed * delta
 	if Input.is_action_pressed("Right"):
-		position.x += MovementSpeed
+		position.x += MovementSpeed * delta
 		
 		
 		
