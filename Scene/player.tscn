@@ -8,18 +8,18 @@
 [ext_resource type="Texture2D" uid="uid://dcnn6ylqbiixx" path="res://Asset/Space Shooter Redux/PNG/Damage/playerShip1_damage2.png" id="4_maqeg"]
 [ext_resource type="Texture2D" uid="uid://ks0q3fhxtbm" path="res://Asset/Space Shooter Redux/PNG/Damage/playerShip1_damage3.png" id="5_qd2w3"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_nh3p5"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_p0sqk"]
 atlas = ExtResource("1_b3x80")
 region = Rect2(0, 0, 100, 82)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_qkyjp"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_c2lvh"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_nh3p5")
+"texture": SubResource("AtlasTexture_p0sqk")
 }],
 "loop": true,
-"name": &"Atas",
+"name": &"default",
 "speed": 5.0
 }]
 
@@ -86,13 +86,12 @@ rotation = 3.14159
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("3_4qavr")
 
-[node name="AnimatedPlayer" type="AnimatedSprite2D" parent="."]
-position = Vector2(-7.62939e-06, -37.5)
-sprite_frames = SubResource("SpriteFrames_qkyjp")
-animation = &"Atas"
-offset = Vector2(7.62939e-06, 37.5)
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -2.38419e-06)
+sprite_frames = SubResource("SpriteFrames_c2lvh")
 
 [node name="DamageAnimatePlayer" type="AnimatedSprite2D" parent="."]
+visible = false
 sprite_frames = SubResource("SpriteFrames_iw6yl")
 animation = &"0"
 
