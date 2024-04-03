@@ -73,6 +73,10 @@ position = Vector2(12.5, -32.5)
 rotation = 1.5708
 target_position = Vector2(0, -17.5)
 
+[node name="RedDot" type="Marker2D" parent="."]
+position = Vector2(32.5, 0)
+scale = Vector2(1, 1)
+
 [node name="Gun" type="Node2D" parent="."]
 position = Vector2(0, -37.5)
 
