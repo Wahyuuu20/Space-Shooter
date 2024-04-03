@@ -3,23 +3,27 @@
 [ext_resource type="Texture2D" uid="uid://dmxba3atm17me" path="res://Asset/Space Shooter Redux/PNG/Lasers/laserBlue01.png" id="1_i7anu"]
 [ext_resource type="Script" path="res://Script/projectile-player.gd" id="1_o5wgu"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_kasr4"]
-radius = 4.0
-height = 56.0
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_trr5k"]
+radius = 6.66667
+height = 53.3333
 
 [node name="ProjectilePlayer" type="Area2D"]
 scale = Vector2(0.3, 0.3)
 script = ExtResource("1_o5wgu")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+rotation = 1.5708
 texture = ExtResource("1_i7anu")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
-shape = SubResource("CapsuleShape2D_kasr4")
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_trr5k")
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+visible = false
 position = Vector2(4.76837e-07, -1.19209e-06)
+rotation = 1.5708
 scale = Vector2(0.666667, 3)
 
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="Projectile_screen_exited"]
