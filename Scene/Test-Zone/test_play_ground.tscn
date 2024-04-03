@@ -14,4 +14,5 @@ texture = SubResource("CanvasTexture_yyf5p")
 
 [node name="Player" parent="." instance=ExtResource("1_i7w8g")]
 position = Vector2(690, 368)
+rotation = -1.5708
 scale = Vector2(0.4, 0.397891)
