@@ -2,9 +2,10 @@ extends CharacterBody2D
 
 # Preload Variabel
 var PlProjcetilePlayer = preload("res://Scene/Projectile/projectile_player.tscn")
+var PlRedDotAim = preload("res://Scene/Gun/Red-Dot/Aim_Red-dot.tscn")
 @onready var GunNodeLeft = $GunStartProjectile/RayCastGunleft
 @onready var GunNodeRight = $GunStartProjectile/RaycastGunRight
-
+@onready var RedDotMarker = $RedDot
 # Var Player
 @export var Speed : float = 250
 @export var accel: float = 60
@@ -83,6 +84,8 @@ func AimPlayer():
 	if Input.is_action_pressed("Aim"):
 		smooth_Mouse_pos = lerp(smooth_Mouse_pos,get_global_mouse_position(),0.1)
 		look_at(smooth_Mouse_pos)
+		
+		
 	
 	
 	
