@@ -19,6 +19,10 @@ func _process(delta):
 	
 	#Animate Damage Player
 	
+	#Print
+	print(velocity.x)
+	print(velocity.y)
+	
 	
 	
 	#Movement
