@@ -8,5 +8,5 @@ func Start_Dash(Duration):
 	
 	
 # Selama Dash	
-func is_Dash():	
-	!TimerNode.is_stopped()
+func is_Dashing():	
+	return !TimerNode.is_stopped()
