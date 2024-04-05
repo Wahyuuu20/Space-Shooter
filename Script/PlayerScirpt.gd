@@ -6,6 +6,7 @@ var PlRedDotAim = preload("res://Scene/Gun/Red-Dot/Aim_Red-dot.tscn")
 @onready var GunNodeLeft = $GunStartProjectile/RayCastGunleft
 @onready var GunNodeRight = $GunStartProjectile/RaycastGunRight
 @onready var RedDotMarker = $RedDot
+@onready var timer = $Timer
 
 # Var Player
 @export var Speed : float = 250
@@ -13,6 +14,8 @@ var PlRedDotAim = preload("res://Scene/Gun/Red-Dot/Aim_Red-dot.tscn")
 @export var BoostSpeed : float = 500
 @export var AccelBoost : float = 120
 @export var DashSpeed : float = 1000
+@export var timerCount = 1
+
 
 var life: int  = 10
 
@@ -28,8 +31,8 @@ func _process(delta):
 	#Animate Damage Player
 	
 	#Print
-#	print(velocity.x)
-#	print(velocity.y)
+	print(velocity.x)
+	print(velocity.y)
 	
 	
 	
@@ -92,9 +95,9 @@ func Boost():
 	#Movement Boost
 	var directionBoost:Vector2 = Input.get_vector("left","Right","Up","Down")	
 	if Input.is_action_pressed("Boost"):
-		velocity.x = move_toward(velocity.x,BoostSpeed * directionBoost.x ,AccelBoost)	
-		velocity.y = move_toward(velocity.y,BoostSpeed * directionBoost.y ,AccelBoost)
-
+			velocity.x = move_toward(velocity.x,BoostSpeed * directionBoost.x ,AccelBoost)	
+			velocity.y = move_toward(velocity.y,BoostSpeed * directionBoost.y ,AccelBoost)
+			
 #Aim		
 func AimPlayer():
 	if Input.is_action_pressed("Aim"):
@@ -105,8 +108,9 @@ func AimPlayer():
 func Dash():
 	var directionBoost:Vector2 = Input.get_vector("left","Right","Up","Down")	
 	if Input.is_action_just_pressed("Dash"):
-		velocity.x = DashSpeed * 2 * directionBoost.x 
-		velocity.y = DashSpeed * 2 * directionBoost.y 
+			velocity.x = DashSpeed * 2 * directionBoost.x 
+			velocity.y = DashSpeed * 2 * directionBoost.y
+			
 		
 		
 		
