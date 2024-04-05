@@ -7,5 +7,5 @@
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(50, -2.84217e-14)
 rotation = 1.5708
-scale = Vector2(0.5, 100)
+scale = Vector2(10, 500)
 texture = SubResource("CanvasTexture_ihssu")

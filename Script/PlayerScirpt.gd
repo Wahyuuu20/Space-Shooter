@@ -5,7 +5,7 @@ var PlProjcetilePlayer = preload("res://Scene/Projectile/projectile_player.tscn"
 var PlRedDotAim = preload("res://Scene/Gun/Red-Dot/Aim_Red-dot.tscn")
 @onready var GunNodeLeft = $GunStartProjectile/RayCastGunleft
 @onready var GunNodeRight = $GunStartProjectile/RaycastGunRight
-@onready var RedDotMarker = $RedDot
+@onready var RedDot = $RedDot2
 @onready var timer = $Timer
 
 # Var Player
@@ -27,7 +27,7 @@ var life: int  = 10
 var smooth_Mouse_pos : Vector2
 
 func _process(delta):
-	
+	RedDot.hide()
 	#Animate Damage Player
 	
 	#Print
@@ -106,6 +106,7 @@ func AimPlayer():
 	if Input.is_action_pressed("Aim"):
 		smooth_Mouse_pos = lerp(smooth_Mouse_pos,get_global_mouse_position(),0.1)
 		look_at(smooth_Mouse_pos)
+		RedDot.show()
 
 #Dash		
 func Dash():

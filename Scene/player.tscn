@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://gucyibcu53et"]
+[gd_scene load_steps=13 format=3 uid="uid://gucyibcu53et"]
 
 [ext_resource type="Script" path="res://Script/PlayerScirpt.gd" id="1_58nv7"]
 [ext_resource type="Texture2D" uid="uid://dhfxtmhvbdfe2" path="res://Asset/Space Shooter Redux/Vector/spaceShooter_vector.svg" id="1_b3x80"]
@@ -7,6 +7,8 @@
 [ext_resource type="Texture2D" uid="uid://bdlr5g66ebdmy" path="res://Asset/Space Shooter Redux/PNG/Damage/playerShip1_damage1.png" id="3_txboj"]
 [ext_resource type="Texture2D" uid="uid://dcnn6ylqbiixx" path="res://Asset/Space Shooter Redux/PNG/Damage/playerShip1_damage2.png" id="4_maqeg"]
 [ext_resource type="Texture2D" uid="uid://ks0q3fhxtbm" path="res://Asset/Space Shooter Redux/PNG/Damage/playerShip1_damage3.png" id="5_qd2w3"]
+[ext_resource type="PackedScene" uid="uid://c13ebab7vxnfh" path="res://Scene/Gun/Red-Dot/Aim_Red-dot.tscn" id="8_dac0b"]
+[ext_resource type="Script" path="res://Scene/Gun/Red-Dot/Aim_Red-dot.gd" id="9_3tjlx"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_p0sqk"]
 atlas = ExtResource("1_b3x80")
@@ -72,9 +74,6 @@ position = Vector2(12.5, -32.5)
 rotation = 1.5708
 target_position = Vector2(0, -17.5)
 
-[node name="RedDot" type="Marker2D" parent="."]
-position = Vector2(32.5, 0)
-
 [node name="Gun" type="Node2D" parent="."]
 position = Vector2(0, -37.5)
 
@@ -105,3 +104,7 @@ visible = false
 polygon = PackedVector2Array(-8, -38, 7, -38, 11, -13, 35, 1, 40, -1, 44, -7, 49, -7, 46, 24, 42, 24, 40, 20, 35, 23, 13, 27, 6, 37, -7, 37, -14, 26, -36, 23, -42, 20, -43, 23, -45, 24, -47, 23, -50, -6, -45, -6, -42, -1, -37, 1, -12, -13)
 
 [node name="Timer" type="Timer" parent="."]
+
+[node name="RedDot2" parent="." instance=ExtResource("8_dac0b")]
+position = Vector2(240, 0)
+script = ExtResource("9_3tjlx")
