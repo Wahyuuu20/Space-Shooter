@@ -103,3 +103,5 @@ animation = &"0"
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 visible = false
 polygon = PackedVector2Array(-8, -38, 7, -38, 11, -13, 35, 1, 40, -1, 44, -7, 49, -7, 46, 24, 42, 24, 40, 20, 35, 23, 13, 27, 6, 37, -7, 37, -14, 26, -36, 23, -42, 20, -43, 23, -45, 24, -47, 23, -50, -6, -45, -6, -42, -1, -37, 1, -12, -13)
+
+[node name="Timer" type="Timer" parent="."]
