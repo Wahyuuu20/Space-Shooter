@@ -83,6 +83,9 @@ func AnimateProjectileGunLeft():
 		var ProjcetileL = PlProjcetilePlayer.instantiate()
 		ProjcetileL.global_position = GunNodeLeft.global_position
 		get_tree().current_scene.add_child(ProjcetileL)
+		var target = get_global_mouse_position()
+		var direction_to_mouse = ProjcetileL.global_position.direction_to(target).normalized()
+		ProjcetileL.set_direction(direction_to_mouse)
 
 # Gun Right	
 func AnimateProjectileGunRight():
