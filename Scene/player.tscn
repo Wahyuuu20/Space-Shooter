@@ -106,5 +106,9 @@ polygon = PackedVector2Array(-8, -38, 7, -38, 11, -13, 35, 1, 40, -1, 44, -7, 49
 [node name="Timer" type="Timer" parent="."]
 
 [node name="RedDot2" parent="." instance=ExtResource("8_dac0b")]
+visible = false
 position = Vector2(240, 0)
 script = ExtResource("9_3tjlx")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(2, 2)
