@@ -1,12 +1,12 @@
 extends Area2D
 
 
-var speedProjectile : float = 5
+var speedProjectile : float = 1000
 var direction := Vector2.ZERO
 
 func _physics_process(delta):
 	if direction != Vector2.ZERO:
-		var velocity = direction * speedProjectile 
+		var velocity = direction * speedProjectile * delta
 		global_position += velocity
 
 
