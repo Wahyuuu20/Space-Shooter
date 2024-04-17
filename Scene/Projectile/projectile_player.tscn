@@ -1,18 +1,18 @@
 [gd_scene load_steps=4 format=3 uid="uid://q5n87ma4k5sd"]
 
-[ext_resource type="Texture2D" uid="uid://dmxba3atm17me" path="res://Asset/Space Shooter Redux/PNG/Lasers/laserBlue01.png" id="1_i7anu"]
 [ext_resource type="Script" path="res://Script/projectile-player.gd" id="1_o5wgu"]
+[ext_resource type="Texture2D" uid="uid://cx6a332nq0tni" path="res://Asset/Space Shooter Redux/projectile.png" id="2_pnd5p"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_trr5k"]
 radius = 6.66667
 height = 53.3333
 
 [node name="ProjectilePlayer" type="Area2D"]
-scale = Vector2(0.3, 0.3)
+scale = Vector2(0.095, 0.095)
 script = ExtResource("1_o5wgu")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_i7anu")
+texture = ExtResource("2_pnd5p")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
