@@ -55,6 +55,9 @@ func _process(delta):
 	#Dash
 	Dash()
 	
+	smooth_Mouse_pos = lerp(smooth_Mouse_pos,get_global_mouse_position(),0.1)
+	look_at(smooth_Mouse_pos)
+	
 #Damage	
 func Damge(values):
 	life -= values
@@ -67,8 +70,8 @@ func Gun():
 		AnimateProjectileGunLeft()
 		
 		
-	if Input.is_action_pressed("Secondary"):
-		print("Secondary")			
+	if Input.is_action_pressed("Aim"):
+		AnimateProjectileGunRight()		
 
 #Player Death		
 func Death():
@@ -83,8 +86,8 @@ func AnimateProjectileGunLeft():
 		var ProjcetileL = PlProjcetilePlayer.instantiate()
 		ProjcetileL.global_position = GunNodeLeft.global_position
 		get_tree().current_scene.add_child(ProjcetileL)
-		var target = get_global_mouse_position()
-		var direction_to_mouse = ProjcetileL.global_position.direction_to(target).normalized()
+		var targetL = get_global_mouse_position()
+		var direction_to_mouse = ProjcetileL.global_position.direction_to(targetL).normalized()
 		ProjcetileL.set_direction(direction_to_mouse)
 
 # Gun Right	
@@ -92,7 +95,10 @@ func AnimateProjectileGunRight():
 		var ProjcetileR = PlProjcetilePlayer.instantiate()
 		ProjcetileR.global_position = GunNodeRight.global_position
 		get_tree().current_scene.add_child(ProjcetileR)
-
+		var targetR = get_global_mouse_position()
+		var direction_to_mouseR = ProjcetileR.global_position.direction_to(targetR).normalized()
+		ProjcetileR.set_direction(direction_to_mouseR)
+		
 #MovementBoost
 func Boost():
 	#Movement Boost
