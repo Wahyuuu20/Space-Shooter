@@ -21,6 +21,7 @@ func _physics_process(delta):
 	
 	#Detect Player Raycast
 	Player_Look()
+	Player_Chase()
 	
 func Player_Chase():
 	if player_chase:
