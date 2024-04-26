@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://wqtxx45c6yem"]
+[gd_scene load_steps=7 format=3 uid="uid://wqtxx45c6yem"]
 
 [ext_resource type="Script" path="res://Script/EnemyScript.gd" id="1_grne4"]
 [ext_resource type="Texture2D" uid="uid://b3jdo1y7aqqoi" path="res://Asset/Space Shooter Redux/PNG/Parts/gun10.png" id="1_uppyt"]
@@ -9,7 +9,10 @@
 radius = 34.0
 height = 88.0
 
-[node name="Enemy" type="CharacterBody2D"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_4ogkr"]
+radius = 305.419
+
+[node name="Enemy" type="Area2D"]
 script = ExtResource("1_grne4")
 
 [node name="GuntProjectileStart" type="Node2D" parent="."]
@@ -39,3 +42,28 @@ texture = ExtResource("3_pjgu6")
 visible = false
 position = Vector2(0, 2)
 shape = SubResource("CapsuleShape2D_2mfts")
+
+[node name="Detection" type="Node2D" parent="."]
+
+[node name="Area2D" type="Area2D" parent="Detection"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Detection/Area2D"]
+shape = SubResource("CircleShape2D_4ogkr")
+
+[node name="R1" type="RayCast2D" parent="Detection"]
+target_position = Vector2(0, 300)
+
+[node name="R2" type="RayCast2D" parent="Detection"]
+target_position = Vector2(6, 300)
+
+[node name="R3" type="RayCast2D" parent="Detection"]
+target_position = Vector2(12, 300)
+
+[node name="R4" type="RayCast2D" parent="Detection"]
+target_position = Vector2(-12, 300)
+
+[node name="R5" type="RayCast2D" parent="Detection"]
+target_position = Vector2(-6, 300)
+
+[connection signal="body_entered" from="Detection/Area2D" to="." method="Player_entered"]
+[connection signal="body_exited" from="Detection/Area2D" to="." method="Player_exited"]
