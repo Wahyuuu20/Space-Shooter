@@ -31,8 +31,8 @@ func _process(delta):
 	#Animate Damage Player
 	
 	#Print
-	print(velocity.x)
-	print(velocity.y)
+	#print(global.player_pos)
+	#print(velocity.y)
 	
 	
 	
@@ -42,6 +42,9 @@ func _process(delta):
 	velocity.x = move_toward(velocity.x,Speed * direction.x ,accel)
 	velocity.y = move_toward(velocity.y,Speed * direction.y ,accel)
 	move_and_slide()
+	global.player_pos = global_position
+	
+	
 	
 	#Movement Boost
 	Boost()
