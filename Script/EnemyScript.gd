@@ -18,7 +18,7 @@ var playerRush = false
 var playerlook = false
 
 
-func _physics_process(delta):
+func _physics_process(_delta):
 #	print(playerChase)
 #	print(playerRush)
 #	print(playerlook)
@@ -59,7 +59,7 @@ func Player_entered(body):
 	
 
 # Detecition Player
-func Player_exited(body):
+func Player_exited(_body):
 	player = null
 	playerlook = false
 	playerChase = false
@@ -67,14 +67,14 @@ func Player_exited(body):
 
 #Detection Player 2	
 # Chase Player
-func Player_chase_entered(body):
+func Player_chase_entered(_body):
 	playerRush = true
 	DectionPlayerTimer.start(detctionTime)
 	if DectionPlayerTimer.is_stopped():
 		playerRush = true
 	
 #Chase Player
-func Stop_Player_chase_exited(body):
+func Stop_Player_chase_exited(_body):
 	playerRush = false	
 	playerChase = false
 
