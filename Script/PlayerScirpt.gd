@@ -15,18 +15,10 @@ var PlRedDotAim = preload("res://Scene/Gun/Red-Dot/Aim_Red-dot.tscn")
 @export var AccelBoost : float = 120
 @export var DashSpeed : float = 1000
 @export var timerCount = 1
-
-
 var life: int  = 10
-
-
-
-
-
-
 var smooth_Mouse_pos : Vector2
 
-func _process(delta):
+func _process(_delta):
 	RedDot.hide()
 	#Animate Damage Player
 	
