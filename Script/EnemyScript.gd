@@ -1,46 +1,90 @@
 extends Area2D
 
-@onready var DistanceDetection = $Detection/Area2D/CollisionShape2D
-@onready var Ray = $Detection/R1
-@onready var Ray2 = $Detection/R2
-@onready var Ray3 = $Detection/R3
-@onready var Ray4 = $Detection/R4
-@onready var Ray5 = $Detection/R5
+@onready var DistanceDetection = $Detection/Detection_Area/CollisionShape2D
+@onready var DectionPlayerTimer = $Detection/Chase/DetectionTimerPlayer
+@onready var ChaseArea = $Detection/Chase
+@onready var Ray = $Detection/RayCastDetc/R1
+@onready var Ray2 = $Detection/RayCastDetc/R2
+@onready var Ray3 = $Detection/RayCastDetc/R3
+@onready var Ray4 = $Detection/RayCastDetc/R4
+@onready var Ray5 = $Detection/RayCastDetc/R5
 
 var player = false
-var Speed :float = 25
-var player_chase = false
-var player_look = false
+var detctionTime :float = 0.5
+@export var SpeedRush :float = 20
+@export var SpeedChase : float = 100
+var playerChase = false
+var playerRush = false	
+var playerlook = false
 
 
 func _physics_process(delta):
-	print(player)
-	print(player_chase)
-	print(player_look)
+#	print(playerChase)
+#	print(playerRush)
+#	print(playerlook)
+#	print(position)
 	
 	
 	#Detect Player Raycast
 	Player_Look()
-	Player_Chase()
 	
-func Player_Chase():
-	if player_chase:
-		position += (player.position - position)/Speed
+	#Player Chase	
+	Chase_Rush() #Rush
+	Chase() #Chase
+
+		
+		
+#Player Chase Rush
+func Chase_Rush():
+	if playerRush and player!=null:
+		position += (player.position - position)/SpeedRush
+		
+#Player Chase	
+func Chase():
+	if playerChase :
+		position += (player.position - position)/SpeedChase
+		
 	
 func Player_Look():
-	if player_look:	
+	if playerlook:	
 		Ray.target_position = to_local(global.player_pos)
 		
 	
-
+#Detection layer 1	
+# Detction Player
 func Player_entered(body):
 	player = body
-	player_chase = true
-	player_look = true
+	playerlook = true
+	playerChase = true
+	
 
-
-
+# Detecition Player
 func Player_exited(body):
 	player = null
-	player_chase = false
-	player_look = false
+	playerlook = false
+	playerChase = false
+	
+
+#Detection Player 2	
+# Chase Player
+func Player_chase_entered(body):
+	playerRush = true
+	DectionPlayerTimer.start(detctionTime)
+	if DectionPlayerTimer.is_stopped():
+		playerRush = true
+	
+#Chase Player
+func Stop_Player_chase_exited(body):
+	playerRush = false	
+	playerChase = false
+
+
+
+func Detection_Payer_Chase_timeout():
+	DectionPlayerTimer.start(detctionTime)
+	if playerRush == false:
+		playerRush = true
+	elif playerRush == true:
+		playerRush = false
+	
+		
