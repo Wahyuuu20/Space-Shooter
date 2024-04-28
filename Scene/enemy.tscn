@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://wqtxx45c6yem"]
+[gd_scene load_steps=8 format=3 uid="uid://wqtxx45c6yem"]
 
 [ext_resource type="Script" path="res://Script/EnemyScript.gd" id="1_grne4"]
 [ext_resource type="Texture2D" uid="uid://b3jdo1y7aqqoi" path="res://Asset/Space Shooter Redux/PNG/Parts/gun10.png" id="1_uppyt"]
@@ -9,29 +9,33 @@
 radius = 34.0
 height = 88.0
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_rxey6"]
+radius = 308.649
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_4ogkr"]
-radius = 305.419
+radius = 1230.04
 
 [node name="Enemy" type="Area2D"]
+scale = Vector2(0.5, 0.5)
 script = ExtResource("1_grne4")
 
 [node name="GuntProjectileStart" type="Node2D" parent="."]
 
 [node name="MarkLeft" type="Marker2D" parent="GuntProjectileStart"]
-position = Vector2(40, 24)
+position = Vector2(-45, 22)
 
 [node name="MarkRight" type="Marker2D" parent="GuntProjectileStart"]
-position = Vector2(-42, 24)
+position = Vector2(44, 23)
 
 [node name="Gun" type="Node2D" parent="."]
 
 [node name="GunLeft" type="Sprite2D" parent="Gun"]
-position = Vector2(41, 13)
+position = Vector2(-43, 9)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("1_uppyt")
 
 [node name="GunRight" type="Sprite2D" parent="Gun"]
-position = Vector2(-41, 13)
+position = Vector2(42, 10)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("2_8bb27")
 
@@ -45,25 +49,39 @@ shape = SubResource("CapsuleShape2D_2mfts")
 
 [node name="Detection" type="Node2D" parent="."]
 
-[node name="Area2D" type="Area2D" parent="Detection"]
+[node name="Chase" type="Area2D" parent="Detection"]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Detection/Area2D"]
+[node name="DetectionTimerPlayer" type="Timer" parent="Detection/Chase"]
+one_shot = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Detection/Chase"]
+shape = SubResource("CircleShape2D_rxey6")
+
+[node name="Detection_Area" type="Area2D" parent="Detection"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Detection/Detection_Area"]
+position = Vector2(2, 0)
 shape = SubResource("CircleShape2D_4ogkr")
 
-[node name="R1" type="RayCast2D" parent="Detection"]
+[node name="RayCastDetc" type="Node2D" parent="Detection"]
+
+[node name="R1" type="RayCast2D" parent="Detection/RayCastDetc"]
 target_position = Vector2(0, 300)
 
-[node name="R2" type="RayCast2D" parent="Detection"]
+[node name="R2" type="RayCast2D" parent="Detection/RayCastDetc"]
 target_position = Vector2(6, 300)
 
-[node name="R3" type="RayCast2D" parent="Detection"]
+[node name="R3" type="RayCast2D" parent="Detection/RayCastDetc"]
 target_position = Vector2(12, 300)
 
-[node name="R4" type="RayCast2D" parent="Detection"]
+[node name="R4" type="RayCast2D" parent="Detection/RayCastDetc"]
 target_position = Vector2(-12, 300)
 
-[node name="R5" type="RayCast2D" parent="Detection"]
+[node name="R5" type="RayCast2D" parent="Detection/RayCastDetc"]
 target_position = Vector2(-6, 300)
 
-[connection signal="body_entered" from="Detection/Area2D" to="." method="Player_entered"]
-[connection signal="body_exited" from="Detection/Area2D" to="." method="Player_exited"]
+[connection signal="body_entered" from="Detection/Chase" to="." method="Player_chase_entered"]
+[connection signal="body_exited" from="Detection/Chase" to="." method="Stop_Player_chase_exited"]
+[connection signal="timeout" from="Detection/Chase/DetectionTimerPlayer" to="." method="Detection_Payer_Chase_timeout"]
+[connection signal="body_entered" from="Detection/Detection_Area" to="." method="Player_entered"]
+[connection signal="body_exited" from="Detection/Detection_Area" to="." method="Player_exited"]
