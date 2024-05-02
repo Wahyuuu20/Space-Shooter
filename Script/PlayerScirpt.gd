@@ -3,9 +3,9 @@ extends CharacterBody2D
 # Preload Variabel
 var PlProjcetilePlayer = preload("res://Scene/Projectile/projectile_player.tscn")
 var PlRedDotAim = preload("res://Scene/Gun/Red-Dot/Aim_Red-dot.tscn")
+@onready var NodeTimerFireRate = $GunStartProjectile/TimerFireRate
 @onready var GunNodeLeft = $GunStartProjectile/RayCastGunleft
 @onready var GunNodeRight = $GunStartProjectile/RaycastGunRight
-@onready var RedDot = $RedDot2
 @onready var timer = $Timer
 
 # Var Player
@@ -17,9 +17,10 @@ var PlRedDotAim = preload("res://Scene/Gun/Red-Dot/Aim_Red-dot.tscn")
 @export var timerCount = 1
 var life: int  = 10
 var smooth_Mouse_pos : Vector2
+var TimeFireRate :float = 0.2
+
 
 func _process(_delta):
-	RedDot.hide()
 	#Animate Damage Player
 	
 	#Print
@@ -56,7 +57,7 @@ func _process(_delta):
 	look_at(smooth_Mouse_pos)
 	
 #Damage	
-func Damge(values):
+func Damage(values):
 	life -= values
 	if life < 0:
 		Death()
@@ -75,7 +76,8 @@ func Gun():
 		AnimateProjectileGunLeft()
 		
 		
-	if Input.is_action_pressed("Aim"):
+	if Input.is_action_pressed("Aim") and NodeTimerFireRate.is_stopped():
+		NodeTimerFireRate.start(TimeFireRate)
 		AnimateProjectileGunRight()		
 
 # Gun Left	
@@ -102,7 +104,7 @@ func AimPlayer():
 	if Input.is_action_pressed("Aim"):
 		smooth_Mouse_pos = lerp(smooth_Mouse_pos,get_global_mouse_position(),0.1)
 		look_at(smooth_Mouse_pos)
-		RedDot.show()
+		
 		
 	
 #MovementBoost
