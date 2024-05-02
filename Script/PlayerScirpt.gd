@@ -24,7 +24,9 @@ func _process(_delta):
 	
 	#Print
 	#print(global.player_pos)
-	#print(velocity.y)
+	print(velocity.y)
+	print(velocity.x)
+	#print(DashSpeed)
 	
 	
 	
@@ -59,6 +61,14 @@ func Damge(values):
 	if life < 0:
 		Death()
 
+#Player Death		
+func Death():
+	queue_free()		
+
+# DeleteNode			
+func DeleteNode():
+	queue_free()		
+
 # Gun				
 func Gun():
 	if Input.is_action_pressed("Primary"):
@@ -67,14 +77,6 @@ func Gun():
 		
 	if Input.is_action_pressed("Aim"):
 		AnimateProjectileGunRight()		
-
-#Player Death		
-func Death():
-	queue_free()		
-
-# DeleteNode			
-func DeleteNode():
-	queue_free()		
 
 # Gun Left	
 func AnimateProjectileGunLeft():
@@ -94,6 +96,15 @@ func AnimateProjectileGunRight():
 		var direction_to_mouseR = ProjcetileR.global_position.direction_to(targetR).normalized()
 		ProjcetileR.set_direction(direction_to_mouseR)
 		
+		
+#Aim
+func AimPlayer():
+	if Input.is_action_pressed("Aim"):
+		smooth_Mouse_pos = lerp(smooth_Mouse_pos,get_global_mouse_position(),0.1)
+		look_at(smooth_Mouse_pos)
+		RedDot.show()
+		
+	
 #MovementBoost
 func Boost():
 	#Movement Boost
@@ -102,12 +113,6 @@ func Boost():
 			velocity.x = move_toward(velocity.x,BoostSpeed * directionBoost.x ,AccelBoost)	
 			velocity.y = move_toward(velocity.y,BoostSpeed * directionBoost.y ,AccelBoost)
 			
-#Aim		
-func AimPlayer():
-	if Input.is_action_pressed("Aim"):
-		smooth_Mouse_pos = lerp(smooth_Mouse_pos,get_global_mouse_position(),0.1)
-		look_at(smooth_Mouse_pos)
-		RedDot.show()
 
 #Dash		
 func Dash():
