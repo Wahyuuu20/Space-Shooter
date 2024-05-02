@@ -15,3 +15,7 @@ func set_direction(direction: Vector2):
 
 func Projectile_screen_exited():
 	queue_free()
+
+func Projectile_entered(area):
+	if area.is_in_group("Damageable"):
+		area.Damage(1)
