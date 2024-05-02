@@ -11,11 +11,20 @@ var SpeedChase : float = 100
 var playerChase = false
 var player = false
 var playerLook = false
+var health : int
 
+
+func _ready():
+	health = 100
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
 	Chase()
+
+func Damage(value: int):
+	health -= value
+	if health <= 0:
+		queue_free()
 
 
 func Chase():
