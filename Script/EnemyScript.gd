@@ -9,6 +9,7 @@ extends Area2D
 @onready var Ray3 = $Detection/RayCastDetc/R3
 @onready var Ray4 = $Detection/RayCastDetc/R4
 @onready var Ray5 = $Detection/RayCastDetc/R5
+@onready var health_bar = $Healthbar_Player
 
 #Variabel Enemy
 var player = false
@@ -18,8 +19,14 @@ var detctionTime :float = 0.5
 var playerChase = false
 var playerRush = false	
 var playerlook = false
+var health : int
 
-
+func _ready():
+	health = 100
+	health_bar.init_health(health)
+	
+	
+	
 func _physics_process(_delta):
 #	print(playerChase)
 #	print(playerRush)
@@ -34,6 +41,11 @@ func _physics_process(_delta):
 	Chase_Rush() #Rush
 	Chase() #Chase
 
+#Damageable
+func Damage(value: int):
+	health -= value
+	if health <= 0:
+		queue_free()
 		
 		
 #Player Chase Rush
@@ -80,13 +92,11 @@ func Stop_Player_chase_exited(_body):
 	playerRush = false	
 	playerChase = false
 
-
-
+#Check Player on detection area
 func Detection_Payer_Chase_timeout():
 	DectionPlayerTimer.start(detctionTime)
 	if playerRush == false:
 		playerRush = true
 	elif playerRush == true:
 		playerRush = false
-	
-		
+
