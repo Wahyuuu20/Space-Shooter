@@ -13,7 +13,7 @@ height = 88.0
 radius = 308.649
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4ogkr"]
-radius = 1230.04
+radius = 1142.11
 
 [node name="Enemy" type="Area2D"]
 scale = Vector2(0.5, 0.5)
@@ -55,12 +55,14 @@ shape = SubResource("CapsuleShape2D_2mfts")
 one_shot = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Detection/Chase"]
+visible = false
 shape = SubResource("CircleShape2D_rxey6")
 
 [node name="Detection_Area" type="Area2D" parent="Detection"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Detection/Detection_Area"]
 position = Vector2(2, 0)
+scale = Vector2(2, 2)
 shape = SubResource("CircleShape2D_4ogkr")
 
 [node name="RayCastDetc" type="Node2D" parent="Detection"]
