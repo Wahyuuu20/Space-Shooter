@@ -1,5 +1,6 @@
 extends Area2D
 
+#Preload 
 @onready var DistanceDetection = $Detection/Detection_Area/CollisionShape2D
 @onready var DectionPlayerTimer = $Detection/Chase/DetectionTimerPlayer
 @onready var ChaseArea = $Detection/Chase
@@ -9,6 +10,7 @@ extends Area2D
 @onready var Ray4 = $Detection/RayCastDetc/R4
 @onready var Ray5 = $Detection/RayCastDetc/R5
 
+#Variabel Enemy
 var player = false
 var detctionTime :float = 0.5
 @export var SpeedRush :float = 20
