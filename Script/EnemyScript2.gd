@@ -5,6 +5,7 @@ extends Area2D
 @onready var GunRight = $Gun/GunRight
 @onready var GunLeftMarker = $Gun/MarkLeft
 @onready var GunLeftRight = $Gun/MarkerRight
+@onready var healthbar = $Healthbar_enemy
 
 #Variabel
 var SpeedChase : float = 100
@@ -16,7 +17,9 @@ var health : int
 
 func _ready():
 	health = 100
-
+	healthbar.init_health(health)
+	
+	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
 	Chase()
@@ -25,7 +28,7 @@ func Damage(value: int):
 	health -= value
 	if health <= 0:
 		queue_free()
-
+	healthbar.health = health
 
 func Chase():
 	if playerChase :
