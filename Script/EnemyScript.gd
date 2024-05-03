@@ -9,7 +9,7 @@ extends Area2D
 @onready var Ray3 = $Detection/RayCastDetc/R3
 @onready var Ray4 = $Detection/RayCastDetc/R4
 @onready var Ray5 = $Detection/RayCastDetc/R5
-@onready var health_bar = $Healthbar_Player
+@onready var healthbar = $Healthbar_enemy
 
 #Variabel Enemy
 var player = false
@@ -23,7 +23,7 @@ var health : int
 
 func _ready():
 	health = 100
-	health_bar.init_health(health)
+	healthbar.init_health(health)
 	
 	
 	
@@ -46,7 +46,7 @@ func Damage(value: int):
 	health -= value
 	if health <= 0:
 		queue_free()
-		
+	healthbar.health =health
 		
 #Player Chase Rush
 func Chase_Rush():
