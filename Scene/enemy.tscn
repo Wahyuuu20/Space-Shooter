@@ -17,39 +17,59 @@ radius = 308.649
 radius = 1142.11
 
 [node name="Enemy" type="Area2D" groups=["Damageable"]]
+rotation = -1.5708
 scale = Vector2(0.5, 0.5)
 script = ExtResource("1_grne4")
 
-[node name="GuntProjectileStart" type="Node2D" parent="."]
+[node name="AtributeEnemy" type="Node2D" parent="."]
 
-[node name="MarkLeft" type="Marker2D" parent="GuntProjectileStart"]
+[node name="RayCastDetc" type="Node2D" parent="AtributeEnemy"]
+
+[node name="R1" type="RayCast2D" parent="AtributeEnemy/RayCastDetc"]
+target_position = Vector2(0, 300)
+
+[node name="R2" type="RayCast2D" parent="AtributeEnemy/RayCastDetc"]
+target_position = Vector2(6, 300)
+
+[node name="R3" type="RayCast2D" parent="AtributeEnemy/RayCastDetc"]
+target_position = Vector2(12, 300)
+
+[node name="R4" type="RayCast2D" parent="AtributeEnemy/RayCastDetc"]
+target_position = Vector2(-12, 300)
+
+[node name="R5" type="RayCast2D" parent="AtributeEnemy/RayCastDetc"]
+target_position = Vector2(-6, 300)
+
+[node name="MarkLeft" type="Marker2D" parent="AtributeEnemy"]
 position = Vector2(-45, 22)
 
-[node name="MarkRight" type="Marker2D" parent="GuntProjectileStart"]
+[node name="MarkRight" type="Marker2D" parent="AtributeEnemy"]
 position = Vector2(44, 23)
 
-[node name="Gun" type="Node2D" parent="."]
-
-[node name="GunLeft" type="Sprite2D" parent="Gun"]
+[node name="GunLeft" type="Sprite2D" parent="AtributeEnemy"]
 position = Vector2(-43, 9)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("1_uppyt")
 
-[node name="GunRight" type="Sprite2D" parent="Gun"]
+[node name="GunRight" type="Sprite2D" parent="AtributeEnemy"]
 position = Vector2(42, 10)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("2_8bb27")
+
+[node name="Healthbar_enemy" parent="AtributeEnemy" instance=ExtResource("5_f4612")]
+offset_left = -36.0
+offset_top = -48.0
+offset_right = 38.0
+offset_bottom = -44.0
 
 [node name="SpriteEnemy" type="Sprite2D" parent="."]
 texture = ExtResource("3_pjgu6")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
 position = Vector2(0, 2)
 shape = SubResource("CapsuleShape2D_2mfts")
 
 [node name="Detection" type="Node2D" parent="."]
-visible = false
 
 [node name="Chase" type="Area2D" parent="Detection"]
 
@@ -66,29 +86,6 @@ shape = SubResource("CircleShape2D_rxey6")
 position = Vector2(2, 0)
 scale = Vector2(2, 2)
 shape = SubResource("CircleShape2D_4ogkr")
-
-[node name="RayCastDetc" type="Node2D" parent="Detection"]
-
-[node name="R1" type="RayCast2D" parent="Detection/RayCastDetc"]
-target_position = Vector2(0, 300)
-
-[node name="R2" type="RayCast2D" parent="Detection/RayCastDetc"]
-target_position = Vector2(6, 300)
-
-[node name="R3" type="RayCast2D" parent="Detection/RayCastDetc"]
-target_position = Vector2(12, 300)
-
-[node name="R4" type="RayCast2D" parent="Detection/RayCastDetc"]
-target_position = Vector2(-12, 300)
-
-[node name="R5" type="RayCast2D" parent="Detection/RayCastDetc"]
-target_position = Vector2(-6, 300)
-
-[node name="Healthbar_enemy" parent="." instance=ExtResource("5_f4612")]
-offset_left = -36.0
-offset_top = -48.0
-offset_right = 38.0
-offset_bottom = -44.0
 
 [connection signal="body_entered" from="Detection/Chase" to="." method="Player_chase_entered"]
 [connection signal="body_exited" from="Detection/Chase" to="." method="Stop_Player_chase_exited"]
