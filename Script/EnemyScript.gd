@@ -4,12 +4,12 @@ extends Area2D
 @onready var DistanceDetection = $Detection/Detection_Area/CollisionShape2D
 @onready var DectionPlayerTimer = $Detection/Chase/DetectionTimerPlayer
 @onready var ChaseArea = $Detection/Chase
-@onready var Ray = $Detection/RayCastDetc/R1
-@onready var Ray2 = $Detection/RayCastDetc/R2
-@onready var Ray3 = $Detection/RayCastDetc/R3
-@onready var Ray4 = $Detection/RayCastDetc/R4
-@onready var Ray5 = $Detection/RayCastDetc/R5
-@onready var healthbar = $Healthbar_enemy
+@onready var Ray = $AtributeEnemy/RayCastDetc/R1
+@onready var Ray2 = $AtributeEnemy/RayCastDetc/R2
+@onready var Ray3 = $AtributeEnemy/RayCastDetc/R3
+@onready var Ray4 = $AtributeEnemy/RayCastDetc/R4
+@onready var Ray5 = $AtributeEnemy/RayCastDetc/R5
+@onready var healthbar = $AtributeEnemy/Healthbar_enemy
 
 #Variabel Enemy
 var player = false
@@ -21,13 +21,14 @@ var playerRush = false
 var playerlook = false
 var health : int
 
+
 func _ready():
 	health = 100
 	healthbar.init_health(health)
 	
 	
 	
-func _physics_process(_delta):
+func _physics_process(delta):
 #	print(playerChase)
 #	print(playerRush)
 #	print(playerlook)
@@ -40,6 +41,9 @@ func _physics_process(_delta):
 	#Player Chase	
 	Chase_Rush() #Rush
 	Chase() #Chase
+	
+	#Rotation to Player
+	RotationDirectionPlayer(player, delta)
 
 #Damageable
 func Damage(value: int):
@@ -60,9 +64,22 @@ func Chase():
 		
 	
 func Player_Look():
-	if playerlook:	
-		Ray.target_position = to_local(global.player_pos)
+	pass
+	#if playerlook:	
+	#	Ray.target_position = to_local(global.player_pos)
 		
+	
+func RotationDirectionPlayer(target, delta):
+	if player:
+		var rotationSpeed = 20
+		var dir = (target.global_position - global_position)
+		var angel = $SpriteEnemy.transform.x.angle_to(dir)
+		var angleGun = $AtributeEnemy.transform.x.angle_to(dir)
+		$SpriteEnemy.rotate(sign(angel)* min(delta*rotationSpeed, abs(angel)))
+		$AtributeEnemy.rotate(sign(angleGun)* min(delta*rotationSpeed, abs(angleGun)))
+	
+func EnemyShoot():
+	pass
 	
 #Detection layer 1	
 # Detction Player
