@@ -1,11 +1,12 @@
 extends Area2D
 
 #Preload
-@onready var GunLeft = $Gun/GunLeft
-@onready var GunRight = $Gun/GunRight
-@onready var GunLeftMarker = $Gun/MarkLeft
-@onready var GunLeftRight = $Gun/MarkerRight
-@onready var healthbar = $Healthbar_enemy
+@onready var GunLeft = $AtributEnemy/GunLeft
+@onready var GunRight = $AtributEnemy/GunRight
+@onready var GunLeftMarker = $AtributEnemy/MarkLeft
+@onready var GunLeftRight = $AtributEnemy/MarkerRight
+@onready var healthbar = $AtributEnemy/Healthbar_enemy
+@onready var SpriteEnemy = $Sprite2D
 
 #Variabel
 var SpeedChase : float = 100
@@ -21,9 +22,10 @@ func _ready():
 	
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(_delta):
+func _process(delta):
 	Chase()
-
+	RotaionDirectionPlayer(player, delta)
+	
 func Damage(value: int):
 	health -= value
 	if health <= 0:
@@ -40,7 +42,15 @@ func Player_Look():
 #	if playerLook:	
 #		Ray.target_position = to_local(global.player_pos)
 		
-
+func RotaionDirectionPlayer(target, delta):
+	if player:
+		var rotationSpeed = 20
+		var dir = (target.global_position - global_position)
+		var angel = SpriteEnemy.transform.x.angle_to(dir)
+		var angleGun = $AtributEnemy.transform.x.angle_to(dir)
+		SpriteEnemy.rotate(sign(angel)* min(delta*rotationSpeed, abs(angel)))
+		$AtributEnemy.rotate(sign(angleGun)* min(delta*rotationSpeed, abs(angleGun)))
+	
 
 
 #Detection player
