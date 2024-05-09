@@ -26,4 +26,5 @@ rotation = 1.5708
 scale = Vector2(0.666667, 3)
 
 [connection signal="area_entered" from="." to="." method="Projectile_entered"]
+[connection signal="body_entered" from="." to="." method="Projectile_Entered"]
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="Projectile_screen_exited"]
