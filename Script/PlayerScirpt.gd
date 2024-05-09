@@ -6,7 +6,9 @@ var PlRedDotAim = preload("res://Scene/Gun/Red-Dot/Aim_Red-dot.tscn")
 @onready var NodeTimerFireRate = $GunStartProjectile/TimerFireRate
 @onready var GunNodeLeft = $GunStartProjectile/RayCastGunleft
 @onready var GunNodeRight = $GunStartProjectile/RaycastGunRight
+@onready var  Healthbar = $Ui/Control/Healthbar_Player
 @onready var timer = $Timer
+
 
 # Var Player
 @export var Speed : float = 250
@@ -15,19 +17,23 @@ var PlRedDotAim = preload("res://Scene/Gun/Red-Dot/Aim_Red-dot.tscn")
 @export var AccelBoost : float = 120
 @export var DashSpeed : float = 1000
 @export var timerCount = 1
-var life: int  = 10
 var smooth_Mouse_pos : Vector2
 var TimeFireRate :float = 0.2
+var health
 
+
+func _ready():
+	health = 100
+	Healthbar.init_health(health)
 
 func _process(_delta):
 	#Animate Damage Player
 	
 	#Print
 	#print(global.player_pos)
-	print(velocity.y)
-	print(velocity.x)
-	#print(DashSpeed)
+	#print(velocity.y)
+	#print(velocity.x)
+	print(health)
 	
 	
 	
@@ -58,9 +64,10 @@ func _process(_delta):
 	
 #Damage	
 func Damage(values):
-	life -= values
-	if life < 0:
+	health -= values
+	if health < 0:
 		Death()
+	Healthbar.health = health	
 
 #Player Death		
 func Death():
