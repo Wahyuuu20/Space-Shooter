@@ -13,6 +13,8 @@ var SpeedChase : float = 100
 var playerChase = false
 var player = false
 var playerLook = false
+
+#Health
 var health : int
 
 
