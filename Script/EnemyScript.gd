@@ -1,24 +1,31 @@
 extends Area2D
 
 #Preload 
+@onready var PlProjectileTest = preload("res://Scene/Projectile/projectile_player.tscn")
 @onready var DistanceDetection = $Detection/Detection_Area/CollisionShape2D
 @onready var DectionPlayerTimer = $Detection/Chase/DetectionTimerPlayer
 @onready var ChaseArea = $Detection/Chase
-@onready var Ray = $AtributeEnemy/RayCastDetc/R1
+@onready var Ray1 = $AtributeEnemy/RayCastDetc/R1
 @onready var Ray2 = $AtributeEnemy/RayCastDetc/R2
 @onready var Ray3 = $AtributeEnemy/RayCastDetc/R3
 @onready var Ray4 = $AtributeEnemy/RayCastDetc/R4
 @onready var Ray5 = $AtributeEnemy/RayCastDetc/R5
+@onready var NgunMarkL = $AtributeEnemy/MarkLeft
+@onready var NgunMarkR = $AtributeEnemy/MarkRight
 @onready var healthbar = $AtributeEnemy/Healthbar_enemy
 
 #Variabel Enemy
-var player = false
 var detctionTime :float = 0.5
 @export var SpeedRush :float = 20
 @export var SpeedChase : float = 100
+
+#For player
+var player = false
 var playerChase = false
 var playerRush = false	
 var playerlook = false
+
+#Health
 var health : int
 
 
@@ -44,13 +51,16 @@ func _physics_process(delta):
 	
 	#Rotation to Player
 	RotationDirectionPlayer(player, delta)
+	
+	#Ray Cast colliding body
+	EnemyShoot()
 
 #Damageable
 func Damage(value: int):
 	health -= value
 	if health <= 0:
 		queue_free()
-	healthbar.health =health
+	healthbar.health = health
 		
 #Player Chase Rush
 func Chase_Rush():
@@ -68,6 +78,14 @@ func Player_Look():
 	#if playerlook:	
 	#	Ray.target_position = to_local(global.player_pos)
 		
+func EnemyShoot():
+	if Ray2.is_colliding():
+		var Test = PlProjectileTest.instantiate()
+		Test.global_position = NgunMarkL.global_position
+		get_tree().current_scene.add_child(Test)
+		
+	
+
 	
 func RotationDirectionPlayer(target, delta):
 	if player:
@@ -78,9 +96,7 @@ func RotationDirectionPlayer(target, delta):
 		$SpriteEnemy.rotate(sign(angel)* min(delta*rotationSpeed, abs(angel)))
 		$AtributeEnemy.rotate(sign(angleGun)* min(delta*rotationSpeed, abs(angleGun)))
 	
-func EnemyShoot():
-	pass
-	
+
 #Detection layer 1	
 # Detction Player
 func Player_entered(body):
