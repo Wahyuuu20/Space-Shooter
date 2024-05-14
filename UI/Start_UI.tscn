@@ -1,0 +1,45 @@
+[gd_scene load_steps=2 format=3 uid="uid://dwxoyoq35wqhc"]
+
+[ext_resource type="Script" path="res://Script/MainMenuUi/MainMenu.gd" id="1_04y03"]
+
+[node name="Main_Menu" type="CanvasLayer"]
+script = ExtResource("1_04y03")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="MainMenu" type="Control" parent="HBoxContainer"]
+layout_mode = 2
+
+[node name="Start_Button" type="Button" parent="HBoxContainer/MainMenu"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 529.0
+offset_top = 435.0
+offset_right = 826.0
+offset_bottom = 466.0
+action_mode = 0
+text = "START"
+
+[node name="Help_Button" type="Button" parent="HBoxContainer/MainMenu"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 529.0
+offset_top = 467.0
+offset_right = 826.0
+offset_bottom = 498.0
+text = "HELP"
+
+[node name="Quit_Button" type="Button" parent="HBoxContainer/MainMenu"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 529.0
+offset_top = 500.0
+offset_right = 826.0
+offset_bottom = 531.0
+text = "QUIT"
+
+[connection signal="pressed" from="HBoxContainer/MainMenu/Start_Button" to="." method="start_button"]
+[connection signal="pressed" from="HBoxContainer/MainMenu/Help_Button" to="." method="help_button"]
+[connection signal="pressed" from="HBoxContainer/MainMenu/Quit_Button" to="." method="quit_button"]
