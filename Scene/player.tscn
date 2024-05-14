@@ -2,12 +2,12 @@
 
 [ext_resource type="Script" path="res://Script/PlayerScirpt.gd" id="1_58nv7"]
 [ext_resource type="Texture2D" uid="uid://dhfxtmhvbdfe2" path="res://Asset/Space Shooter Redux/Vector/spaceShooter_vector.svg" id="1_b3x80"]
+[ext_resource type="PackedScene" uid="uid://c61ar83u4ptu2" path="res://UI/UI bar Player/Player_ui.tscn" id="2_7c18t"]
 [ext_resource type="Texture2D" uid="uid://b3jdo1y7aqqoi" path="res://Asset/Space Shooter Redux/PNG/Parts/gun10.png" id="2_a6s16"]
 [ext_resource type="Texture2D" uid="uid://chdsjdtba85e7" path="res://Asset/Space Shooter Redux/PNG/Parts/gun09.png" id="3_4qavr"]
 [ext_resource type="Texture2D" uid="uid://bdlr5g66ebdmy" path="res://Asset/Space Shooter Redux/PNG/Damage/playerShip1_damage1.png" id="3_txboj"]
 [ext_resource type="Texture2D" uid="uid://dcnn6ylqbiixx" path="res://Asset/Space Shooter Redux/PNG/Damage/playerShip1_damage2.png" id="4_maqeg"]
 [ext_resource type="Texture2D" uid="uid://ks0q3fhxtbm" path="res://Asset/Space Shooter Redux/PNG/Damage/playerShip1_damage3.png" id="5_qd2w3"]
-[ext_resource type="PackedScene" uid="uid://cjaykeapary84" path="res://UI/Main_UI.tscn" id="8_j7m1n"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_p0sqk"]
 atlas = ExtResource("1_b3x80")
@@ -60,7 +60,7 @@ animations = [{
 scale = Vector2(0.4, 0.4)
 script = ExtResource("1_58nv7")
 
-[node name="Ui" parent="." instance=ExtResource("8_j7m1n")]
+[node name="PlayerUi" parent="." instance=ExtResource("2_7c18t")]
 
 [node name="GunStartProjectile" type="Node2D" parent="."]
 position = Vector2(0, -2.38419e-06)
@@ -110,4 +110,4 @@ polygon = PackedVector2Array(-8, -38, 7, -38, 11, -13, 35, 1, 40, -1, 44, -7, 49
 [node name="Timer" type="Timer" parent="."]
 
 [node name="Camera2D" type="Camera2D" parent="."]
-scale = Vector2(1, 1)
+zoom = Vector2(2, 2)
