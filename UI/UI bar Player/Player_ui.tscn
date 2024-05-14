@@ -1,0 +1,34 @@
+[gd_scene load_steps=4 format=3 uid="uid://c61ar83u4ptu2"]
+
+[ext_resource type="PackedScene" uid="uid://cg7221rtlotut" path="res://UI/HealthBar/Healthbar_Player.tscn" id="1_7isni"]
+[ext_resource type="PackedScene" uid="uid://cg7uxj3vl7ftx" path="res://UI/HealthBar/Sheildplayer.tscn" id="2_8gyl3"]
+[ext_resource type="PackedScene" uid="uid://brr60usj8rm6y" path="res://UI/HealthBar/EnergyPlayer.tscn" id="3_xqspx"]
+
+[node name="PlayerUi" type="CanvasLayer"]
+
+[node name="PlayerBar" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Healthbar_Player" parent="PlayerBar" instance=ExtResource("1_7isni")]
+layout_mode = 0
+offset_left = 362.0
+offset_top = 678.0
+offset_right = 904.0
+offset_bottom = 682.0
+
+[node name="BoostBar" parent="PlayerBar" instance=ExtResource("2_8gyl3")]
+layout_mode = 0
+offset_left = 362.0
+offset_top = 674.0
+offset_right = 904.0
+offset_bottom = 676.0
+
+[node name="Energy" parent="PlayerBar" instance=ExtResource("3_xqspx")]
+layout_mode = 0
+offset_left = 362.0
+offset_top = 683.0
+offset_right = 904.0
+offset_bottom = 687.0
