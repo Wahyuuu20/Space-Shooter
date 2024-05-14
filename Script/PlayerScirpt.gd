@@ -6,7 +6,8 @@ var PlRedDotAim = preload("res://Scene/Gun/Red-Dot/Aim_Red-dot.tscn")
 @onready var NodeTimerFireRate = $GunStartProjectile/TimerFireRate
 @onready var GunNodeLeft = $GunStartProjectile/RayCastGunleft
 @onready var GunNodeRight = $GunStartProjectile/RaycastGunRight
-@onready var  Healthbar = $Ui/Control/Healthbar_Player
+@onready var Healthbar = $PlayerUi/PlayerBar/Healthbar_Player
+@onready var Energybar = $PlayerUi/PlayerBar/Energy
 @onready var timer = $Timer
 
 
@@ -20,20 +21,21 @@ var PlRedDotAim = preload("res://Scene/Gun/Red-Dot/Aim_Red-dot.tscn")
 var smooth_Mouse_pos : Vector2
 var TimeFireRate :float = 0.2
 var health
-
+var energy
 
 func _ready():
+	energy = 50
 	health = 100
 	Healthbar.init_health(health)
-
+	Energybar.init_energy(energy)
+	
 func _process(_delta):
 	#Animate Damage Player
 	
 	#Print
 	#print(global.player_pos)
 	#print(velocity.y)
-	#print(velocity.x)
-	print(health)
+	print(energy)
 	
 	
 	
@@ -65,9 +67,18 @@ func _process(_delta):
 #Damage	
 func Damage(values):
 	health -= values
-	if health < 0:
+	if health < 1:
 		Death()
-	Healthbar.health = health	
+	Healthbar.health = health
+	
+func decreaseBoost(values: float):
+	energy -= values
+	Energybar.energy = energy
+			
+
+func decreaseDash(values):
+	energy -= values
+	Energybar.energy = energy
 
 #Player Death		
 func Death():
@@ -117,19 +128,21 @@ func AimPlayer():
 #MovementBoost
 func Boost():
 	#Movement Boost
-	var directionBoost:Vector2 = Input.get_vector("left","Right","Up","Down")	
-	if Input.is_action_pressed("Boost"):
-			velocity.x = move_toward(velocity.x,BoostSpeed * directionBoost.x ,AccelBoost)	
-			velocity.y = move_toward(velocity.y,BoostSpeed * directionBoost.y ,AccelBoost)
-			
+	if energy > 0:
+		var directionBoost:Vector2 = Input.get_vector("left","Right","Up","Down")	
+		if Input.is_action_pressed("Boost"):
+				velocity.x = move_toward(velocity.x,BoostSpeed * directionBoost.x ,AccelBoost)	
+				velocity.y = move_toward(velocity.y,BoostSpeed * directionBoost.y ,AccelBoost)
+				decreaseBoost(0.01)
 
 #Dash		
 func Dash():
-	var directionBoost:Vector2 = Input.get_vector("left","Right","Up","Down")	
-	if Input.is_action_just_pressed("Dash"):
-			velocity.x = DashSpeed * 2 * directionBoost.x 
-			velocity.y = DashSpeed * 2 * directionBoost.y
-			
+	if energy >0 :
+		var directionBoost:Vector2 = Input.get_vector("left","Right","Up","Down")	
+		if Input.is_action_just_pressed("Dash"):
+				velocity.x = DashSpeed * 2 * directionBoost.x 
+				velocity.y = DashSpeed * 2 * directionBoost.y
+				decreaseDash(3)
 		
 		
 		
