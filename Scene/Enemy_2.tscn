@@ -14,7 +14,7 @@ radius = 322.751
 [sub_resource type="CircleShape2D" id="CircleShape2D_4tt37"]
 radius = 689.026
 
-[node name="Area2D" type="Area2D" groups=["Damageable"]]
+[node name="Enemy2" type="Area2D" groups=["Damageable"]]
 rotation = -1.5708
 script = ExtResource("1_wgxkm")
 
