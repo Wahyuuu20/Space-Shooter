@@ -53,7 +53,7 @@ func _physics_process(delta):
 	RotationDirectionPlayer(player, delta)
 	
 	#Ray Cast colliding body
-	EnemyShoot()
+	#EnemyShoot()
 
 #Damageable
 func Damage(value: int):
