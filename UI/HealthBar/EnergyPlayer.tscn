@@ -1,0 +1,45 @@
+[gd_scene load_steps=6 format=3 uid="uid://brr60usj8rm6y"]
+
+[ext_resource type="Script" path="res://UI/HealthBar/EnergyPlayer.gd" id="1_1mbl6"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_yiy3m"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_o4ywk"]
+bg_color = Color(0.901961, 0.858824, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_c5gqt"]
+bg_color = Color(0, 0, 0, 1)
+expand_margin_left = 1.0
+expand_margin_top = 1.0
+expand_margin_right = 1.0
+expand_margin_bottom = 1.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vgmsv"]
+bg_color = Color(1, 1, 1, 1)
+
+[node name="Energy" type="ProgressBar"]
+z_index = 1
+offset_right = 240.0
+offset_bottom = 4.0
+theme_override_styles/background = SubResource("StyleBoxEmpty_yiy3m")
+theme_override_styles/fill = SubResource("StyleBoxFlat_o4ywk")
+value = 80.0
+show_percentage = false
+script = ExtResource("1_1mbl6")
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+z_index = -1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_c5gqt")
+theme_override_styles/fill = SubResource("StyleBoxFlat_vgmsv")
+value = 90.0
+show_percentage = false
+
+[node name="Timer" type="Timer" parent="."]
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
