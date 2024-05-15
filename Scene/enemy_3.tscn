@@ -1,0 +1,34 @@
+[gd_scene load_steps=5 format=3 uid="uid://d4bg3x2jq5qny"]
+
+[ext_resource type="Texture2D" uid="uid://d1682c8pstam4" path="res://Asset/Space Shooter Redux/PNG/Enemies/enemyBlack5.png" id="1_8d78t"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_jhi21"]
+radius = 33.0
+height = 72.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_rry7d"]
+radius = 312.006
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_hycfh"]
+radius = 161.012
+
+[node name="Enemy_3" type="Area2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_8d78t")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 6)
+shape = SubResource("CapsuleShape2D_jhi21")
+
+[node name="Detection" type="Node2D" parent="."]
+
+[node name="Detection_player" type="Area2D" parent="Detection"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Detection/Detection_player"]
+shape = SubResource("CircleShape2D_rry7d")
+
+[node name="Detection_rush" type="Area2D" parent="Detection"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Detection/Detection_rush"]
+shape = SubResource("CircleShape2D_hycfh")
