@@ -44,11 +44,7 @@ func _process(delta):
 	
 	
 	#Movement
-	var direction:Vector2 = Input.get_vector("left","Right","Up","Down")
-	velocity.x = move_toward(velocity.x,Speed * direction.x ,accel)
-	velocity.y = move_toward(velocity.y,Speed * direction.y ,accel)
-	move_and_slide()
-	global.player_pos = global_position
+	Movement()
 	
 	
 	
@@ -86,7 +82,7 @@ func decreaseStamina(values: float):
 func RegenEnergy(delta):
 	Energybar.energy = energy
 	if energy < 100:
-		energy = energy + regenEnergy
+		energy = energy + regenEnergy + delta
 		if energy > 100:
 			energy = 100
 	if energy <= 0:
@@ -101,6 +97,14 @@ func Death():
 func DeleteNode():
 	queue_free()		
 
+#Movement
+func Movement():
+	var direction:Vector2 = Input.get_vector("left","Right","Up","Down")
+	velocity.x = move_toward(velocity.x,Speed * direction.x ,accel)
+	velocity.y = move_toward(velocity.y,Speed * direction.y ,accel)
+	move_and_slide()
+	global.player_pos = global_position
+	
 # Gun				
 func Gun():
 	if Input.is_action_pressed("Primary"):
