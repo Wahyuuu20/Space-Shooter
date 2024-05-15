@@ -22,20 +22,23 @@ var smooth_Mouse_pos : Vector2
 var TimeFireRate :float = 0.2
 var health
 var energy
+var regenEnergy
+
 
 func _ready():
-	energy = 50
+	energy = 100
 	health = 100
+	regenEnergy = 0.05
 	Healthbar.init_health(health)
 	Energybar.init_energy(energy)
 	
-func _process(_delta):
+func _process(delta):
 	#Animate Damage Player
 	
 	#Print
 	#print(global.player_pos)
 	#print(velocity.y)
-	print(energy)
+	#print()
 	
 	
 	
@@ -61,6 +64,10 @@ func _process(_delta):
 	#Dash
 	Dash()
 	
+	#RegenEnergy
+	RegenEnergy(delta)
+	
+	
 	smooth_Mouse_pos = lerp(smooth_Mouse_pos,get_global_mouse_position(),0.1)
 	look_at(smooth_Mouse_pos)
 	
@@ -71,14 +78,20 @@ func Damage(values):
 		Death()
 	Healthbar.health = health
 	
-func decreaseBoost(values: float):
+func decreaseStamina(values: float):
 	energy -= values
 	Energybar.energy = energy
 			
 
-func decreaseDash(values):
-	energy -= values
+func RegenEnergy(delta):
 	Energybar.energy = energy
+	if energy < 100:
+		energy = energy + regenEnergy
+		if energy > 100:
+			energy = 100
+	if energy <= 0:
+		energy = 0	
+
 
 #Player Death		
 func Death():
@@ -128,21 +141,20 @@ func AimPlayer():
 #MovementBoost
 func Boost():
 	#Movement Boost
-	if energy > 0:
 		var directionBoost:Vector2 = Input.get_vector("left","Right","Up","Down")	
 		if Input.is_action_pressed("Boost"):
 				velocity.x = move_toward(velocity.x,BoostSpeed * directionBoost.x ,AccelBoost)	
 				velocity.y = move_toward(velocity.y,BoostSpeed * directionBoost.y ,AccelBoost)
-				decreaseBoost(0.01)
+				decreaseStamina(0.2)
+				
+				
 
 #Dash		
 func Dash():
-	if energy >0 :
+	#Movemnet Dash
 		var directionBoost:Vector2 = Input.get_vector("left","Right","Up","Down")	
 		if Input.is_action_just_pressed("Dash"):
 				velocity.x = DashSpeed * 2 * directionBoost.x 
 				velocity.y = DashSpeed * 2 * directionBoost.y
-				decreaseDash(3)
-		
-		
-		
+				decreaseStamina(3)
+				
