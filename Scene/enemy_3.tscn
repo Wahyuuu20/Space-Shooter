@@ -18,6 +18,7 @@ radius = 161.012
 texture = ExtResource("1_8d78t")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2(0, 6)
 shape = SubResource("CapsuleShape2D_jhi21")
 
