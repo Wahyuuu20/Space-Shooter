@@ -1,15 +1,21 @@
 extends CharacterBody2D
 
-# Preload Variabel
+#Preload Projectile
 var PlProjcetilePlayer = preload("res://Scene/Projectile/projectile_player.tscn")
-var PlRedDotAim = preload("res://Scene/Gun/Red-Dot/Aim_Red-dot.tscn")
-@onready var NodeTimerFireRate = $GunStartProjectile/TimerFireRate
-@onready var GunNodeLeft = $GunStartProjectile/RayCastGunleft
-@onready var GunNodeRight = $GunStartProjectile/RaycastGunRight
+
 @onready var Healthbar = $PlayerUi/PlayerBar/Healthbar_Player
 @onready var Energybar = $PlayerUi/PlayerBar/Energy
-@onready var timer = $Timer
 
+#Node Timer	
+@onready var timer = $Timer
+@onready var NodeTimerFireRate = $AtributPlayerSprite/Gun/TimerFireRate
+
+#Node Gun 
+@onready var NodeGunLeft = $AtributPlayerSprite/Gun/Left
+
+#Preload Weapon
+var PlSubmachinegun = preload("res://Scene/Gun/machine_gun.tscn")
+var PlShotgun = preload("res://Scene/Gun/shotgun.tscn")
 
 # Var Player
 @export var Speed : float = 250
@@ -23,6 +29,8 @@ var TimeFireRate :float = 0.2
 var health
 var energy
 var regenEnergy
+var vel := Vector2(0,0)
+
 
 
 func _ready():
@@ -32,30 +40,28 @@ func _ready():
 	Healthbar.init_health(health)
 	Energybar.init_energy(energy)
 	
+	
+	
 func _process(delta):
 	#Animate Damage Player
 	
 	#Print
 	#print(global.player_pos)
-	#print(velocity.y)
-	#print()
-	
-	
+#	print(velocity)
+#	print(rotation)
 	
 	
 	#Movement
-	Movement()
-	
-	
+	Movement(delta)
 	
 	#Movement Boost
 	Boost()
 	
 	#GUN
-	Gun()	
+	#GunPressed()
 	
 	#Aim
-	AimPlayer()
+	#GunRotation()
 	
 	#Dash
 	Dash()
@@ -64,8 +70,11 @@ func _process(delta):
 	RegenEnergy(delta)
 	
 	
-	smooth_Mouse_pos = lerp(smooth_Mouse_pos,get_global_mouse_position(),0.1)
-	look_at(smooth_Mouse_pos)
+	
+
+	
+	#smooth_Mouse_pos = lerp(smooth_Mouse_pos,get_global_mouse_position(),0.1)
+	#$Gun.look_at(smooth_Mouse_pos)
 	
 #Damage	
 func Damage(values):
@@ -88,7 +97,6 @@ func RegenEnergy(delta):
 	if energy <= 0:
 		energy = 0	
 
-
 #Player Death		
 func Death():
 	queue_free()		
@@ -98,47 +106,68 @@ func DeleteNode():
 	queue_free()		
 
 #Movement
-func Movement():
-	var direction:Vector2 = Input.get_vector("left","Right","Up","Down")
+func Movement(delta):
+
+	var direction:Vector2 = Input.get_vector("left","Right","Up","Down").normalized()
 	velocity.x = move_toward(velocity.x,Speed * direction.x ,accel)
 	velocity.y = move_toward(velocity.y,Speed * direction.y ,accel)
+	
+	rotation = lerp_angle(rotation, atan2(direction.x, -direction.y),delta * 5)
+
+	var tween = create_tween()
+	tween.tween_property($AtributPlayerSprite/AnimatePlayer, "rotation_degrees", rotation, 1)
+	if !Input.get_vector("left","Right","Up","Down"):
+		pass
+	
+	
+#
+#
 	move_and_slide()
 	global.player_pos = global_position
 	
+	
+	
+#func GunRotation():
+	#$PlayerSprite/Gun/GunRight.look_at(get_global_mouse_position())
+	#$PlayerSprite/Gun/GunLeft.look_at(get_global_mouse_position())
+	
+	
 # Gun				
-func Gun():
-	if Input.is_action_pressed("Primary"):
-		AnimateProjectileGunLeft()
-		
-		
-	if Input.is_action_pressed("Aim") and NodeTimerFireRate.is_stopped():
-		NodeTimerFireRate.start(TimeFireRate)
-		AnimateProjectileGunRight()		
+func GunPressed():
+	pass
+#	if Input.is_action_pressed("Primary")and NodeTimerFireRate.is_stopped():
+#		NodeTimerFireRate.start(TimeFireRate)
+#		AnimateProjectileGunLeft()
+#		AnimateProjectileGunRight()	
+#
+#	if Input.is_action_pressed("Aim"):
+#		pass
+#		$PlayerSprite/Gun/GunRight.look_at(get_global_mouse_position())
 
 # Gun Left	
 func AnimateProjectileGunLeft():
-		var ProjcetileL = PlProjcetilePlayer.instantiate()
-		ProjcetileL.global_position = GunNodeLeft.global_position
-		get_tree().current_scene.add_child(ProjcetileL)
-		var targetL = get_global_mouse_position()
-		var direction_to_mouse = ProjcetileL.global_position.direction_to(targetL).normalized()
-		ProjcetileL.set_direction(direction_to_mouse)
-
+		pass
+#		var ProjcetileL = PlProjcetilePlayer.instantiate()
+#		ProjcetileL.global_position = GunRayLeft.global_position
+#		ProjcetileL.rotation = rotation
+#		get_tree().current_scene.add_child(ProjcetileL)
+		
+		
 # Gun Right	
 func AnimateProjectileGunRight():
-		var ProjcetileR = PlProjcetilePlayer.instantiate()
-		ProjcetileR.global_position = GunNodeRight.global_position
-		get_tree().current_scene.add_child(ProjcetileR)
-		var targetR = get_global_mouse_position()
-		var direction_to_mouseR = ProjcetileR.global_position.direction_to(targetR).normalized()
-		ProjcetileR.set_direction(direction_to_mouseR)
-		
-		
+		pass
+#		var ProjcetileR = PlProjcetilePlayer.instantiate()
+#		ProjcetileR.global_position = GunRayRight.global_position
+#		ProjcetileR.rotation = rotation
+#		get_tree().current_scene.add_child(ProjcetileR)
+	
+	
 #Aim
 func AimPlayer():
 	if Input.is_action_pressed("Aim"):
 		smooth_Mouse_pos = lerp(smooth_Mouse_pos,get_global_mouse_position(),0.1)
-		look_at(smooth_Mouse_pos)
+		
+		
 		
 		
 	
@@ -147,8 +176,8 @@ func Boost():
 	#Movement Boost
 		var directionBoost:Vector2 = Input.get_vector("left","Right","Up","Down")	
 		if Input.is_action_pressed("Boost"):
-				velocity.x = move_toward(velocity.x,BoostSpeed * directionBoost.x ,AccelBoost)	
-				velocity.y = move_toward(velocity.y,BoostSpeed * directionBoost.y ,AccelBoost)
+				vel.x = move_toward(velocity.x,BoostSpeed * directionBoost.x ,AccelBoost)	
+				vel.y = move_toward(velocity.y,BoostSpeed * directionBoost.y ,AccelBoost)
 				decreaseStamina(0.2)
 				
 				
@@ -161,4 +190,6 @@ func Dash():
 				velocity.x = DashSpeed * 2 * directionBoost.x 
 				velocity.y = DashSpeed * 2 * directionBoost.y
 				decreaseStamina(3)
+				
+				
 				

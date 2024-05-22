@@ -2,17 +2,11 @@ extends Area2D
 
 
 var speedProjectile : float = 1000
-var direction := Vector2.ZERO
+var direction := Vector2(0,-1)
 
 func _physics_process(delta):
-	if direction != Vector2.ZERO:
-		var velocity = direction * speedProjectile * delta
-		global_position += velocity
-
-
-func set_direction(direction: Vector2):
-	self.direction = direction
-
+	global_position += direction.rotated(rotation) * speedProjectile * delta
+	
 func Projectile_screen_exited():
 	queue_free()
 
