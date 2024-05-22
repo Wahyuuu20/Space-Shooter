@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="Weapon_Resource" load_steps=2 format=3 uid="uid://dwhdoma3fmn3m"]
+
+[ext_resource type="Script" path="res://Scene/Gun/Weapon_Resource/WeaponResource.gd" id="1_noekx"]
+
+[resource]
+script = ExtResource("1_noekx")
+weapon_name = "Machine_Gun_L"
+active_anim = "Ani_Machine_gun_Active"
+shoot_anim = "Ani_Machine_Gun_shoot"
+reload_anim = "Ani_Machine_Gun_Reload"
+deactive_anim = "Ani_Machine_Gun_deactive"
+Out_of_ammo_anim = "Ani_Machine_Gun_out_of_ammo"
+current_ammo = 50
+reserve_ammo = 20
+magazine = 25
+Max_ammo = 100
+Auto_fire = true

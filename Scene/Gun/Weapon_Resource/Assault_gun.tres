@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="Weapon_Resource" load_steps=2 format=3 uid="uid://b8wr6ixfij5fk"]
+
+[ext_resource type="Script" path="res://Scene/Gun/Weapon_Resource/WeaponResource.gd" id="1_bahoe"]
+
+[resource]
+script = ExtResource("1_bahoe")
+weapon_name = "Assault_gun"
+active_anim = "Ani_Assault_gun_Active"
+shoot_anim = "Ani_Assault_Gun_Shoot"
+reload_anim = "Ani_Assault_Gun_Reload"
+deactive_anim = "Ani_Assault_gun_deactive"
+Out_of_ammo_anim = "Ani_Assault_out_of_ammo"
+current_ammo = 30
+reserve_ammo = 15
+magazine = 15
+Max_ammo = 30
+Auto_fire = true
