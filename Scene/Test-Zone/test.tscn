@@ -15,7 +15,3 @@ texture = ExtResource("1_ebvlm")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_isjo1")
-
-[node name="StateMachine" type="Node" parent="."]
-
-[node name="EnemyIdle" type="Node" parent="StateMachine"]
