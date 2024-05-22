@@ -1,3 +1,16 @@
-[gd_scene format=3 uid="uid://b46n26sxaqw0c"]
+[gd_scene load_steps=2 format=3 uid="uid://b46n26sxaqw0c"]
 
-[node name="Machine Gun" type="Node2D"]
+[ext_resource type="Texture2D" uid="uid://bm0ue3vsu0sxj" path="res://Asset/Space Shooter Redux/PNG/Parts/gun05.png" id="1_wdnwi"]
+
+[node name="Machine_Gun_R" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+rotation = 3.14159
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_wdnwi")
+
+[node name="Muzzel" type="Node2D" parent="."]
+position = Vector2(0, -13)
+
+[node name="Muzzel2" type="Node2D" parent="."]
+position = Vector2(3, -13)
