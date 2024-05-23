@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://bm0ue3vsu0sxj" path="res://Asset/Space Shooter Redux/PNG/Parts/gun05.png" id="1_wdnwi"]
 
-[node name="Machine_Gun_R" type="Node2D"]
+[node name="Machine_Gun" type="Node2D"]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 rotation = 3.14159
