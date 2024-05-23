@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://gucyibcu53et"]
+[gd_scene load_steps=39 format=3 uid="uid://gucyibcu53et"]
 
 [ext_resource type="Script" path="res://Script/PlayerScirpt.gd" id="1_58nv7"]
 [ext_resource type="Texture2D" uid="uid://dhfxtmhvbdfe2" path="res://Asset/Space Shooter Redux/Vector/spaceShooter_vector.svg" id="1_b3x80"]
@@ -7,12 +7,11 @@
 [ext_resource type="Texture2D" uid="uid://bdlr5g66ebdmy" path="res://Asset/Space Shooter Redux/PNG/Damage/playerShip1_damage1.png" id="3_txboj"]
 [ext_resource type="PackedScene" uid="uid://b5aja1jawmh7j" path="res://Scene/Gun/assault_gun.tscn" id="3_uqrrs"]
 [ext_resource type="Resource" uid="uid://b8wr6ixfij5fk" path="res://Scene/Gun/Weapon_Resource/Assault_gun.tres" id="4_iqa38"]
+[ext_resource type="Resource" uid="uid://cti023xvfpv0t" path="res://Scene/Gun/Weapon_Resource/Misile_Launcher.tres" id="4_k4b7s"]
 [ext_resource type="Texture2D" uid="uid://dcnn6ylqbiixx" path="res://Asset/Space Shooter Redux/PNG/Damage/playerShip1_damage2.png" id="4_maqeg"]
 [ext_resource type="PackedScene" uid="uid://bqn8m6vxvgvij" path="res://Scene/Gun/shotgun.tscn" id="5_3oxgj"]
 [ext_resource type="Texture2D" uid="uid://ks0q3fhxtbm" path="res://Asset/Space Shooter Redux/PNG/Damage/playerShip1_damage3.png" id="5_qd2w3"]
-[ext_resource type="Resource" uid="uid://dwhdoma3fmn3m" path="res://Scene/Gun/Weapon_Resource/Machine_gun.tres" id="5_yd0fo"]
 [ext_resource type="PackedScene" uid="uid://baujfj3pysp0t" path="res://Scene/Gun/misile_launcher.tscn" id="6_j62x7"]
-[ext_resource type="PackedScene" uid="uid://c8r2xcm17j043" path="res://Scene/Gun/assault_gun_L.tscn" id="7_3f5w2"]
 [ext_resource type="PackedScene" uid="uid://cucoqie66qfw8" path="res://Scene/Gun/machine_gun_L.tscn" id="8_sxwb4"]
 
 [sub_resource type="Animation" id="Animation_dgnhp"]
@@ -32,7 +31,6 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_0aril"]
 resource_name = "Ani_Assault_Gun_Shoot"
-loop_mode = 2
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -76,7 +74,6 @@ tracks/1/keys = {
 
 [sub_resource type="Animation" id="Animation_87ky8"]
 resource_name = "Ani_Assault_gun_deactive"
-length = 2.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -84,10 +81,10 @@ tracks/0/path = NodePath("Assault_gun:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 1, 2),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(-27.5, -10), Vector2(0, -10), Vector2(0, 0)]
+"values": [Vector2(-27.5, -10), Vector2(0, -10)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -117,25 +114,204 @@ tracks/0/keys = {
 "values": [Vector2(-27.5, -10), Vector2(-27.5, -1)]
 }
 
+[sub_resource type="Animation" id="Animation_2txfs"]
+resource_name = "Ani_Machine_Gun_Active"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Machine_gun:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -7.5), Vector2(-30, -7.5)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Machine_gun:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+
 [sub_resource type="Animation" id="Animation_lerhd"]
 resource_name = "Ani_Machine_Gun_Reload"
-loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Machine_gun:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(1, 0.210225),
+"update": 0,
+"values": [Vector2(-30, -7.5), Vector2(0, -7.5)]
+}
 
 [sub_resource type="Animation" id="Animation_atxmy"]
 resource_name = "Ani_Machine_Gun_deactive"
-length = 2.0
-loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Machine_gun:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(0.217638, 1),
+"update": 0,
+"values": [Vector2(-30, -7.5), Vector2(0, -7.5)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Machine_gun:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
 
 [sub_resource type="Animation" id="Animation_lttfg"]
 resource_name = "Ani_Machine_Gun_out_of_ammo"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Machine_gun:position")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-30, -7.5), Vector2(-30, -2)]
+}
 
 [sub_resource type="Animation" id="Animation_4c17m"]
 resource_name = "Ani_Machine_Gun_shoot"
-loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Machine_gun:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(-30, -7.5), Vector2(-30, -4), Vector2(-30, -7.5), Vector2(-30, -4), Vector2(-30, -7.5), Vector2(-30, -4), Vector2(-30, -7.5), Vector2(-30, -4), Vector2(-30, -7.5), Vector2(-30, -4)]
+}
 
-[sub_resource type="Animation" id="Animation_2txfs"]
-resource_name = "Ani_Machine_gun_Active"
-length = 2.0
+[sub_resource type="Animation" id="Animation_ns605"]
+resource_name = "Ani_Misilie_Launcher_Active"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Misile_launcher:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -12.5), Vector2(-20, -12.5)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Misile_launcher:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+
+[sub_resource type="Animation" id="Animation_owr70"]
+resource_name = "Ani_Misilie_Launcher_Active_Out_Of_Ammo"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Misile_launcher:position")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-20, -12.5), Vector2(-20, -6)]
+}
+
+[sub_resource type="Animation" id="Animation_01rss"]
+resource_name = "Ani_Misilie_Launcher_Deactive"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Misile_launcher:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(-20, -12.5), Vector2(0, -12.5), Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Misile_launcher:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_r4u4h"]
+resource_name = "Ani_Misilie_Launcher_Reload"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Misile_launcher:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(-20, -12.5), Vector2(0, -12.5), Vector2(-20, -12.5)]
+}
+
+[sub_resource type="Animation" id="Animation_qjs1n"]
+resource_name = "Ani_Misilie_Launcher_Shoot"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Misile_launcher:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(-20, -12.5), Vector2(-20, -6), Vector2(-20, -12.5)]
+}
 
 [sub_resource type="Animation" id="Animation_eqaj5"]
 resource_name = "Ani_Shotgun_Active"
@@ -225,7 +401,6 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_g1nna"]
 resource_name = "Ani_Shotgun_Shoot"
-loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -289,6 +464,54 @@ tracks/3/keys = {
 "update": 1,
 "values": [false]
 }
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Misile_launcher:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Misile_launcher:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Machine_gun:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Machine_gun:visible")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_wn08w"]
 _data = {
@@ -297,11 +520,16 @@ _data = {
 "Ani_Assault_gun_Active": SubResource("Animation_6cd7i"),
 "Ani_Assault_gun_deactive": SubResource("Animation_87ky8"),
 "Ani_Assault_out_of_ammo": SubResource("Animation_o6i1g"),
+"Ani_Machine_Gun_Active": SubResource("Animation_2txfs"),
 "Ani_Machine_Gun_Reload": SubResource("Animation_lerhd"),
 "Ani_Machine_Gun_deactive": SubResource("Animation_atxmy"),
 "Ani_Machine_Gun_out_of_ammo": SubResource("Animation_lttfg"),
 "Ani_Machine_Gun_shoot": SubResource("Animation_4c17m"),
-"Ani_Machine_gun_Active": SubResource("Animation_2txfs"),
+"Ani_Misilie_Launcher_Active": SubResource("Animation_ns605"),
+"Ani_Misilie_Launcher_Active_Out_Of_Ammo": SubResource("Animation_owr70"),
+"Ani_Misilie_Launcher_Deactive": SubResource("Animation_01rss"),
+"Ani_Misilie_Launcher_Reload": SubResource("Animation_r4u4h"),
+"Ani_Misilie_Launcher_Shoot": SubResource("Animation_qjs1n"),
 "Ani_Shotgun_Active": SubResource("Animation_eqaj5"),
 "Ani_Shotgun_Deactive": SubResource("Animation_3vwhf"),
 "Ani_Shotgun_Out_of_ammo": SubResource("Animation_f4hcc"),
@@ -366,8 +594,8 @@ script = ExtResource("1_58nv7")
 [node name="Weapon_Manager" type="Node2D" parent="."]
 position = Vector2(-25, 2.5)
 script = ExtResource("3_2osed")
-_weapon_resources = Array[Resource("res://Scene/Gun/Weapon_Resource/WeaponResource.gd")]([ExtResource("4_iqa38"), ExtResource("5_yd0fo")])
-start_weapons = Array[String](["Assault_gun", "Machine_gun_L"])
+_weapon_resources = Array[Resource("res://Scene/Gun/Weapon_Resource/WeaponResource.gd")]([ExtResource("4_k4b7s"), ExtResource("4_iqa38")])
+start_weapons = Array[String](["Misile_launcher", "Assault_gun"])
 
 [node name="Weapon_Rig_L" type="Node2D" parent="Weapon_Manager"]
 position = Vector2(25, -2.5)
@@ -376,7 +604,7 @@ position = Vector2(25, -2.5)
 visible = false
 position = Vector2(-5, -5)
 
-[node name="Machine_gun_L" parent="Weapon_Manager/Weapon_Rig_L" instance=ExtResource("8_sxwb4")]
+[node name="Machine_gun" parent="Weapon_Manager/Weapon_Rig_L" instance=ExtResource("8_sxwb4")]
 visible = false
 
 [node name="Shotgun" parent="Weapon_Manager/Weapon_Rig_L" instance=ExtResource("5_3oxgj")]
@@ -384,31 +612,11 @@ visible = false
 
 [node name="Misile_launcher" parent="Weapon_Manager/Weapon_Rig_L" instance=ExtResource("6_j62x7")]
 visible = false
-position = Vector2(-20, -12.5)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Weapon_Manager/Weapon_Rig_L"]
 libraries = {
 "": SubResource("AnimationLibrary_wn08w")
 }
-
-[node name="Weapon_Rig_R" type="Node2D" parent="Weapon_Manager"]
-position = Vector2(102.5, -5)
-
-[node name="assault_gun_R" parent="Weapon_Manager/Weapon_Rig_R" instance=ExtResource("7_3f5w2")]
-visible = false
-position = Vector2(-50, -7.5)
-
-[node name="Machine_gun_R" parent="Weapon_Manager/Weapon_Rig_R" instance=ExtResource("8_sxwb4")]
-visible = false
-position = Vector2(-45, -2.5)
-
-[node name="Shotgun" parent="Weapon_Manager/Weapon_Rig_R" instance=ExtResource("5_3oxgj")]
-visible = false
-position = Vector2(-50, -5)
-
-[node name="Misile_launcher" parent="Weapon_Manager/Weapon_Rig_R" instance=ExtResource("6_j62x7")]
-visible = false
-position = Vector2(-60, -10)
 
 [node name="AtributPlayerSprite" type="Node2D" parent="."]
 position = Vector2(0, 4.54747e-13)
