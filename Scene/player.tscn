@@ -597,23 +597,23 @@ script = ExtResource("3_2osed")
 _weapon_resources = Array[Resource("res://Scene/Gun/Weapon_Resource/WeaponResource.gd")]([ExtResource("4_k4b7s"), ExtResource("4_iqa38")])
 start_weapons = Array[String](["Misile_launcher", "Assault_gun"])
 
-[node name="Weapon_Rig_L" type="Node2D" parent="Weapon_Manager"]
+[node name="Weapon_Rig" type="Node2D" parent="Weapon_Manager"]
 position = Vector2(25, -2.5)
 
-[node name="Assault_gun" parent="Weapon_Manager/Weapon_Rig_L" instance=ExtResource("3_uqrrs")]
+[node name="Assault_gun" parent="Weapon_Manager/Weapon_Rig" instance=ExtResource("3_uqrrs")]
 visible = false
 position = Vector2(-5, -5)
 
-[node name="Machine_gun" parent="Weapon_Manager/Weapon_Rig_L" instance=ExtResource("8_sxwb4")]
+[node name="Machine_gun" parent="Weapon_Manager/Weapon_Rig" instance=ExtResource("8_sxwb4")]
 visible = false
 
-[node name="Shotgun" parent="Weapon_Manager/Weapon_Rig_L" instance=ExtResource("5_3oxgj")]
+[node name="Shotgun" parent="Weapon_Manager/Weapon_Rig" instance=ExtResource("5_3oxgj")]
 visible = false
 
-[node name="Misile_launcher" parent="Weapon_Manager/Weapon_Rig_L" instance=ExtResource("6_j62x7")]
+[node name="Misile_launcher" parent="Weapon_Manager/Weapon_Rig" instance=ExtResource("6_j62x7")]
 visible = false
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Weapon_Manager/Weapon_Rig_L"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Weapon_Manager/Weapon_Rig"]
 libraries = {
 "": SubResource("AnimationLibrary_wn08w")
 }
@@ -639,4 +639,4 @@ polygon = PackedVector2Array(-8, -38, 7, -38, 11, -13, 35, 1, 40, -1, 44, -7, 49
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(5, 5)
 
-[connection signal="animation_finished" from="Weapon_Manager/Weapon_Rig_L/AnimationPlayer" to="Weapon_Manager" method="_on_animation_player_animation_finished"]
+[connection signal="animation_finished" from="Weapon_Manager/Weapon_Rig/AnimationPlayer" to="Weapon_Manager" method="_on_animation_player_animation_finished"]
