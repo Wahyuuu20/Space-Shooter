@@ -1,6 +1,6 @@
 extends Node2D
 
-@onready var animation_player = get_node("Weapon_Rig_L/AnimationPlayer")
+@onready var animation_player = get_node("Weapon_Rig/AnimationPlayer")
 
 var current_weapon = null
 var weapon_stack = []
