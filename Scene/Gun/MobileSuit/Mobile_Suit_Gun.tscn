@@ -1,0 +1,41 @@
+[gd_scene load_steps=4 format=3 uid="uid://daegi148n2g6b"]
+
+[ext_resource type="Texture2D" uid="uid://qarwab0tvkuj" path="res://Asset/Space Shooter Redux/PNG/Parts/cockpitRed_6.png" id="1_31tsv"]
+[ext_resource type="Texture2D" uid="uid://bxyd6vrvq0ywj" path="res://Asset/Space Shooter Redux/PNG/Parts/gun06.png" id="2_qomup"]
+[ext_resource type="Texture2D" uid="uid://6sn3c4rxgama" path="res://Asset/Space Shooter Redux/PNG/Parts/wingRed_2.png" id="3_w5cs3"]
+
+[node name="Mobile_Suit_Gun" type="Sprite2D"]
+rotation = 3.14159
+texture = ExtResource("1_31tsv")
+
+[node name="Gun08" type="Sprite2D" parent="."]
+position = Vector2(-46.0786, 1.38159)
+rotation = 3.14159
+texture = ExtResource("2_qomup")
+
+[node name="Gun06" type="Sprite2D" parent="."]
+position = Vector2(41.9214, 0.381592)
+rotation = 3.14159
+texture = ExtResource("2_qomup")
+
+[node name="Gun07" type="Sprite2D" parent="."]
+position = Vector2(59.9214, 8.38159)
+rotation = 3.14159
+texture = ExtResource("2_qomup")
+
+[node name="Gun09" type="Sprite2D" parent="."]
+position = Vector2(-65.0786, 11.3816)
+rotation = 3.14159
+texture = ExtResource("2_qomup")
+
+[node name="WingRed4" type="Sprite2D" parent="."]
+position = Vector2(-45.0001, 12)
+rotation = 0.938987
+scale = Vector2(0.888, 1.224)
+texture = ExtResource("3_w5cs3")
+
+[node name="WingRed3" type="Sprite2D" parent="."]
+position = Vector2(44, 11)
+rotation = 2.1293
+scale = Vector2(0.888, -1.161)
+texture = ExtResource("3_w5cs3")

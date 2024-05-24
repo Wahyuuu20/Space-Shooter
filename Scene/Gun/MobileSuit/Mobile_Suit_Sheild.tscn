@@ -1,0 +1,30 @@
+[gd_scene load_steps=4 format=3 uid="uid://brno72umjq2wy"]
+
+[ext_resource type="Texture2D" uid="uid://d2mhuvult7gdy" path="res://Asset/Space Shooter Redux/PNG/Parts/cockpitRed_1.png" id="1_36tyr"]
+[ext_resource type="Texture2D" uid="uid://bxyd6vrvq0ywj" path="res://Asset/Space Shooter Redux/PNG/Parts/gun06.png" id="2_fdjbd"]
+[ext_resource type="Texture2D" uid="uid://njiyebb8p0yc" path="res://Asset/Space Shooter Redux/PNG/Parts/wingRed_3.png" id="3_peo0b"]
+
+[node name="Mobile_Suit_Sheild" type="Sprite2D"]
+rotation = -3.14159
+texture = ExtResource("1_36tyr")
+
+[node name="Gun06" type="Sprite2D" parent="."]
+position = Vector2(35, -36)
+rotation = 3.14159
+texture = ExtResource("2_fdjbd")
+
+[node name="Gun07" type="Sprite2D" parent="."]
+position = Vector2(-40, -36)
+rotation = 3.14159
+texture = ExtResource("2_fdjbd")
+
+[node name="WingRed3" type="Sprite2D" parent="."]
+position = Vector2(-32, -14)
+rotation = 3.14159
+scale = Vector2(0.89619, 1)
+texture = ExtResource("3_peo0b")
+
+[node name="WingRed4" type="Sprite2D" parent="."]
+position = Vector2(31, -14)
+scale = Vector2(0.89788, -1)
+texture = ExtResource("3_peo0b")
