@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Mobile_Suit_Resource" load_steps=2 format=3 uid="uid://dxcvnhwch2wg3"]
+
+[ext_resource type="Script" path="res://Scene/Gun/MobileSuit/MobileSuit_Resource/MobileSuitResource.gd" id="1_4dc6k"]
+
+[resource]
+script = ExtResource("1_4dc6k")
+mobile_suit_name = "Mobile_Suit_Sheild"
+suit_active_ani = ""
+suit_deactive_ani = ""
+suit_destroy_ani = ""
