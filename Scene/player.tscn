@@ -1,0 +1,729 @@
+[gd_scene load_steps=47 format=3 uid="uid://gucyibcu53et"]
+
+[ext_resource type="Script" path="res://Script/PlayerScirpt.gd" id="1_58nv7"]
+[ext_resource type="Texture2D" uid="uid://dhfxtmhvbdfe2" path="res://Asset/Space Shooter Redux/Vector/spaceShooter_vector.svg" id="1_b3x80"]
+[ext_resource type="PackedScene" uid="uid://c61ar83u4ptu2" path="res://UI/UI bar Player/Player_ui.tscn" id="2_7c18t"]
+[ext_resource type="Script" path="res://Scene/Weapon_Manager.gd" id="3_2osed"]
+[ext_resource type="Texture2D" uid="uid://bdlr5g66ebdmy" path="res://Asset/Space Shooter Redux/PNG/Damage/playerShip1_damage1.png" id="3_txboj"]
+[ext_resource type="PackedScene" uid="uid://b5aja1jawmh7j" path="res://Scene/Gun/assault_gun.tscn" id="3_uqrrs"]
+[ext_resource type="Resource" uid="uid://5xvrp5gp7xhg" path="res://Scene/Gun/Weapon_Resource/Shotgun.tres" id="4_htnm1"]
+[ext_resource type="Resource" uid="uid://b8wr6ixfij5fk" path="res://Scene/Gun/Weapon_Resource/Assault_gun.tres" id="4_iqa38"]
+[ext_resource type="Texture2D" uid="uid://dcnn6ylqbiixx" path="res://Asset/Space Shooter Redux/PNG/Damage/playerShip1_damage2.png" id="4_maqeg"]
+[ext_resource type="PackedScene" uid="uid://bqn8m6vxvgvij" path="res://Scene/Gun/shotgun.tscn" id="5_3oxgj"]
+[ext_resource type="Texture2D" uid="uid://ks0q3fhxtbm" path="res://Asset/Space Shooter Redux/PNG/Damage/playerShip1_damage3.png" id="5_qd2w3"]
+[ext_resource type="PackedScene" uid="uid://baujfj3pysp0t" path="res://Scene/Gun/misile_launcher.tscn" id="6_j62x7"]
+[ext_resource type="PackedScene" uid="uid://c8r2xcm17j043" path="res://Scene/Gun/assault_gun_L.tscn" id="7_0tq60"]
+[ext_resource type="Script" path="res://Scene/Mobile_Suit_Manager.gd" id="12_tsa5m"]
+[ext_resource type="Resource" uid="uid://08vqi8pk0xpg" path="res://Scene/Gun/MobileSuit/MobileSuit_Resource/Mobile_Suit.tres" id="13_gqw1i"]
+[ext_resource type="PackedScene" uid="uid://bvgf0t63kewlp" path="res://Scene/Gun/MobileSuit/Mobile_Suit.tscn" id="13_rw8a5"]
+[ext_resource type="PackedScene" uid="uid://daegi148n2g6b" path="res://Scene/Gun/MobileSuit/Mobile_Suit_Gun.tscn" id="14_s0lcb"]
+[ext_resource type="PackedScene" uid="uid://brno72umjq2wy" path="res://Scene/Gun/MobileSuit/Mobile_Suit_Sheild.tscn" id="15_g8ire"]
+
+[sub_resource type="Animation" id="Animation_dgnhp"]
+resource_name = "Ani_Assault_Gun_Reload"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Assault_gun:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(-27.5, -10), Vector2(0, -10), Vector2(-27.5, -10)]
+}
+
+[sub_resource type="Animation" id="Animation_0aril"]
+resource_name = "Ani_Assault_Gun_Shoot"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Assault_gun:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(-27.5, -10), Vector2(-27.5, -5), Vector2(-27.5, -10), Vector2(-27.5, -5), Vector2(-27.5, -10), Vector2(-27.5, -5), Vector2(-27.5, -10), Vector2(-27.5, -5), Vector2(-27.5, -10), Vector2(-27.5, -5), Vector2(-27.5, -10)]
+}
+
+[sub_resource type="Animation" id="Animation_6cd7i"]
+resource_name = "Ani_Assault_gun_Active"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Assault_gun:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Assault_gun:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.6, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(-5, 0), Vector2(-5, -7.5), Vector2(-27.5, -10)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Assault_gun_R:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.6, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -10), Vector2(27.5, -10)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Assault_gun_R:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_87ky8"]
+resource_name = "Ani_Assault_gun_deactive"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Assault_gun:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-27.5, -10), Vector2(0, -10)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Assault_gun:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Assault_gun_R:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(27.5, -10), Vector2(0, -10)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Assault_gun_R:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_o6i1g"]
+resource_name = "Ani_Assault_out_of_ammo"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Assault_gun:position")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-27.5, -10), Vector2(-27.5, -1)]
+}
+
+[sub_resource type="Animation" id="Animation_2txfs"]
+resource_name = "Ani_Machine_Gun_Active"
+
+[sub_resource type="Animation" id="Animation_lerhd"]
+resource_name = "Ani_Machine_Gun_Reload"
+
+[sub_resource type="Animation" id="Animation_atxmy"]
+resource_name = "Ani_Machine_Gun_deactive"
+
+[sub_resource type="Animation" id="Animation_lttfg"]
+resource_name = "Ani_Machine_Gun_out_of_ammo"
+
+[sub_resource type="Animation" id="Animation_4c17m"]
+resource_name = "Ani_Machine_Gun_shoot"
+
+[sub_resource type="Animation" id="Animation_ns605"]
+resource_name = "Ani_Misilie_Launcher_Active"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Misile_launcher:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -12.5), Vector2(-20, -12.5)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Misile_launcher:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+
+[sub_resource type="Animation" id="Animation_owr70"]
+resource_name = "Ani_Misilie_Launcher_Active_Out_Of_Ammo"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Misile_launcher:position")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-20, -12.5), Vector2(-20, -6)]
+}
+
+[sub_resource type="Animation" id="Animation_01rss"]
+resource_name = "Ani_Misilie_Launcher_Deactive"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Misile_launcher:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(-20, -12.5), Vector2(0, -12.5), Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Misile_launcher:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_r4u4h"]
+resource_name = "Ani_Misilie_Launcher_Reload"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Misile_launcher:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(-20, -12.5), Vector2(0, -12.5), Vector2(-20, -12.5)]
+}
+
+[sub_resource type="Animation" id="Animation_qjs1n"]
+resource_name = "Ani_Misilie_Launcher_Shoot"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Misile_launcher:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(-20, -12.5), Vector2(-20, -6), Vector2(-20, -12.5)]
+}
+
+[sub_resource type="Animation" id="Animation_eqaj5"]
+resource_name = "Ani_Shotgun_Active"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Shotgun:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -6.5), Vector2(-27.5, -7.5)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Shotgun:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+
+[sub_resource type="Animation" id="Animation_3vwhf"]
+resource_name = "Ani_Shotgun_Deactive"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Shotgun:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(-27.5, -7.5), Vector2(0, -7.5), Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Shotgun:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_f4hcc"]
+resource_name = "Ani_Shotgun_Out_of_ammo"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Shotgun:position")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-27.5, -7.5), Vector2(-27.5, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_8pqx0"]
+resource_name = "Ani_Shotgun_Reload"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Shotgun:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(-27.5, -7.5), Vector2(0, -7.5), Vector2(-27.5, -7.5)]
+}
+
+[sub_resource type="Animation" id="Animation_g1nna"]
+resource_name = "Ani_Shotgun_Shoot"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Shotgun:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(-27.5, -7.5), Vector2(-27.5, 0), Vector2(-27.5, -7.5)]
+}
+
+[sub_resource type="Animation" id="Animation_c2juo"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Assault_gun:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Assault_gun:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-5, -5)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Shotgun:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Shotgun:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Misile_launcher:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Misile_launcher:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Assault_gun_R:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [false]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Assault_gun_R:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -10)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_wn08w"]
+_data = {
+"Ani_Assault_Gun_Reload": SubResource("Animation_dgnhp"),
+"Ani_Assault_Gun_Shoot": SubResource("Animation_0aril"),
+"Ani_Assault_gun_Active": SubResource("Animation_6cd7i"),
+"Ani_Assault_gun_deactive": SubResource("Animation_87ky8"),
+"Ani_Assault_out_of_ammo": SubResource("Animation_o6i1g"),
+"Ani_Machine_Gun_Active": SubResource("Animation_2txfs"),
+"Ani_Machine_Gun_Reload": SubResource("Animation_lerhd"),
+"Ani_Machine_Gun_deactive": SubResource("Animation_atxmy"),
+"Ani_Machine_Gun_out_of_ammo": SubResource("Animation_lttfg"),
+"Ani_Machine_Gun_shoot": SubResource("Animation_4c17m"),
+"Ani_Misilie_Launcher_Active": SubResource("Animation_ns605"),
+"Ani_Misilie_Launcher_Active_Out_Of_Ammo": SubResource("Animation_owr70"),
+"Ani_Misilie_Launcher_Deactive": SubResource("Animation_01rss"),
+"Ani_Misilie_Launcher_Reload": SubResource("Animation_r4u4h"),
+"Ani_Misilie_Launcher_Shoot": SubResource("Animation_qjs1n"),
+"Ani_Shotgun_Active": SubResource("Animation_eqaj5"),
+"Ani_Shotgun_Deactive": SubResource("Animation_3vwhf"),
+"Ani_Shotgun_Out_of_ammo": SubResource("Animation_f4hcc"),
+"Ani_Shotgun_Reload": SubResource("Animation_8pqx0"),
+"Ani_Shotgun_Shoot": SubResource("Animation_g1nna"),
+"RESET": SubResource("Animation_c2juo")
+}
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p0sqk"]
+atlas = ExtResource("1_b3x80")
+region = Rect2(0, 0, 100, 82)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_c2lvh"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p0sqk")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="Animation" id="Animation_220v7"]
+resource_name = "Ani_Mobile_Suit_Active"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Mobile_Suit_Rig/Mobile_Suit_Speed:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.5, 0.6, 1.5, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 0.366022, 1, 0.25),
+"update": 0,
+"values": [Vector2(25, 500), Vector2(25, 5000), Vector2(25, 1000), Vector2(25, 400), Vector2(25, 100), Vector2(25, -7.5)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Mobile_Suit_Rig/Mobile_Suit_Speed:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Mobile_Suit_Rig/Mobile_Suit_Speed:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0.5, 0.5), Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_nh7uu"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Mobile_Suit_Rig/Mobile_Suit_Speed:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(25, 500)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Mobile_Suit_Rig/Mobile_Suit_Speed:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Mobile_Suit_Rig/Mobile_Suit_Speed:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.5, 0.5)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_vxygl"]
+_data = {
+"Ani_Mobile_Suit_Active": SubResource("Animation_220v7"),
+"RESET": SubResource("Animation_nh7uu")
+}
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_iw6yl"]
+animations = [{
+"frames": [],
+"loop": true,
+"name": &"0",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_txboj")
+}],
+"loop": true,
+"name": &"1",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_maqeg")
+}],
+"loop": true,
+"name": &"2",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_qd2w3")
+}],
+"loop": true,
+"name": &"3",
+"speed": 5.0
+}]
+
+[node name="Player" type="CharacterBody2D" groups=["Damageable"]]
+scale = Vector2(0.4, 0.4)
+script = ExtResource("1_58nv7")
+
+[node name="PlayerUi" parent="." instance=ExtResource("2_7c18t")]
+
+[node name="Weapon_Manager" type="Node2D" parent="."]
+position = Vector2(-25, 2.5)
+script = ExtResource("3_2osed")
+_weapon_resources = Array[Resource("res://Scene/Gun/Weapon_Resource/WeaponResource.gd")]([ExtResource("4_iqa38"), ExtResource("4_htnm1")])
+start_weapons = Array[String](["Assault_gun", "Shotgun"])
+
+[node name="Weapon_Rig" type="Node2D" parent="Weapon_Manager"]
+position = Vector2(25, -2.5)
+
+[node name="Assault_gun" parent="Weapon_Manager/Weapon_Rig" instance=ExtResource("3_uqrrs")]
+visible = false
+position = Vector2(-5, -5)
+
+[node name="Assault_gun_R" parent="Weapon_Manager/Weapon_Rig" instance=ExtResource("7_0tq60")]
+visible = false
+position = Vector2(0, -10)
+
+[node name="Shotgun" parent="Weapon_Manager/Weapon_Rig" instance=ExtResource("5_3oxgj")]
+visible = false
+
+[node name="Shotgun_R" parent="Weapon_Manager/Weapon_Rig" instance=ExtResource("5_3oxgj")]
+visible = false
+
+[node name="Misile_launcher" parent="Weapon_Manager/Weapon_Rig" instance=ExtResource("6_j62x7")]
+visible = false
+
+[node name="Misile_launcher_R" parent="Weapon_Manager/Weapon_Rig" instance=ExtResource("6_j62x7")]
+visible = false
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Weapon_Manager/Weapon_Rig"]
+libraries = {
+"": SubResource("AnimationLibrary_wn08w")
+}
+
+[node name="AtributPlayerSprite" type="Node2D" parent="."]
+position = Vector2(0, 4.54747e-13)
+
+[node name="AnimatePlayer" type="AnimatedSprite2D" parent="AtributPlayerSprite"]
+position = Vector2(0, -4.54747e-13)
+sprite_frames = SubResource("SpriteFrames_c2lvh")
+
+[node name="Mobile_Suit_Manager" type="Node2D" parent="."]
+position = Vector2(-25, 30)
+scale = Vector2(1, 1)
+script = ExtResource("12_tsa5m")
+_mobile_suit_resource = Array[Resource("res://Scene/Gun/MobileSuit/MobileSuit_Resource/MobileSuitResource.gd")]([ExtResource("13_gqw1i")])
+start_mobile_suit = Array[String](["Mobile_Suit"])
+
+[node name="Mobile_Suit_Rig" type="Node2D" parent="Mobile_Suit_Manager"]
+
+[node name="Mobile_Suit_Speed" parent="Mobile_Suit_Manager/Mobile_Suit_Rig" instance=ExtResource("13_rw8a5")]
+visible = false
+position = Vector2(25, 500)
+scale = Vector2(0.5, 0.5)
+
+[node name="Mobile_Suit_Gun" parent="Mobile_Suit_Manager/Mobile_Suit_Rig" instance=ExtResource("14_s0lcb")]
+visible = false
+position = Vector2(25, -12.5)
+
+[node name="Mobile_Suit_Sheild" parent="Mobile_Suit_Manager/Mobile_Suit_Rig" instance=ExtResource("15_g8ire")]
+visible = false
+position = Vector2(25, -25)
+
+[node name="AnimationMobileSuit" type="AnimationPlayer" parent="Mobile_Suit_Manager/Mobile_Suit_Rig"]
+root_node = NodePath("../..")
+libraries = {
+"": SubResource("AnimationLibrary_vxygl")
+}
+
+[node name="DamageAnimatePlayer" type="AnimatedSprite2D" parent="."]
+visible = false
+sprite_frames = SubResource("SpriteFrames_iw6yl")
+animation = &"0"
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+visible = false
+polygon = PackedVector2Array(-8, -38, 7, -38, 11, -13, 35, 1, 40, -1, 44, -7, 49, -7, 46, 24, 42, 24, 40, 20, 35, 23, 13, 27, 6, 37, -7, 37, -14, 26, -36, 23, -42, 20, -43, 23, -45, 24, -47, 23, -50, -6, -45, -6, -42, -1, -37, 1, -12, -13)
+
+[node name="Timer" type="Timer" parent="."]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(3, 3)
+
+[connection signal="animation_finished" from="Weapon_Manager/Weapon_Rig/AnimationPlayer" to="Weapon_Manager" method="_on_animation_player_animation_finished"]

@@ -5,6 +5,13 @@ extends Area2D
 @onready var DistanceDetection = $Detection/Detection_Area/CollisionShape2D
 @onready var DectionPlayerTimer = $Detection/Chase/DetectionTimerPlayer
 @onready var ChaseArea = $Detection/Chase
+@onready var Ray1 = $AtributeEnemy/RayCastDetc/R1
+@onready var Ray2 = $AtributeEnemy/RayCastDetc/R2
+@onready var Ray3 = $AtributeEnemy/RayCastDetc/R3
+@onready var Ray4 = $AtributeEnemy/RayCastDetc/R4
+@onready var Ray5 = $AtributeEnemy/RayCastDetc/R5
+@onready var NgunMarkL = $AtributeEnemy/MarkLeft
+@onready var NgunMarkR = $AtributeEnemy/MarkRight
 @onready var healthbar = $AtributeEnemy/Healthbar_enemy
 
 #Variabel Enemy
@@ -25,6 +32,7 @@ var health : int
 func _ready():
 	health = 100
 	healthbar.init_health(health)
+	
 	
 	
 func _physics_process(delta):
@@ -70,6 +78,14 @@ func Player_Look():
 	#if playerlook:	
 	#	Ray.target_position = to_local(global.player_pos)
 		
+func EnemyShoot():
+	if Ray2.is_colliding():
+		var Test = PlProjectileTest.instantiate()
+		Test.global_position = NgunMarkL.global_position
+		get_tree().current_scene.add_child(Test)
+		
+	
+
 	
 func RotationDirectionPlayer(target, delta):
 	if player:
