@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://yo4lsr4nyl70"]
+
+[ext_resource type="Texture2D" uid="uid://b7w1a1815u3qk" path="res://Asset/Space Shooter Redux/PNG/Parts/gun04.png" id="1_lbi61"]
+
+[node name="Shotgun_R" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+rotation = 3.14159
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_lbi61")

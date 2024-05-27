@@ -5,10 +5,10 @@
 [resource]
 script = ExtResource("1_40b88")
 weapon_name = "Shotgun"
-active_anim = "Ani_Shotgun_Active"
+active_anim = "Animation_Shotgun_Active"
 shoot_anim = ""
 reload_anim = ""
-deactive_anim = "Ani_Shotgun_Deactive"
+deactive_anim = "Animation_Shotgun_Deactive"
 Out_of_ammo_anim = ""
 current_ammo = 0
 reserve_ammo = 0
