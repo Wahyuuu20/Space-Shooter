@@ -13,10 +13,6 @@ var PlProjcetilePlayer = preload("res://Scene/Projectile/projectile_player.tscn"
 #Node Gun 
 @onready var NodeGunLeft = $AtributPlayerSprite/Gun/Left
 
-#Preload Weapon
-var PlSubmachinegun = preload("res://Scene/Gun/machine_gun.tscn")
-var PlShotgun = preload("res://Scene/Gun/shotgun.tscn")
-
 # Var Player
 @export var Speed : float = 250
 @export var accel: float = 60
