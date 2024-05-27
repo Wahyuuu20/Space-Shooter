@@ -1,6 +1,7 @@
 extends Node2D
-
+class_name Weapon_Manager
 @onready var animation_player = get_node("Weapon_Rig/AnimationPlayer")
+@onready var gunpoint = get_node("Weapon_Rig/GunPoint")
 
 var current_weapon = null
 var weapon_stack = []
@@ -22,7 +23,9 @@ func _input(event):
 	if event.is_action_pressed("Weapon_1"):
 		weapon_indicator = max(weapon_indicator-1,0)
 		Exit(weapon_stack[weapon_indicator])
-		
+	
+	if event.is_action_pressed("Primary"):
+		Shoot()
 				
 func Initialize(_start_weapons: Array):
 	for weapon in _weapon_resources:
@@ -30,7 +33,9 @@ func Initialize(_start_weapons: Array):
 	for i in _start_weapons:
 		weapon_stack.push_back(i)
 	current_weapon = weapon_list[weapon_stack[0]]
+
 	Enter()
+	
 		
 func Enter():
 	animation_player.queue(current_weapon.active_anim)
@@ -50,9 +55,16 @@ func Change_Weapon(weapon_name: String):
 func _on_animation_player_animation_finished(anim_name):
 	if anim_name == current_weapon.deactive_anim:
 		Change_Weapon(next_weapon)
-
-
-
+		
+func Shoot():
+	Load_Projectile()
+	
+func Load_Projectile():
+	for child in gunpoint.get_children():
+		var projectile = current_weapon.projectile_to_load_weapon.instantiate()
+		projectile.global_position = child.global_position
+		projectile.global_rotation = global_rotation
+		get_tree().current_scene.add_child(projectile)
 
 
 

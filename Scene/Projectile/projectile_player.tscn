@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://q5n87ma4k5sd"]
 
-[ext_resource type="Script" path="res://Script/projectile-player.gd" id="1_o5wgu"]
+[ext_resource type="Script" path="res://Script/Projectile/projectile-player.gd" id="1_o5wgu"]
 [ext_resource type="Texture2D" uid="uid://dnixpsufejw65" path="res://Asset/Space Shooter Redux/PNG/Lasers/laserRed15.png" id="2_q146e"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_trr5k"]
@@ -13,8 +13,8 @@ scale = Vector2(0.5, 0.5)
 script = ExtResource("1_o5wgu")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(0, -3)
-scale = Vector2(0.513889, 0.95614)
+position = Vector2(0.710938, 20.7812)
+scale = Vector2(0.286458, 0.237939)
 texture = ExtResource("2_q146e")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
