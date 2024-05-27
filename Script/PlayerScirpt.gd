@@ -1,17 +1,21 @@
 extends CharacterBody2D
 
-@onready var animation_weapon = $Weapon_Manager/Weapon_Rig/AnimationPlayer
-
 #Preload Projectile
 var PlProjcetilePlayer = preload("res://Scene/Projectile/projectile_player.tscn")
+
 @onready var Healthbar = $PlayerUi/PlayerBar/Healthbar_Player
 @onready var Energybar = $PlayerUi/PlayerBar/Energy
 
 #Node Timer	
-@onready var Ntimer = $AllTimerPlayer/Timer
-@onready var NodeTimerFireRate = $AllTimerPlayer/TimerFireRateGun
+@onready var timer = $Timer
+@onready var NodeTimerFireRate = $AtributPlayerSprite/Gun/TimerFireRate
 
+#Node Gun 
+@onready var NodeGunLeft = $AtributPlayerSprite/Gun/Left
 
+#Preload Weapon
+var PlSubmachinegun = preload("res://Scene/Gun/machine_gun.tscn")
+var PlShotgun = preload("res://Scene/Gun/shotgun.tscn")
 
 # Var Player
 @export var Speed : float = 250
@@ -20,8 +24,8 @@ var PlProjcetilePlayer = preload("res://Scene/Projectile/projectile_player.tscn"
 @export var AccelBoost : float = 120
 @export var DashSpeed : float = 1000
 @export var timerCount = 1
-@export var TimeFireRate :float = 0.2
 var smooth_Mouse_pos : Vector2
+var TimeFireRate :float = 0.2
 var health
 var energy
 var regenEnergy
@@ -43,9 +47,8 @@ func _process(delta):
 	
 	#Print
 	#print(global.player_pos)
-	print(global.health_enemy)
-	
-	
+#	print(velocity)
+#	print(rotation)
 	
 	
 	#Movement
@@ -70,7 +73,9 @@ func _process(delta):
 	
 
 	
-
+	#smooth_Mouse_pos = lerp(smooth_Mouse_pos,get_global_mouse_position(),0.1)
+	#$Gun.look_at(smooth_Mouse_pos)
+	
 #Damage	
 func Damage(values):
 	health -= values
@@ -122,17 +127,41 @@ func Movement(delta):
 	
 	
 	
-
+#func GunRotation():
+	#$PlayerSprite/Gun/GunRight.look_at(get_global_mouse_position())
+	#$PlayerSprite/Gun/GunLeft.look_at(get_global_mouse_position())
+	
+	
 # Gun				
 func GunPressed():
-	if Input.is_action_pressed("Primary")and NodeTimerFireRate.is_stopped():
-		NodeTimerFireRate.start(TimeFireRate)
+	pass
+#	if Input.is_action_pressed("Primary")and NodeTimerFireRate.is_stopped():
+#		NodeTimerFireRate.start(TimeFireRate)
 #		AnimateProjectileGunLeft()
 #		AnimateProjectileGunRight()	
+#
+#	if Input.is_action_pressed("Aim"):
+#		pass
+#		$PlayerSprite/Gun/GunRight.look_at(get_global_mouse_position())
 
-	if Input.is_action_pressed("Aim"):
+# Gun Left	
+func AnimateProjectileGunLeft():
 		pass
-
+#		var ProjcetileL = PlProjcetilePlayer.instantiate()
+#		ProjcetileL.global_position = GunRayLeft.global_position
+#		ProjcetileL.rotation = rotation
+#		get_tree().current_scene.add_child(ProjcetileL)
+		
+		
+# Gun Right	
+func AnimateProjectileGunRight():
+		pass
+#		var ProjcetileR = PlProjcetilePlayer.instantiate()
+#		ProjcetileR.global_position = GunRayRight.global_position
+#		ProjcetileR.rotation = rotation
+#		get_tree().current_scene.add_child(ProjcetileR)
+	
+	
 #Aim
 func AimPlayer():
 	if Input.is_action_pressed("Aim"):
