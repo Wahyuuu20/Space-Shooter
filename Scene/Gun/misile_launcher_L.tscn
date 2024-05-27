@@ -2,13 +2,9 @@
 
 [ext_resource type="Texture2D" uid="uid://bxyd6vrvq0ywj" path="res://Asset/Space Shooter Redux/PNG/Parts/gun06.png" id="1_d5l60"]
 
-[node name="Misile_launcher" type="Node2D"]
+[node name="Misile_launcher_L" type="Node2D"]
 
 [node name="Gun06" type="Sprite2D" parent="."]
 rotation = -3.14159
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("1_d5l60")
-
-[node name="Muzzel" type="Node2D" parent="."]
-position = Vector2(0, -12)
-rotation = -3.14159

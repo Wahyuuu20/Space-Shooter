@@ -5,10 +5,10 @@
 [resource]
 script = ExtResource("1_wf850")
 weapon_name = "Misile_launcher"
-active_anim = "Ani_Misilie_Launcher_Active"
+active_anim = "Animation_Misile_Active"
 shoot_anim = ""
 reload_anim = ""
-deactive_anim = "Ani_Misilie_Launcher_Deactive"
+deactive_anim = "Animation_Misile_Deactive"
 Out_of_ammo_anim = ""
 current_ammo = 0
 reserve_ammo = 0
