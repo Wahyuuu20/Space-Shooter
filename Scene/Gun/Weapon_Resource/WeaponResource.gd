@@ -8,6 +8,8 @@ class_name Weapon_Resource
 @export var reload_anim : String
 @export var deactive_anim : String
 @export var Out_of_ammo_anim : String
+@export var projectile_to_load_weapon: PackedScene
+
 
 
 @export var current_ammo : int
