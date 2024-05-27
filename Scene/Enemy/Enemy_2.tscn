@@ -1,0 +1,67 @@
+[gd_scene load_steps=8 format=3 uid="uid://be5hbel4jwy8n"]
+
+[ext_resource type="Script" path="res://Script/Enemy/EnemyScript2.gd" id="1_wgxkm"]
+[ext_resource type="Texture2D" uid="uid://che8rypgnwlaf" path="res://Asset/Space Shooter Redux/PNG/Parts/gun08.png" id="2_2fhio"]
+[ext_resource type="Texture2D" uid="uid://j0vlvdjo7dct" path="res://Asset/Space Shooter Redux/PNG/Enemies/enemyBlack3.png" id="3_2cqjb"]
+[ext_resource type="PackedScene" uid="uid://2i6g1sgcwre4" path="res://UI/HealthBar/healthbar_enemy.tscn" id="4_s6tty"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_fiy6k"]
+radius = 48.5077
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0djac"]
+radius = 322.751
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4tt37"]
+radius = 689.026
+
+[node name="Enemy2" type="Area2D" groups=["Damageable"]]
+rotation = -1.5708
+script = ExtResource("1_wgxkm")
+
+[node name="AtributEnemy" type="Node2D" parent="."]
+
+[node name="MarkLeft" type="Marker2D" parent="AtributEnemy"]
+position = Vector2(-19, 49)
+
+[node name="MarkerRight" type="Marker2D" parent="AtributEnemy"]
+position = Vector2(20, 48)
+
+[node name="GunLeft" type="Sprite2D" parent="AtributEnemy"]
+position = Vector2(-19, 25)
+texture = ExtResource("2_2fhio")
+
+[node name="GunRight" type="Sprite2D" parent="AtributEnemy"]
+position = Vector2(19, 25)
+texture = ExtResource("2_2fhio")
+
+[node name="Healthbar_enemy" parent="AtributEnemy" instance=ExtResource("4_s6tty")]
+offset_left = -35.0
+offset_top = -49.0
+offset_right = 39.0
+offset_bottom = -45.0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("3_2cqjb")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, -2)
+shape = SubResource("CircleShape2D_fiy6k")
+
+[node name="DetectionArea" type="Node2D" parent="."]
+visible = false
+
+[node name="DetectionPlayerRush" type="Area2D" parent="DetectionArea"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea/DetectionPlayerRush"]
+shape = SubResource("CircleShape2D_0djac")
+
+[node name="Detection_player" type="Area2D" parent="DetectionArea"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea/Detection_player"]
+scale = Vector2(2, 2)
+shape = SubResource("CircleShape2D_4tt37")
+
+[connection signal="body_entered" from="DetectionArea/DetectionPlayerRush" to="." method="Enemy_rush_entered"]
+[connection signal="body_exited" from="DetectionArea/DetectionPlayerRush" to="." method="Enemy_rush_exited"]
+[connection signal="body_entered" from="DetectionArea/Detection_player" to="." method="Detection_player_entered"]
+[connection signal="body_exited" from="DetectionArea/Detection_player" to="." method="Detection_player_exited"]

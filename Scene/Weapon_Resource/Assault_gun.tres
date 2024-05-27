@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="Weapon_Resource" load_steps=3 format=3 uid="uid://b8wr6ixfij5fk"]
+
+[ext_resource type="Script" path="res://Script/Weapon_Resource/WeaponResource.gd" id="1_bahoe"]
+[ext_resource type="PackedScene" uid="uid://q5n87ma4k5sd" path="res://Scene/Projectile/projectile_player.tscn" id="1_efm37"]
+
+[resource]
+script = ExtResource("1_bahoe")
+weapon_name = "Assault_gun"
+active_anim = "Animation_Assault_Active"
+shoot_anim = ""
+reload_anim = ""
+deactive_anim = "Animation_Assault_Deactive"
+Out_of_ammo_anim = ""
+projectile_to_load_weapon = ExtResource("1_efm37")
+current_ammo = 0
+reserve_ammo = 0
+magazine = 0
+Max_ammo = 0
+Auto_fire = false

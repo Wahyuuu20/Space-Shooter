@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://wqtxx45c6yem"]
 
-[ext_resource type="Script" path="res://Script/EnemyScript.gd" id="1_grne4"]
+[ext_resource type="Script" path="res://Script/Enemy/EnemyScript.gd" id="1_grne4"]
 [ext_resource type="Texture2D" uid="uid://b3jdo1y7aqqoi" path="res://Asset/Space Shooter Redux/PNG/Parts/gun10.png" id="1_uppyt"]
 [ext_resource type="Texture2D" uid="uid://chdsjdtba85e7" path="res://Asset/Space Shooter Redux/PNG/Parts/gun09.png" id="2_8bb27"]
 [ext_resource type="Texture2D" uid="uid://c6oe6mq1n2rko" path="res://Asset/Space Shooter Redux/PNG/Enemies/enemyBlack2.png" id="3_pjgu6"]
@@ -22,29 +22,6 @@ scale = Vector2(0.5, 0.5)
 script = ExtResource("1_grne4")
 
 [node name="AtributeEnemy" type="Node2D" parent="."]
-
-[node name="RayCastDetc" type="Node2D" parent="AtributeEnemy"]
-
-[node name="R1" type="RayCast2D" parent="AtributeEnemy/RayCastDetc"]
-target_position = Vector2(0, 300)
-
-[node name="R2" type="RayCast2D" parent="AtributeEnemy/RayCastDetc"]
-target_position = Vector2(6, 300)
-
-[node name="R3" type="RayCast2D" parent="AtributeEnemy/RayCastDetc"]
-target_position = Vector2(12, 300)
-
-[node name="R4" type="RayCast2D" parent="AtributeEnemy/RayCastDetc"]
-target_position = Vector2(-12, 300)
-
-[node name="R5" type="RayCast2D" parent="AtributeEnemy/RayCastDetc"]
-target_position = Vector2(-6, 300)
-
-[node name="MarkLeft" type="Marker2D" parent="AtributeEnemy"]
-position = Vector2(-45, 22)
-
-[node name="MarkRight" type="Marker2D" parent="AtributeEnemy"]
-position = Vector2(44, 23)
 
 [node name="GunLeft" type="Sprite2D" parent="AtributeEnemy"]
 position = Vector2(-43, 9)
