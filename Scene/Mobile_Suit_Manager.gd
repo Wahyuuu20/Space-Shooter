@@ -25,4 +25,4 @@ func Enter():
 
 
 func Exit():
-	animation_mobile_suit.play(current_mobile_suit.suit_active_ani)
+	animation_mobile_suit.play(current_mobile_suit.suit_deactive_ani)
