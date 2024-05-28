@@ -8,10 +8,9 @@ var PlProjcetilePlayer = preload("res://Scene/Projectile/projectile_player.tscn"
 
 #Node Timer	
 @onready var timer = $Timer
-@onready var NodeTimerFireRate = $AtributPlayerSprite/Gun/TimerFireRate
 
 #Node Gun 
-@onready var NodeGunLeft = $AtributPlayerSprite/Gun/Left
+
 
 # Var Player
 @export var Speed : float = 250
