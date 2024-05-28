@@ -1,16 +1,16 @@
 [gd_scene load_steps=3 format=3 uid="uid://bjv588hsldhjm"]
 
-[ext_resource type="PackedScene" uid="uid://hkcspyje6gt4" path="res://Scene/Test-Zone/test.tscn" id="1_hi0tq"]
+[ext_resource type="PackedScene" uid="uid://d4bg3x2jq5qny" path="res://Scene/enemy_3.tscn" id="1_w7w6e"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_yyf5p"]
 
 [node name="Test-PlayGround" type="Node2D"]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-modulate = Color(0.333333, 0.584314, 1, 1)
+modulate = Color(0.780392, 0.521569, 0.443137, 1)
 position = Vector2(684.5, 385)
 scale = Vector2(1385, 786)
 texture = SubResource("CanvasTexture_yyf5p")
 
-[node name="test" parent="." instance=ExtResource("1_hi0tq")]
-position = Vector2(581, 325)
+[node name="Enemy_3" parent="." instance=ExtResource("1_w7w6e")]
+position = Vector2(544, 298)

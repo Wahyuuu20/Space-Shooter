@@ -1,6 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://d4bg3x2jq5qny"]
+[gd_scene load_steps=8 format=3 uid="uid://d4bg3x2jq5qny"]
 
 [ext_resource type="Texture2D" uid="uid://d1682c8pstam4" path="res://Asset/Space Shooter Redux/PNG/Enemies/enemyBlack5.png" id="1_8d78t"]
+[ext_resource type="Script" path="res://Scene/Enemy_3.gd" id="1_gbhi4"]
+[ext_resource type="Script" path="res://Script/State/Test State/FiniteStateMachine.gd" id="2_gf5j6"]
+[ext_resource type="Script" path="res://Script/State/Test State/Wander_State.gd" id="4_04lpu"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_jhi21"]
 radius = 33.0
@@ -12,7 +15,8 @@ radius = 312.006
 [sub_resource type="CircleShape2D" id="CircleShape2D_hycfh"]
 radius = 161.012
 
-[node name="Enemy_3" type="Area2D"]
+[node name="Enemy_3" type="CharacterBody2D"]
+script = ExtResource("1_gbhi4")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_8d78t")
@@ -23,6 +27,7 @@ position = Vector2(0, 6)
 shape = SubResource("CapsuleShape2D_jhi21")
 
 [node name="Detection" type="Node2D" parent="."]
+visible = false
 
 [node name="Detection_player" type="Area2D" parent="Detection"]
 
@@ -33,3 +38,15 @@ shape = SubResource("CircleShape2D_rry7d")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Detection/Detection_rush"]
 shape = SubResource("CircleShape2D_hycfh")
+
+[node name="FiniteStateMachine" type="Node" parent="." node_paths=PackedStringArray("state")]
+script = ExtResource("2_gf5j6")
+state = NodePath("WanderState")
+
+[node name="WanderState" type="Node" parent="FiniteStateMachine" node_paths=PackedStringArray("actor")]
+script = ExtResource("4_04lpu")
+actor = NodePath("../..")
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+target_position = Vector2(0, 16)
+collision_mask = 0
