@@ -1,7 +1,6 @@
 extends CharacterBody2D
-
+class_name Player
 #Preload Projectile
-var PlProjcetilePlayer = preload("res://Scene/Projectile/projectile_player.tscn")
 
 @onready var Healthbar = $PlayerUi/PlayerBar/Healthbar_Player
 @onready var Energybar = $PlayerUi/PlayerBar/Energy
@@ -52,12 +51,9 @@ func _process(delta):
 	#Movement Boost
 	Boost()
 	
-	#GUN
-	#GunPressed()
+	AimPlayer()
 	
-	#Aim
-	#GunRotation()
-	
+
 	#Dash
 	Dash()
 	
@@ -68,8 +64,6 @@ func _process(delta):
 	
 
 	
-	#smooth_Mouse_pos = lerp(smooth_Mouse_pos,get_global_mouse_position(),0.1)
-	#$Gun.look_at(smooth_Mouse_pos)
 	
 #Damage	
 func Damage(values):
@@ -102,66 +96,22 @@ func DeleteNode():
 
 #Movement
 func Movement(delta):
-
 	var direction:Vector2 = Input.get_vector("left","Right","Up","Down").normalized()
 	velocity.x = move_toward(velocity.x,Speed * direction.x ,accel)
 	velocity.y = move_toward(velocity.y,Speed * direction.y ,accel)
 	
-	rotation = lerp_angle(rotation, atan2(direction.x, -direction.y),delta * 5)
+	var target_rotation = atan2(direction.x, -direction.y)
+	rotation = lerp_angle(rotation, target_rotation ,delta * 5)
 
-	var tween = create_tween()
-	tween.tween_property($AtributPlayerSprite/AnimatePlayer, "rotation_degrees", rotation, 1)
-	if !Input.get_vector("left","Right","Up","Down"):
-		pass
-	
-	
-#
-#
+
 	move_and_slide()
 	global.player_pos = global_position
-	
-	
-	
-#func GunRotation():
-	#$PlayerSprite/Gun/GunRight.look_at(get_global_mouse_position())
-	#$PlayerSprite/Gun/GunLeft.look_at(get_global_mouse_position())
-	
-	
-# Gun				
-func GunPressed():
-	pass
-#	if Input.is_action_pressed("Primary")and NodeTimerFireRate.is_stopped():
-#		NodeTimerFireRate.start(TimeFireRate)
-#		AnimateProjectileGunLeft()
-#		AnimateProjectileGunRight()	
-#
-#	if Input.is_action_pressed("Aim"):
-#		pass
-#		$PlayerSprite/Gun/GunRight.look_at(get_global_mouse_position())
 
-# Gun Left	
-func AnimateProjectileGunLeft():
-		pass
-#		var ProjcetileL = PlProjcetilePlayer.instantiate()
-#		ProjcetileL.global_position = GunRayLeft.global_position
-#		ProjcetileL.rotation = rotation
-#		get_tree().current_scene.add_child(ProjcetileL)
-		
-		
-# Gun Right	
-func AnimateProjectileGunRight():
-		pass
-#		var ProjcetileR = PlProjcetilePlayer.instantiate()
-#		ProjcetileR.global_position = GunRayRight.global_position
-#		ProjcetileR.rotation = rotation
-#		get_tree().current_scene.add_child(ProjcetileR)
-	
 	
 #Aim
 func AimPlayer():
 	if Input.is_action_pressed("Aim"):
-		smooth_Mouse_pos = lerp(smooth_Mouse_pos,get_global_mouse_position(),0.1)
-		
+		pass
 		
 		
 		

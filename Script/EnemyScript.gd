@@ -1,7 +1,6 @@
 extends Area2D
 
 #Preload 
-@onready var PlProjectileTest = preload("res://Scene/Projectile/projectile_player.tscn")
 @onready var DistanceDetection = $Detection/Detection_Area/CollisionShape2D
 @onready var DectionPlayerTimer = $Detection/Chase/DetectionTimerPlayer
 @onready var ChaseArea = $Detection/Chase
@@ -77,12 +76,6 @@ func Player_Look():
 	pass
 	#if playerlook:	
 	#	Ray.target_position = to_local(global.player_pos)
-		
-func EnemyShoot():
-	if Ray2.is_colliding():
-		var Test = PlProjectileTest.instantiate()
-		Test.global_position = NgunMarkL.global_position
-		get_tree().current_scene.add_child(Test)
 		
 	
 
