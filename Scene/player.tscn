@@ -1,15 +1,14 @@
-[gd_scene load_steps=40 format=3 uid="uid://gucyibcu53et"]
+[gd_scene load_steps=37 format=3 uid="uid://gucyibcu53et"]
 
 [ext_resource type="Script" path="res://Script/PlayerScirpt.gd" id="1_58nv7"]
-[ext_resource type="Texture2D" uid="uid://dhfxtmhvbdfe2" path="res://Asset/Space Shooter Redux/Vector/spaceShooter_vector.svg" id="1_b3x80"]
 [ext_resource type="PackedScene" uid="uid://c61ar83u4ptu2" path="res://UI/UI bar Player/Player_ui.tscn" id="2_7c18t"]
 [ext_resource type="Script" path="res://Scene/Weapon_Manager.gd" id="3_2osed"]
 [ext_resource type="Texture2D" uid="uid://bdlr5g66ebdmy" path="res://Asset/Space Shooter Redux/PNG/Damage/playerShip1_damage1.png" id="3_txboj"]
 [ext_resource type="PackedScene" uid="uid://b5aja1jawmh7j" path="res://Scene/Gun/assault_gun_L.tscn" id="3_uqrrs"]
-[ext_resource type="Resource" uid="uid://cti023xvfpv0t" path="res://Scene/Gun/Weapon_Resource/Misile_Launcher.tres" id="4_7e1b5"]
-[ext_resource type="Resource" uid="uid://5xvrp5gp7xhg" path="res://Scene/Gun/Weapon_Resource/Shotgun.tres" id="4_htnm1"]
+[ext_resource type="Resource" uid="uid://5xvrp5gp7xhg" path="res://Scene/Gun/Weapon_Resource/Shotgun.tres" id="4_kdrv3"]
 [ext_resource type="Texture2D" uid="uid://dcnn6ylqbiixx" path="res://Asset/Space Shooter Redux/PNG/Damage/playerShip1_damage2.png" id="4_maqeg"]
 [ext_resource type="PackedScene" uid="uid://bqn8m6vxvgvij" path="res://Scene/Gun/shotgun_L.tscn" id="5_3oxgj"]
+[ext_resource type="Resource" uid="uid://cti023xvfpv0t" path="res://Scene/Gun/Weapon_Resource/Misile_Launcher.tres" id="5_midbg"]
 [ext_resource type="Texture2D" uid="uid://ks0q3fhxtbm" path="res://Asset/Space Shooter Redux/PNG/Damage/playerShip1_damage3.png" id="5_qd2w3"]
 [ext_resource type="PackedScene" uid="uid://baujfj3pysp0t" path="res://Scene/Gun/misile_launcher_L.tscn" id="6_j62x7"]
 [ext_resource type="PackedScene" uid="uid://c8r2xcm17j043" path="res://Scene/Gun/assault_gun_R.tscn" id="7_0tq60"]
@@ -17,11 +16,11 @@
 [ext_resource type="PackedScene" uid="uid://pxnllh5swxwx" path="res://Scene/Gun/Machine_Gun_R.tscn" id="9_cpqrl"]
 [ext_resource type="PackedScene" uid="uid://cgv4swhuvaow5" path="res://Scene/Gun/misile_launcher_R.tscn" id="11_34ogf"]
 [ext_resource type="Script" path="res://Scene/Mobile_Suit_Manager.gd" id="12_tsa5m"]
-[ext_resource type="Resource" uid="uid://08vqi8pk0xpg" path="res://Scene/Gun/MobileSuit/MobileSuit_Resource/Mobile_Suit.tres" id="13_gqw1i"]
 [ext_resource type="PackedScene" uid="uid://yo4lsr4nyl70" path="res://Scene/Gun/shotgun_R.tscn" id="13_l3nu8"]
 [ext_resource type="PackedScene" uid="uid://bvgf0t63kewlp" path="res://Scene/Gun/MobileSuit/Mobile_Suit.tscn" id="13_rw8a5"]
 [ext_resource type="PackedScene" uid="uid://daegi148n2g6b" path="res://Scene/Gun/MobileSuit/Mobile_Suit_Gun.tscn" id="14_s0lcb"]
 [ext_resource type="PackedScene" uid="uid://brno72umjq2wy" path="res://Scene/Gun/MobileSuit/Mobile_Suit_Sheild.tscn" id="15_g8ire"]
+[ext_resource type="Texture2D" uid="uid://c76sfg8ltospj" path="res://Asset/Space Shooter Redux/PNG/playerShip1_red.png" id="15_ytuf0"]
 
 [sub_resource type="Animation" id="Animation_m5wnv"]
 resource_name = "Animation_Assault_Active"
@@ -1079,21 +1078,6 @@ _data = {
 "RESET": SubResource("Animation_vk0dd")
 }
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_p0sqk"]
-atlas = ExtResource("1_b3x80")
-region = Rect2(0, 0, 100, 82)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_c2lvh"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_p0sqk")
-}],
-"loop": true,
-"name": &"default",
-"speed": 5.0
-}]
-
 [sub_resource type="Animation" id="Animation_220v7"]
 resource_name = "Animation_Speed_Active"
 length = 2.0
@@ -1253,7 +1237,7 @@ animations = [{
 }]
 
 [node name="Player" type="CharacterBody2D" groups=["Damageable"]]
-scale = Vector2(0.4, 0.4)
+scale = Vector2(0.5, 0.5)
 script = ExtResource("1_58nv7")
 
 [node name="PlayerUi" parent="." instance=ExtResource("2_7c18t")]
@@ -1261,8 +1245,8 @@ script = ExtResource("1_58nv7")
 [node name="Weapon_Manager" type="Node2D" parent="."]
 position = Vector2(-25, 2.5)
 script = ExtResource("3_2osed")
-_weapon_resources = Array[Resource("res://Scene/Gun/Weapon_Resource/WeaponResource.gd")]([ExtResource("4_7e1b5"), ExtResource("4_htnm1")])
-start_weapons = Array[String](["Misile_launcher", "Shotgun"])
+_weapon_resources = Array[Resource("res://Scene/Gun/Weapon_Resource/WeaponResource.gd")]([ExtResource("4_kdrv3"), ExtResource("5_midbg")])
+start_weapons = Array[String](["Shotgun", "Misile_launcher"])
 
 [node name="Weapon_Rig" type="Node2D" parent="Weapon_Manager"]
 position = Vector2(25, -2.5)
@@ -1324,15 +1308,12 @@ libraries = {
 [node name="AtributPlayerSprite" type="Node2D" parent="."]
 position = Vector2(0, 4.54747e-13)
 
-[node name="AnimatePlayer" type="AnimatedSprite2D" parent="AtributPlayerSprite"]
-position = Vector2(0, -4.54747e-13)
-sprite_frames = SubResource("SpriteFrames_c2lvh")
+[node name="PlayerSprite" type="Sprite2D" parent="AtributPlayerSprite"]
+texture = ExtResource("15_ytuf0")
 
 [node name="Mobile_Suit_Manager" type="Node2D" parent="."]
 position = Vector2(-25, 30)
 script = ExtResource("12_tsa5m")
-_mobile_suit_resource = Array[Resource("res://Scene/Gun/MobileSuit/MobileSuit_Resource/MobileSuitResource.gd")]([ExtResource("13_gqw1i")])
-start_mobile_suit = Array[String](["Mobile_Suit"])
 
 [node name="Mobile_Suit_Rig" type="Node2D" parent="Mobile_Suit_Manager"]
 
@@ -1367,6 +1348,7 @@ polygon = PackedVector2Array(-8, -38, 7, -38, 11, -13, 35, 1, 40, -1, 44, -7, 49
 [node name="Timer" type="Timer" parent="."]
 
 [node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(3, 3)
+zoom = Vector2(2, 2)
+limit_smoothed = true
 
 [connection signal="animation_finished" from="Weapon_Manager/Weapon_Rig/AnimationPlayer" to="Weapon_Manager" method="_on_animation_player_animation_finished"]

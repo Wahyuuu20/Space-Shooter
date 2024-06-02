@@ -1,6 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://bjv588hsldhjm"]
+[gd_scene load_steps=5 format=3 uid="uid://bjv588hsldhjm"]
 
 [ext_resource type="PackedScene" uid="uid://d4bg3x2jq5qny" path="res://Scene/enemy_3.tscn" id="1_w7w6e"]
+[ext_resource type="PackedScene" uid="uid://q5n87ma4k5sd" path="res://Scene/Projectile/AssaultProjectile.tscn" id="3_0sfpg"]
+[ext_resource type="PackedScene" uid="uid://duuxtmmcrmnhc" path="res://Scene/Projectile/MachineProjectile.tscn" id="3_i042h"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_yyf5p"]
 
@@ -14,3 +16,14 @@ texture = SubResource("CanvasTexture_yyf5p")
 
 [node name="Enemy_3" parent="." instance=ExtResource("1_w7w6e")]
 position = Vector2(544, 298)
+
+[node name="Node2D" parent="." instance=ExtResource("3_i042h")]
+position = Vector2(369, 307)
+rotation = -0.0680678
+scale = Vector2(0.5, 0.5)
+
+[node name="Camera2D" type="Camera2D" parent="Node2D"]
+
+[node name="AssaultProjectile" parent="." instance=ExtResource("3_0sfpg")]
+position = Vector2(209, 344)
+rotation = 1.89543
