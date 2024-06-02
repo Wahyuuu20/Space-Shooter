@@ -52,13 +52,14 @@ func Change_Weapon(weapon_name: String):
 
 
 func Shoot_and_Load_Projectile():
-	for child in gunpoint.get_children():
-		var assaultprojectile = current_weapon.projectile_to_load_weapon.instantiate()	
-		assaultprojectile.global_position = child.global_position
-		assaultprojectile.global_rotation = global_rotation	
-		get_tree().current_scene.add_child(assaultprojectile)
-		assaultprojectile.Damage = current_weapon.projectile_damage
-		
+		for child in gunpoint.get_children():
+			var projectileweapon = current_weapon.projectile_to_load_weapon.instantiate()	
+			projectileweapon.global_position = child.global_position
+			projectileweapon.global_rotation = global_rotation	
+			get_tree().current_scene.add_child(projectileweapon)
+			projectileweapon.Damage = current_weapon.projectile_damage
+			projectileweapon.projectile_speed = current_weapon.projectile_velocity
+	
 
 
 func _on_animation_player_animation_finished(anim_name):
