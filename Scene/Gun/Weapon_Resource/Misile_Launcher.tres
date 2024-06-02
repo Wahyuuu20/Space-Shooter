@@ -1,5 +1,6 @@
-[gd_resource type="Resource" script_class="Weapon_Resource" load_steps=2 format=3 uid="uid://cti023xvfpv0t"]
+[gd_resource type="Resource" script_class="Weapon_Resource" load_steps=3 format=3 uid="uid://cti023xvfpv0t"]
 
+[ext_resource type="PackedScene" uid="uid://c4iadnh6c8a6h" path="res://Scene/Projectile/misile_projectile.tscn" id="1_ohx8c"]
 [ext_resource type="Script" path="res://Scene/Gun/Weapon_Resource/WeaponResource.gd" id="1_wf850"]
 
 [resource]
@@ -10,6 +11,9 @@ shoot_anim = ""
 reload_anim = ""
 deactive_anim = "Animation_Misile_Deactive"
 Out_of_ammo_anim = ""
+projectile_to_load_weapon = ExtResource("1_ohx8c")
+projectile_velocity = 100.0
+projectile_damage = 30
 current_ammo = 0
 reserve_ammo = 0
 magazine = 0
