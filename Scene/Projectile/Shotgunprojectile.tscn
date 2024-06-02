@@ -1,0 +1,39 @@
+[gd_scene load_steps=4 format=3 uid="uid://wt7rtd4i4my1"]
+
+[ext_resource type="Texture2D" uid="uid://hfcljv0ibxa2" path="res://Asset/Space Shooter Redux/PNG/Lasers/laserRed01.png" id="1_cvd4v"]
+[ext_resource type="Script" path="res://Scene/Projectile/Shotgunprojectile.gd" id="1_wbd7j"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_strlx"]
+radius = 5.0
+height = 56.0
+
+[node name="ShotguProjectile" type="Area2D"]
+script = ExtResource("1_wbd7j")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_cvd4v")
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+position = Vector2(6, 1)
+rotation = 0.350811
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_cvd4v")
+
+[node name="Sprite2D3" type="Sprite2D" parent="."]
+position = Vector2(-6, 1)
+rotation = -0.350811
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_cvd4v")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+scale = Vector2(0.5, 0.5)
+shape = SubResource("CapsuleShape2D_strlx")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+visible = false
+position = Vector2(0, 1.90735e-06)
+scale = Vector2(0.5, 1.45)
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

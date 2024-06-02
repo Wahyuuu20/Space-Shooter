@@ -1,21 +1,21 @@
 [gd_scene load_steps=4 format=3 uid="uid://q5n87ma4k5sd"]
 
-[ext_resource type="Script" path="res://Script/projectile-player.gd" id="1_o5wgu"]
-[ext_resource type="Texture2D" uid="uid://dnixpsufejw65" path="res://Asset/Space Shooter Redux/PNG/Lasers/laserRed15.png" id="2_q146e"]
+[ext_resource type="Script" path="res://Script/projectile-player.gd" id="1_ipdjw"]
+[ext_resource type="Texture2D" uid="uid://dnixpsufejw65" path="res://Asset/Space Shooter Redux/PNG/Lasers/laserRed15.png" id="2_spgo1"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_trr5k"]
 radius = 6.66667
 height = 53.3333
 
-[node name="ProjectilePlayer" type="Area2D"]
+[node name="AssaultProjectile" type="Area2D"]
 position = Vector2(0, -14)
 scale = Vector2(0.5, 0.5)
-script = ExtResource("1_o5wgu")
+script = ExtResource("1_ipdjw")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(0, -3)
-scale = Vector2(0.513889, 0.95614)
-texture = ExtResource("2_q146e")
+position = Vector2(0, 6.125)
+scale = Vector2(0.513889, 0.635965)
+texture = ExtResource("2_spgo1")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
@@ -28,6 +28,5 @@ position = Vector2(4.76837e-07, -1.19209e-06)
 rotation = 1.5708
 scale = Vector2(0.666667, 3)
 
-[connection signal="area_entered" from="." to="." method="Projectile_entered"]
-[connection signal="body_entered" from="." to="." method="Projectile_Entered"]
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="Projectile_screen_exited"]
