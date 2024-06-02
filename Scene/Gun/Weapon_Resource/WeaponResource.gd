@@ -12,6 +12,8 @@ class_name Weapon_Resource
 
 
 
+@export var projectile_velocity : float
+@export var projectile_damage : int
 @export var current_ammo : int
 @export var reserve_ammo : int
 @export var magazine : int
