@@ -5,10 +5,9 @@
 [ext_resource type="Script" path="res://Scene/Weapon_Manager.gd" id="3_2osed"]
 [ext_resource type="Texture2D" uid="uid://bdlr5g66ebdmy" path="res://Asset/Space Shooter Redux/PNG/Damage/playerShip1_damage1.png" id="3_txboj"]
 [ext_resource type="PackedScene" uid="uid://b5aja1jawmh7j" path="res://Scene/Gun/assault_gun_L.tscn" id="3_uqrrs"]
-[ext_resource type="Resource" uid="uid://5xvrp5gp7xhg" path="res://Scene/Gun/Weapon_Resource/Shotgun.tres" id="4_kdrv3"]
+[ext_resource type="Resource" uid="uid://b8wr6ixfij5fk" path="res://Scene/Gun/Weapon_Resource/Assault_gun.tres" id="4_e52le"]
 [ext_resource type="Texture2D" uid="uid://dcnn6ylqbiixx" path="res://Asset/Space Shooter Redux/PNG/Damage/playerShip1_damage2.png" id="4_maqeg"]
 [ext_resource type="PackedScene" uid="uid://bqn8m6vxvgvij" path="res://Scene/Gun/shotgun_L.tscn" id="5_3oxgj"]
-[ext_resource type="Resource" uid="uid://cti023xvfpv0t" path="res://Scene/Gun/Weapon_Resource/Misile_Launcher.tres" id="5_midbg"]
 [ext_resource type="Texture2D" uid="uid://ks0q3fhxtbm" path="res://Asset/Space Shooter Redux/PNG/Damage/playerShip1_damage3.png" id="5_qd2w3"]
 [ext_resource type="PackedScene" uid="uid://baujfj3pysp0t" path="res://Scene/Gun/misile_launcher_L.tscn" id="6_j62x7"]
 [ext_resource type="PackedScene" uid="uid://c8r2xcm17j043" path="res://Scene/Gun/assault_gun_R.tscn" id="7_0tq60"]
@@ -21,6 +20,7 @@
 [ext_resource type="PackedScene" uid="uid://daegi148n2g6b" path="res://Scene/Gun/MobileSuit/Mobile_Suit_Gun.tscn" id="14_s0lcb"]
 [ext_resource type="PackedScene" uid="uid://brno72umjq2wy" path="res://Scene/Gun/MobileSuit/Mobile_Suit_Sheild.tscn" id="15_g8ire"]
 [ext_resource type="Texture2D" uid="uid://c76sfg8ltospj" path="res://Asset/Space Shooter Redux/PNG/playerShip1_red.png" id="15_ytuf0"]
+[ext_resource type="Resource" uid="uid://08vqi8pk0xpg" path="res://Scene/Gun/MobileSuit/MobileSuit_Resource/Mobile_Suit.tres" id="16_uliju"]
 
 [sub_resource type="Animation" id="Animation_m5wnv"]
 resource_name = "Animation_Assault_Active"
@@ -1245,8 +1245,8 @@ script = ExtResource("1_58nv7")
 [node name="Weapon_Manager" type="Node2D" parent="."]
 position = Vector2(-25, 2.5)
 script = ExtResource("3_2osed")
-_weapon_resources = Array[Resource("res://Scene/Gun/Weapon_Resource/WeaponResource.gd")]([ExtResource("4_kdrv3"), ExtResource("5_midbg")])
-start_weapons = Array[String](["Shotgun", "Misile_launcher"])
+_weapon_resources = Array[Resource("res://Scene/Gun/Weapon_Resource/WeaponResource.gd")]([ExtResource("4_e52le")])
+start_weapons = Array[String](["Assault_gun"])
 
 [node name="Weapon_Rig" type="Node2D" parent="Weapon_Manager"]
 position = Vector2(25, -2.5)
@@ -1314,6 +1314,8 @@ texture = ExtResource("15_ytuf0")
 [node name="Mobile_Suit_Manager" type="Node2D" parent="."]
 position = Vector2(-25, 30)
 script = ExtResource("12_tsa5m")
+_mobile_suit_resource = Array[Resource("res://Scene/Gun/MobileSuit/MobileSuit_Resource/MobileSuitResource.gd")]([ExtResource("16_uliju")])
+start_mobile_suit = Array[String](["Mobile_Suit_Speed"])
 
 [node name="Mobile_Suit_Rig" type="Node2D" parent="Mobile_Suit_Manager"]
 
