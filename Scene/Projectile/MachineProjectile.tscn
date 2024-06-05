@@ -8,7 +8,7 @@ radius = 4.0
 height = 54.0
 
 [node name="Area2D" type="Area2D"]
-scale = Vector2(0.514, 0.636)
+scale = Vector2(0.2, 0.2)
 script = ExtResource("1_umgir")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
