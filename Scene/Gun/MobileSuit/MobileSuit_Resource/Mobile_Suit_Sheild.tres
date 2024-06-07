@@ -5,6 +5,6 @@
 [resource]
 script = ExtResource("1_4dc6k")
 mobile_suit_name = "Mobile_Suit_Sheild"
-suit_active_ani = ""
-suit_deactive_ani = ""
-suit_destroy_ani = ""
+animation_suit_active = "Animation_Sheild_Active"
+animation_suit_deactive = "Animation_Sheild_Deactive"
+animation_suit_destroy = ""

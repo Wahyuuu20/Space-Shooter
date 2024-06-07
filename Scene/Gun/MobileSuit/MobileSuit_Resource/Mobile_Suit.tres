@@ -5,6 +5,6 @@
 [resource]
 script = ExtResource("1_v3oml")
 mobile_suit_name = "Mobile_Suit_Speed"
-suit_active_ani = "Animation_Speed_Active"
-suit_deactive_ani = "Animation_Speed_Deactive"
-suit_destroy_ani = ""
+animation_suit_active = "Animation_Speed_Active"
+animation_suit_deactive = "Animation_Speed_Deactive"
+animation_suit_destroy = ""

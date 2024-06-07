@@ -8,7 +8,6 @@
 [ext_resource type="Resource" uid="uid://b8wr6ixfij5fk" path="res://Scene/Gun/Weapon_Resource/Assault_gun.tres" id="4_e52le"]
 [ext_resource type="Texture2D" uid="uid://dcnn6ylqbiixx" path="res://Asset/Space Shooter Redux/PNG/Damage/playerShip1_damage2.png" id="4_maqeg"]
 [ext_resource type="PackedScene" uid="uid://bqn8m6vxvgvij" path="res://Scene/Gun/shotgun_L.tscn" id="5_3oxgj"]
-[ext_resource type="Resource" uid="uid://cti023xvfpv0t" path="res://Scene/Gun/Weapon_Resource/Misile_Launcher.tres" id="5_avhd8"]
 [ext_resource type="Texture2D" uid="uid://ks0q3fhxtbm" path="res://Asset/Space Shooter Redux/PNG/Damage/playerShip1_damage3.png" id="5_qd2w3"]
 [ext_resource type="PackedScene" uid="uid://baujfj3pysp0t" path="res://Scene/Gun/misile_launcher_L.tscn" id="6_j62x7"]
 [ext_resource type="PackedScene" uid="uid://c8r2xcm17j043" path="res://Scene/Gun/assault_gun_R.tscn" id="7_0tq60"]
@@ -21,6 +20,8 @@
 [ext_resource type="PackedScene" uid="uid://daegi148n2g6b" path="res://Scene/Gun/MobileSuit/Mobile_Suit_Gun.tscn" id="14_s0lcb"]
 [ext_resource type="PackedScene" uid="uid://brno72umjq2wy" path="res://Scene/Gun/MobileSuit/Mobile_Suit_Sheild.tscn" id="15_g8ire"]
 [ext_resource type="Texture2D" uid="uid://c76sfg8ltospj" path="res://Asset/Space Shooter Redux/PNG/playerShip1_red.png" id="15_ytuf0"]
+[ext_resource type="Resource" uid="uid://dxcvnhwch2wg3" path="res://Scene/Gun/MobileSuit/MobileSuit_Resource/Mobile_Suit_Sheild.tres" id="16_llpap"]
+[ext_resource type="Resource" uid="uid://08vqi8pk0xpg" path="res://Scene/Gun/MobileSuit/MobileSuit_Resource/Mobile_Suit.tres" id="16_uliju"]
 
 [sub_resource type="Animation" id="Animation_m5wnv"]
 resource_name = "Animation_Assault_Active"
@@ -1078,88 +1079,6 @@ _data = {
 "RESET": SubResource("Animation_vk0dd")
 }
 
-[sub_resource type="Animation" id="Animation_nye3w"]
-resource_name = "Animation_Mobile_Suit_Gun"
-
-[sub_resource type="Animation" id="Animation_6rcia"]
-resource_name = "Animation_Sheild_Active"
-length = 1.7
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Mobile_Suit_Rig/Mobile_Suit_Sheild:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5, 1, 1.1, 1.4, 1.7),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
-"update": 0,
-"values": [Vector2(25, 392), Vector2(25, 300), Vector2(25, 150), Vector2(25, 100), Vector2(25, 150), Vector2(25, -20)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Mobile_Suit_Rig/Mobile_Suit_Sheild:visible")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0.1, 0.2),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [false, true]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Mobile_Suit_Rig/Mobile_Suit_Sheild:scale")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.5, 1, 1.3),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
-"values": [Vector2(0.01, 0.01), Vector2(0.5, 0.5), Vector2(0.5, 0.5), Vector2(1, 1)]
-}
-
-[sub_resource type="Animation" id="Animation_cm1yn"]
-resource_name = "Animation_Sheild_Deactive"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Mobile_Suit_Rig/Mobile_Suit_Sheild:visible")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [true, false]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Mobile_Suit_Rig/Mobile_Suit_Sheild:scale")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.5, 1),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector2(1, 1), Vector2(1, 1), Vector2(0.1, 0.1)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Mobile_Suit_Rig/Mobile_Suit_Sheild:position")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.5, 1),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
-"values": [Vector2(25, -20), Vector2(25, -25), Vector2(25, 10), Vector2(25, -500)]
-}
-
 [sub_resource type="Animation" id="Animation_220v7"]
 resource_name = "Animation_Speed_Active"
 length = 2.0
@@ -1315,9 +1234,87 @@ tracks/5/keys = {
 "values": [Vector2(0.01, 0.01)]
 }
 
+[sub_resource type="Animation" id="Animation_6rcia"]
+resource_name = "Animation_Sheild_Active"
+length = 1.7
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Mobile_Suit_Rig/Mobile_Suit_Sheild:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1, 1.1, 1.4, 1.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(25, 392), Vector2(25, 300), Vector2(25, 150), Vector2(25, 100), Vector2(25, 150), Vector2(25, -20)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Mobile_Suit_Rig/Mobile_Suit_Sheild:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Mobile_Suit_Rig/Mobile_Suit_Sheild:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5, 1, 1.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0.01, 0.01), Vector2(0.5, 0.5), Vector2(0.5, 0.5), Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_cm1yn"]
+resource_name = "Animation_Sheild_Deactive"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Mobile_Suit_Rig/Mobile_Suit_Sheild:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Mobile_Suit_Rig/Mobile_Suit_Sheild:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1, 1), Vector2(0.1, 0.1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Mobile_Suit_Rig/Mobile_Suit_Sheild:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(25, -20), Vector2(25, -25), Vector2(25, 10), Vector2(25, -500)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_vxygl"]
 _data = {
-"Animation_Mobile_Suit_Gun": SubResource("Animation_nye3w"),
 "Animation_Sheild_Active": SubResource("Animation_6rcia"),
 "Animation_Sheild_Deactive": SubResource("Animation_cm1yn"),
 "Animation_Speed_Active": SubResource("Animation_220v7"),
@@ -1357,7 +1354,7 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="Player" type="CharacterBody2D" groups=["Damageable", "Player"]]
+[node name="Player" type="CharacterBody2D" groups=["Damageable"]]
 scale = Vector2(0.5, 0.5)
 script = ExtResource("1_58nv7")
 
@@ -1366,8 +1363,8 @@ script = ExtResource("1_58nv7")
 [node name="Weapon_Manager" type="Node2D" parent="."]
 position = Vector2(-25, 2.5)
 script = ExtResource("3_2osed")
-_weapon_resources = Array[Resource("res://Scene/Gun/Weapon_Resource/WeaponResource.gd")]([ExtResource("4_e52le"), ExtResource("5_avhd8")])
-start_weapons = Array[String](["Assault_gun", "Misile_launcher"])
+_weapon_resources = Array[Resource("res://Scene/Gun/Weapon_Resource/WeaponResource.gd")]([ExtResource("4_e52le")])
+start_weapons = Array[String](["Assault_gun"])
 
 [node name="Weapon_Rig" type="Node2D" parent="Weapon_Manager"]
 position = Vector2(25, -2.5)
@@ -1432,27 +1429,29 @@ position = Vector2(0, 4.54747e-13)
 [node name="PlayerSprite" type="Sprite2D" parent="AtributPlayerSprite"]
 texture = ExtResource("15_ytuf0")
 
-[node name="Mobile_Suit_Manager(Error)" type="Node2D" parent="."]
+[node name="Mobile_Suit_Manager" type="Node2D" parent="."]
 position = Vector2(-25, 30)
 script = ExtResource("12_tsa5m")
+_mobile_suit_resource = Array[Resource("res://Scene/Gun/MobileSuit/MobileSuit_Resource/MobileSuitResource.gd")]([ExtResource("16_uliju"), ExtResource("16_llpap")])
+start_mobile_suit = Array[String](["Mobile_Suit_Speed", "Mobile_Suit_Sheild"])
 
-[node name="Mobile_Suit_Rig" type="Node2D" parent="Mobile_Suit_Manager(Error)"]
+[node name="Mobile_Suit_Rig" type="Node2D" parent="Mobile_Suit_Manager"]
 
-[node name="Mobile_Suit_Speed" parent="Mobile_Suit_Manager(Error)/Mobile_Suit_Rig" instance=ExtResource("13_rw8a5")]
+[node name="Mobile_Suit_Speed" parent="Mobile_Suit_Manager/Mobile_Suit_Rig" instance=ExtResource("13_rw8a5")]
 visible = false
 position = Vector2(25, 500)
 scale = Vector2(0.5, 0.5)
 
-[node name="Mobile_Suit_Gun" parent="Mobile_Suit_Manager(Error)/Mobile_Suit_Rig" instance=ExtResource("14_s0lcb")]
+[node name="Mobile_Suit_Gun" parent="Mobile_Suit_Manager/Mobile_Suit_Rig" instance=ExtResource("14_s0lcb")]
 visible = false
 position = Vector2(25, -12.5)
 
-[node name="Mobile_Suit_Sheild" parent="Mobile_Suit_Manager(Error)/Mobile_Suit_Rig" instance=ExtResource("15_g8ire")]
+[node name="Mobile_Suit_Sheild" parent="Mobile_Suit_Manager/Mobile_Suit_Rig" instance=ExtResource("15_g8ire")]
 visible = false
 position = Vector2(25, 392)
 scale = Vector2(0.01, 0.01)
 
-[node name="AnimationMobileSuit" type="AnimationPlayer" parent="Mobile_Suit_Manager(Error)/Mobile_Suit_Rig"]
+[node name="AnimationMobileSuit" type="AnimationPlayer" parent="Mobile_Suit_Manager/Mobile_Suit_Rig"]
 root_node = NodePath("../..")
 libraries = {
 "": SubResource("AnimationLibrary_vxygl")
@@ -1470,6 +1469,8 @@ polygon = PackedVector2Array(-8, -38, 7, -38, 11, -13, 35, 1, 40, -1, 44, -7, 49
 [node name="Timer" type="Timer" parent="."]
 
 [node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(2, 2)
 limit_smoothed = true
 
 [connection signal="animation_finished" from="Weapon_Manager/Weapon_Rig/AnimationPlayer" to="Weapon_Manager" method="_on_animation_player_animation_finished"]
+[connection signal="animation_finished" from="Mobile_Suit_Manager/Mobile_Suit_Rig/AnimationMobileSuit" to="Mobile_Suit_Manager" method="_on_animation_mobile_suit_animation_finished"]
