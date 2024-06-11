@@ -23,11 +23,7 @@ func Update(delta: float):
 		Randmoize_wander()		
 
 func Physics_Update(_delta: float):
-	var direction = player.global_position - enemy.global_position
-	print(direction)
+	
 	if enemy:
 		enemy.velocity = move_direction * move_speed
 	
-	if direction.length() < 90:
-		change_state.emit(self, "Chase")
-

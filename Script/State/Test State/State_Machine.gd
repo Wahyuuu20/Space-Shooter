@@ -27,16 +27,16 @@ func _physics_process(delta):
 func on_child_change_state(state, new_state_name):
 #	print(state," ",new_state_name)
 	if state != current_state:
-#		print("not_current_state")
+		print("not_current_state")
 		return
 		
 	var new_state = state.get(new_state_name.to_lower())
 	if	!new_state:
-#		print("not_new_state")		
+		print("not_new_state")		
 		return
 	
 	if current_state:
-#		print("current_state")		
+		print("current_state")		
 		current_state.Exit()
 						
 	new_state.Enter()

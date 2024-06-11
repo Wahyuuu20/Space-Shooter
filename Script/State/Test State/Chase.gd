@@ -16,4 +16,5 @@ func Physics_Update(_delta :float):
 	else:
 		enemy.velocity = Vector2()
 	
-	
+	if direction.length() == 150:
+		enemy.change_state(self,"EnemyIdle")
