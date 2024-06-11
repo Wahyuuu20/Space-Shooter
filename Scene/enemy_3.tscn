@@ -1,19 +1,21 @@
-[gd_scene load_steps=7 format=3 uid="uid://d4bg3x2jq5qny"]
+[gd_scene load_steps=5 format=3 uid="uid://d4bg3x2jq5qny"]
 
 [ext_resource type="Texture2D" uid="uid://d1682c8pstam4" path="res://Asset/Space Shooter Redux/PNG/Enemies/enemyBlack5.png" id="1_8d78t"]
 [ext_resource type="Script" path="res://Scene/Enemy_3.gd" id="1_gbhi4"]
-[ext_resource type="Script" path="res://Script/State/Test State/State_Machine.gd" id="3_h4b6p"]
-[ext_resource type="Script" path="res://Script/State/Test State/EnemyIdle.gd" id="4_62ak0"]
-[ext_resource type="Script" path="res://Script/State/Test State/Chase.gd" id="5_1rwhv"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_jhi21"]
 radius = 33.0
 height = 72.0
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_dycrs"]
+radius = 238.16
+
 [node name="Enemy_3" type="CharacterBody2D" groups=["Enemy"]]
+light_mask = 2
 script = ExtResource("1_gbhi4")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+rotation = -1.5708
 texture = ExtResource("1_8d78t")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -21,14 +23,19 @@ visible = false
 position = Vector2(0, 6)
 shape = SubResource("CapsuleShape2D_jhi21")
 
-[node name="State Machine" type="Node" parent="." node_paths=PackedStringArray("intitial_state")]
-script = ExtResource("3_h4b6p")
-intitial_state = NodePath("EnemyIdle")
+[node name="RayCast2D" type="RayCast2D" parent="."]
+position = Vector2(40, 0)
+rotation = -1.5708
+target_position = Vector2(-1, 193)
 
-[node name="EnemyIdle" type="Node" parent="State Machine" node_paths=PackedStringArray("enemy")]
-script = ExtResource("4_62ak0")
-enemy = NodePath("../..")
+[node name="Area2D" type="Area2D" parent="."]
 
-[node name="Chase" type="Node" parent="State Machine" node_paths=PackedStringArray("enemy")]
-script = ExtResource("5_1rwhv")
-enemy = NodePath("../..")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_dycrs")
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+autostart = true
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
