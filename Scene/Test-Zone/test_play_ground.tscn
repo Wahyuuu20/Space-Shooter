@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://bjv588hsldhjm"]
 
 [ext_resource type="PackedScene" uid="uid://d4bg3x2jq5qny" path="res://Scene/enemy_3.tscn" id="1_w7w6e"]
-[ext_resource type="PackedScene" uid="uid://gucyibcu53et" path="res://Scene/player.tscn" id="2_pa7kb"]
+[ext_resource type="PackedScene" uid="uid://gucyibcu53et" path="res://Scene/player.tscn" id="2_xyego"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_yyf5p"]
 
@@ -13,8 +13,7 @@ position = Vector2(684.5, 385)
 scale = Vector2(1385, 786)
 texture = SubResource("CanvasTexture_yyf5p")
 
-[node name="Player" parent="." instance=ExtResource("2_pa7kb")]
-position = Vector2(346, 395)
-
 [node name="Enemy_3" parent="." instance=ExtResource("1_w7w6e")]
 position = Vector2(932, 222)
+
+[node name="Player" parent="." instance=ExtResource("2_xyego")]
