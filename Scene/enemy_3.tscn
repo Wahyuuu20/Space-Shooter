@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://d4bg3x2jq5qny"]
+[gd_scene load_steps=6 format=3 uid="uid://d4bg3x2jq5qny"]
 
 [ext_resource type="Texture2D" uid="uid://d1682c8pstam4" path="res://Asset/Space Shooter Redux/PNG/Enemies/enemyBlack5.png" id="1_8d78t"]
 [ext_resource type="Script" path="res://Scene/Enemy_3.gd" id="1_gbhi4"]
+[ext_resource type="PackedScene" uid="uid://2i6g1sgcwre4" path="res://UI/HealthBar/healthbar_enemy.tscn" id="2_xr4gg"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_jhi21"]
 radius = 33.0
@@ -10,9 +11,16 @@ height = 72.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_dycrs"]
 radius = 238.16
 
-[node name="Enemy_3" type="CharacterBody2D" groups=["Enemy"]]
+[node name="Enemy_3" type="CharacterBody2D" groups=["Damageable", "Enemy"]]
 light_mask = 2
 script = ExtResource("1_gbhi4")
+
+[node name="Healthbar_enemy" parent="." instance=ExtResource("2_xr4gg")]
+offset_left = -49.0
+offset_top = 37.0
+offset_right = 24.0
+offset_bottom = 41.0
+rotation = -1.57346
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 rotation = -1.5708
@@ -20,7 +28,6 @@ texture = ExtResource("1_8d78t")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
-position = Vector2(0, 6)
 shape = SubResource("CapsuleShape2D_jhi21")
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
@@ -28,14 +35,14 @@ position = Vector2(40, 0)
 rotation = -1.5708
 target_position = Vector2(-1, 193)
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="Detection" type="Area2D" parent="."]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Detection"]
 shape = SubResource("CircleShape2D_dycrs")
 
 [node name="Timer" type="Timer" parent="."]
 one_shot = true
 autostart = true
 
-[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
-[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
+[connection signal="body_entered" from="Detection" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Detection" to="." method="_on_area_2d_body_exited"]
