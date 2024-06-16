@@ -1,20 +1,20 @@
 [gd_scene load_steps=5 format=3 uid="uid://b0ud2xjim63py"]
 
 [ext_resource type="PackedScene" uid="uid://dcfl8al3yj8d0" path="res://Scene/background_world.tscn" id="1_3ppqx"]
-[ext_resource type="PackedScene" uid="uid://wqtxx45c6yem" path="res://Scene/enemy.tscn" id="2_7dkv3"]
-[ext_resource type="PackedScene" uid="uid://be5hbel4jwy8n" path="res://Scene/Enemy_2.tscn" id="3_vtwrf"]
+[ext_resource type="PackedScene" uid="uid://bronocnxpm18e" path="res://Scene/Enemy_4.tscn" id="3_wl56k"]
 [ext_resource type="PackedScene" uid="uid://gucyibcu53et" path="res://Scene/player.tscn" id="4_42s2o"]
+[ext_resource type="PackedScene" uid="uid://d4bg3x2jq5qny" path="res://Scene/enemy_3.tscn" id="4_gi1n2"]
 
 [node name="Space Shooter" type="Node2D"]
 
 [node name="Background_World" parent="." instance=ExtResource("1_3ppqx")]
 
-[node name="Enemy" parent="." instance=ExtResource("2_7dkv3")]
-position = Vector2(52.0002, 182)
-
-[node name="Enemy2" parent="." instance=ExtResource("3_vtwrf")]
-position = Vector2(680, 118)
-
 [node name="Player" parent="." instance=ExtResource("4_42s2o")]
 position = Vector2(1308, 726)
 scale = Vector2(0.2, 0.2)
+
+[node name="Enemy_3" parent="." instance=ExtResource("4_gi1n2")]
+position = Vector2(332, 2069)
+
+[node name="Enemy_4" parent="." instance=ExtResource("3_wl56k")]
+position = Vector2(4410, 2084)

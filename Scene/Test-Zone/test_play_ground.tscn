@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://bjv588hsldhjm"]
+[gd_scene load_steps=5 format=3 uid="uid://bjv588hsldhjm"]
 
 [ext_resource type="PackedScene" uid="uid://d4bg3x2jq5qny" path="res://Scene/enemy_3.tscn" id="1_w7w6e"]
 [ext_resource type="PackedScene" uid="uid://gucyibcu53et" path="res://Scene/player.tscn" id="2_xyego"]
+[ext_resource type="PackedScene" uid="uid://bronocnxpm18e" path="res://Scene/Enemy_4.tscn" id="3_6fabp"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_yyf5p"]
 
@@ -9,11 +10,15 @@
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 modulate = Color(0.780392, 0.521569, 0.443137, 1)
-position = Vector2(684.5, 385)
-scale = Vector2(1385, 786)
+position = Vector2(4142.5, 1815.5)
+scale = Vector2(8301, 3647)
 texture = SubResource("CanvasTexture_yyf5p")
 
 [node name="Enemy_3" parent="." instance=ExtResource("1_w7w6e")]
-position = Vector2(932, 222)
+position = Vector2(1184, 2227)
+
+[node name="Enemy_4" parent="." instance=ExtResource("3_6fabp")]
+position = Vector2(561, 2227)
 
 [node name="Player" parent="." instance=ExtResource("2_xyego")]
+position = Vector2(852, 1955)

@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Space-Shooter"
-run/main_scene="res://space_shooterMain.tscn"
+run/main_scene="res://Scene/Lobby/Lobby_Start_Menu.tscn"
 config/features=PackedStringArray("4.1", "Forward Plus")
 config/icon="res://icon.svg"
 
@@ -23,6 +23,7 @@ global="*res://Script/Global.gd"
 
 window/size/viewport_width=1366
 window/size/viewport_height=768
+window/size/resizable=false
 
 [input]
 
@@ -97,3 +98,5 @@ Mobile_Suit_2={
 2d_render/layer_1="player"
 2d_render/layer_2="enemy"
 2d_physics/layer_1="player"
+2d_physics/layer_2="Enemy4"
+2d_physics/layer_3="Enemy3"
