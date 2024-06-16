@@ -1,53 +1,42 @@
 extends CharacterBody2D
-class_name Enemy3
+class_name Enemy4
 
-@onready var raycast = $RayCast2D
+@onready var raycast = $Raycast/RayCast2D
 @onready var healthbar = $Healthbar_enemy
 
-
-var player = null
 var movedirection : Vector2
-var speed:float = 100
+var speed : float = 100
+var speedChase : float = 150
 var wandertime : float
-var state = idle
 var health : int
-var speedchase :float= 50
-var enemy4
-var score
+var player
+var state = idle
+var enamy3
 
-enum {
+enum{
 	idle,
 	chase,
 	shoot,
-	example
+
 }
 
 func _ready():
 	health = 100
 	healthbar.init_health(health)
 	
-	var enemy4 = get_tree().get_first_node_in_group("Enemy4")
-	
 	#Start Random
 	$Timer.start(wandertime)
 	random()
 
-
 func _process(delta:float):
 	move_and_slide()
-
 	
-	#Random terus menerus setiap waktu berhenti
 	if $Timer.is_stopped():
 		random()
 		$Timer.start(wandertime)
-	
-#	if raycast.is_colliding():
-#		print("colliding")
 		
-	
+
 		
-	#state machine
 	match state:
 		idle:
 			self.velocity = movedirection * 1000 * delta
@@ -60,15 +49,23 @@ func _process(delta:float):
 			RotaionDirectionPlayer(delta)
 			
 		shoot:
-			loadprojectileenmey()	
+			loadeprojectilenemy()	
 		
-				
-func random():
-	movedirection = Vector2(randf_range(-1,1),randf_range(-1,1)).normalized()		
-	wandertime = randf_range(1,3)
 	
-func loadprojectileenmey():	
-	pass
+func random():
+	movedirection = Vector2(randf_range(-1,1),randf_range(-1,1)).normalized()
+	wandertime = randf_range(1,3)
+
+func Damage(value:int):
+	health -= value
+	if health < 1:
+		queue_free()
+		
+	healthbar.health = health
+
+func loadeprojectilenemy():
+	pass	
+
 
 func RotaionDirectionPlayer(delta):
 	if player:
@@ -76,45 +73,38 @@ func RotaionDirectionPlayer(delta):
 		var dir = (player.global_position - global_position)
 		var angel = self.transform.x.angle_to(dir)
 		self.rotate(sign(angel)* min(delta*rotationSpeed, abs(angel)))
-		
 	
+		
 	if player == null:
 		var rotationSpeed = 10
 		var dir = movedirection
 		var angel = self.transform.x.angle_to(dir)
 		self.rotate(sign(angel)* min(delta*rotationSpeed, abs(angel)))		
 	
-		
+
 func RotaionDirectionIdle(delta):
-		var rotationSpeed = 10
-		var dir = movedirection
-		var angel = self.transform.x.angle_to(dir)
-		self.rotate(sign(angel)* min(delta*rotationSpeed, abs(angel)))		
-	
-
-func Damage(value:int):
-	health -= value	
-	if health < 1:
-		queue_free()
-		
-	healthbar.health = health	
+	var rotationSpeed = 10
+	var dir = movedirection
+	var angel = self.transform.x.angle_to(dir)
+	self.rotate(sign(angel)* min(delta*rotationSpeed, abs(angel)))   
 		
 
 
-func _on_area_2d_body_entered(body):
+func _on_first_detection_body_entered(body):
+	print(body)
 	player = body
 	if body == player:
 		state = chase
 	if body == self:
 		state = idle
-			
 
 
-func _on_area_2d_body_exited(body):
-	enemy4 = null
+func _on_first_detection_body_exited(body):
 	player = null
+	enamy3 = null
 	if body != player:
 		state = idle
+
 
 
 func _on_second_detection_body_entered(body):

@@ -1,18 +1,20 @@
-[gd_scene load_steps=6 format=3 uid="uid://d4bg3x2jq5qny"]
+[gd_scene load_steps=7 format=3 uid="uid://d4bg3x2jq5qny"]
 
 [ext_resource type="Texture2D" uid="uid://d1682c8pstam4" path="res://Asset/Space Shooter Redux/PNG/Enemies/enemyBlack5.png" id="1_8d78t"]
 [ext_resource type="Script" path="res://Scene/Enemy_3.gd" id="1_gbhi4"]
 [ext_resource type="PackedScene" uid="uid://2i6g1sgcwre4" path="res://UI/HealthBar/healthbar_enemy.tscn" id="2_xr4gg"]
+[ext_resource type="Texture2D" uid="uid://qbd8brmmghn0" path="res://Asset/Space Shooter Redux/PNG/Parts/gun00.png" id="3_6xjht"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_jhi21"]
 radius = 33.0
 height = 72.0
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_dycrs"]
-radius = 238.16
+[sub_resource type="CircleShape2D" id="CircleShape2D_0gbbk"]
 
-[node name="Enemy_3" type="CharacterBody2D" groups=["Damageable", "Enemy"]]
+[node name="Enemy_3" type="CharacterBody2D" groups=["Damageable", "Enemy3"]]
 light_mask = 2
+collision_layer = 4
+collision_mask = 3
 script = ExtResource("1_gbhi4")
 
 [node name="Healthbar_enemy" parent="." instance=ExtResource("2_xr4gg")]
@@ -21,6 +23,24 @@ offset_top = 37.0
 offset_right = 24.0
 offset_bottom = 41.0
 rotation = -1.57346
+
+[node name="Gun" type="Node2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="Gun"]
+position = Vector2(29, 21)
+rotation = -1.5708
+texture = ExtResource("3_6xjht")
+
+[node name="Marker2D" type="Marker2D" parent="Gun/Sprite2D"]
+position = Vector2(1, 18)
+
+[node name="Sprite2D2" type="Sprite2D" parent="Gun"]
+position = Vector2(30, -21)
+rotation = -1.5708
+texture = ExtResource("3_6xjht")
+
+[node name="Marker2D2" type="Marker2D" parent="Gun/Sprite2D2"]
+position = Vector2(-1.90735e-06, 18)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 rotation = -1.5708
@@ -33,16 +53,28 @@ shape = SubResource("CapsuleShape2D_jhi21")
 [node name="RayCast2D" type="RayCast2D" parent="."]
 position = Vector2(40, 0)
 rotation = -1.5708
-target_position = Vector2(-1, 193)
+target_position = Vector2(-1, 200)
 
-[node name="Detection" type="Area2D" parent="."]
+[node name="Detection" type="Node2D" parent="."]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Detection"]
-shape = SubResource("CircleShape2D_dycrs")
+[node name="firstDetection" type="Area2D" parent="Detection"]
+collision_layer = 4
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Detection/firstDetection"]
+scale = Vector2(30, 30)
+shape = SubResource("CircleShape2D_0gbbk")
+
+[node name="SecondDetection" type="Area2D" parent="Detection"]
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Detection/SecondDetection"]
+scale = Vector2(15, 15)
+shape = SubResource("CircleShape2D_0gbbk")
 
 [node name="Timer" type="Timer" parent="."]
 one_shot = true
 autostart = true
 
-[connection signal="body_entered" from="Detection" to="." method="_on_area_2d_body_entered"]
-[connection signal="body_exited" from="Detection" to="." method="_on_area_2d_body_exited"]
+[connection signal="body_entered" from="Detection/firstDetection" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Detection/firstDetection" to="." method="_on_area_2d_body_exited"]
+[connection signal="body_entered" from="Detection/SecondDetection" to="." method="_on_second_detection_body_entered"]
+[connection signal="body_exited" from="Detection/SecondDetection" to="." method="_on_second_detection_body_exited"]

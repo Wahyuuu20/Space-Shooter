@@ -13,6 +13,7 @@ var SpeedChase : float = 100
 var playerChase = false
 var player = false
 var playerLook = false
+var enemy
 
 #Health
 var health : int
@@ -21,7 +22,7 @@ var health : int
 func _ready():
 	health = 100
 	healthbar.init_health(health)
-	
+	enemy = get_tree().get_first_node_in_group("Enemy")
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
