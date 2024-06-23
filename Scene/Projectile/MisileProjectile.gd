@@ -22,3 +22,12 @@ func Projectile_screen_exited():
 	queue_free()
 
 
+
+
+func _on_body_entered(body):
+	if body.is_in_group("Damageable"):
+		body.Damage(Damage)
+		var effect = bullet_efect.instantiate()
+		effect.global_position = global_position
+		get_tree().current_scene.add_child(effect)
+		queue_free()

@@ -41,9 +41,11 @@ target_position = Vector2(-12, 300)
 target_position = Vector2(-6, 300)
 
 [node name="MarkLeft" type="Marker2D" parent="AtributeEnemy"]
+visible = false
 position = Vector2(-45, 22)
 
 [node name="MarkRight" type="Marker2D" parent="AtributeEnemy"]
+visible = false
 position = Vector2(44, 23)
 
 [node name="GunLeft" type="Sprite2D" parent="AtributeEnemy"]

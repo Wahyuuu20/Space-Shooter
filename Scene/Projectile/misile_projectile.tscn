@@ -4,14 +4,15 @@
 [ext_resource type="Script" path="res://Scene/Projectile/MisileProjectile.gd" id="1_jcbhs"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7cfri"]
-radius = 7.0
-height = 36.0
+radius = 1.0
+height = 16.0
 
 [node name="MisileProjectile" type="Area2D"]
+collision_mask = 6
 script = ExtResource("1_jcbhs")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.1875, 0.642857)
+scale = Vector2(0.121875, 0.560714)
 texture = ExtResource("1_cf4ps")
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
@@ -20,7 +21,7 @@ position = Vector2(0, -0.5)
 scale = Vector2(1, 1.85)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
 shape = SubResource("CapsuleShape2D_7cfri")
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

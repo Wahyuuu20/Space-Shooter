@@ -14,7 +14,7 @@ class_name Player
 # Var Player
 @export var Speed : float = 250
 @export var accel: float = 60
-@export var BoostSpeed : float = 500
+@export var BoostSpeed : float = 100
 @export var AccelBoost : float = 120
 @export var DashSpeed : float = 1000
 @export var timerCount = 1

@@ -3,7 +3,7 @@ class_name Enemy3
 
 @onready var raycast = $RayCast2D
 @onready var healthbar = $Healthbar_enemy
-
+signal killed
 
 var player = null
 var movedirection : Vector2
@@ -94,7 +94,8 @@ func RotaionDirectionIdle(delta):
 
 func Damage(value:int):
 	health -= value	
-	if health < 1:
+	if health <= 0:
+		killed.emit()
 		queue_free()
 		
 	healthbar.health = health	

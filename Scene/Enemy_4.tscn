@@ -30,6 +30,7 @@ rotation = -1.5708
 texture = ExtResource("3_qqguu")
 
 [node name="Marker2D" type="Marker2D" parent="Gun/Sprite2D"]
+visible = false
 position = Vector2(-1.90735e-06, 18)
 
 [node name="Sprite2D2" type="Sprite2D" parent="Gun"]
@@ -38,6 +39,7 @@ rotation = -1.5708
 texture = ExtResource("3_qqguu")
 
 [node name="Marker2D2" type="Marker2D" parent="Gun/Sprite2D2"]
+visible = false
 position = Vector2(1, 17)
 
 [node name="Raycast" type="Node2D" parent="."]
@@ -57,6 +59,7 @@ position = Vector2(-1, -4)
 shape = SubResource("CircleShape2D_7dxhg")
 
 [node name="Detection Area" type="Node2D" parent="."]
+visible = false
 rotation = 1.5708
 
 [node name="FirstDetection" type="Area2D" parent="Detection Area"]

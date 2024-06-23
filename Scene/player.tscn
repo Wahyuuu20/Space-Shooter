@@ -1,7 +1,8 @@
-[gd_scene load_steps=40 format=3 uid="uid://gucyibcu53et"]
+[gd_scene load_steps=42 format=3 uid="uid://gucyibcu53et"]
 
 [ext_resource type="Script" path="res://Script/PlayerScirpt.gd" id="1_58nv7"]
 [ext_resource type="PackedScene" uid="uid://c61ar83u4ptu2" path="res://UI/UI bar Player/Player_ui.tscn" id="2_7c18t"]
+[ext_resource type="PackedScene" uid="uid://cqgqwbfemqj5l" path="res://Scene/Lobby/score.tscn" id="3_0ynrf"]
 [ext_resource type="Script" path="res://Scene/Weapon_Manager.gd" id="3_2osed"]
 [ext_resource type="Texture2D" uid="uid://bdlr5g66ebdmy" path="res://Asset/Space Shooter Redux/PNG/Damage/playerShip1_damage1.png" id="3_txboj"]
 [ext_resource type="PackedScene" uid="uid://b5aja1jawmh7j" path="res://Scene/Gun/assault_gun_L.tscn" id="3_uqrrs"]
@@ -447,7 +448,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0, 0.1, 0.5),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Vector2(0, 0), Vector2(0, -12.5), Vector2(-18.5, -12.5)]
+"values": [Vector2(0, 0), Vector2(0, -12.5), Vector2(-25.255, -7.295)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -459,7 +460,7 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0, 0.1, 0.5),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Vector2(0, 0), Vector2(0, -12.5), Vector2(17.5, -12.5)]
+"values": [Vector2(0, 0), Vector2(0, -12.5), Vector2(25.255, -7.435)]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -507,7 +508,7 @@ tracks/6/keys = {
 "times": PackedFloat32Array(0, 0.5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(0, -10), Vector2(-8, -10)]
+"values": [Vector2(0, -10), Vector2(-10.4, -9.6)]
 }
 tracks/7/type = "value"
 tracks/7/imported = false
@@ -519,7 +520,7 @@ tracks/7/keys = {
 "times": PackedFloat32Array(0, 0.5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(0, -10), Vector2(8, -10)]
+"values": [Vector2(0, -10), Vector2(10.4, -9.6)]
 }
 
 [sub_resource type="Animation" id="Animation_mbsug"]
@@ -535,7 +536,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(-8, -10), Vector2(0, -10)]
+"values": [Vector2(-10.4, -9.6), Vector2(0, -9.6)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -544,7 +545,7 @@ tracks/1/path = NodePath("GunPoint/GunPoint_L:visible")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.5),
+"times": PackedFloat32Array(0, 0.2),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [true, false]
@@ -559,7 +560,7 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0, 0.5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(8, -10), Vector2(0, -10)]
+"values": [Vector2(10.4, -9.6), Vector2(0, -9.6)]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -568,7 +569,7 @@ tracks/3/path = NodePath("GunPoint/GunPoint_R:visible")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.5),
+"times": PackedFloat32Array(0, 0.2),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [true, false]
@@ -583,7 +584,7 @@ tracks/4/keys = {
 "times": PackedFloat32Array(0, 0.5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(-18.5, -12.5), Vector2(0, -12.5)]
+"values": [Vector2(-25.255, -7.295), Vector2(0, -7.295)]
 }
 tracks/5/type = "value"
 tracks/5/imported = false
@@ -592,7 +593,7 @@ tracks/5/path = NodePath("Misile_launcher/Misile_launcher_L:visible")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
-"times": PackedFloat32Array(0, 0.5),
+"times": PackedFloat32Array(0, 0.2),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [true, false]
@@ -607,7 +608,7 @@ tracks/6/keys = {
 "times": PackedFloat32Array(0, 0.5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(17.5, -12.5), Vector2(0, -12.5)]
+"values": [Vector2(25.255, -7.435), Vector2(0, -7.435)]
 }
 tracks/7/type = "value"
 tracks/7/imported = false
@@ -616,7 +617,7 @@ tracks/7/path = NodePath("Misile_launcher/Misile_launcher_R:visible")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
-"times": PackedFloat32Array(0, 0.5),
+"times": PackedFloat32Array(0, 0.2),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [true, false]
@@ -1357,12 +1358,22 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0jcg0"]
+radius = 12.0
+height = 56.0
+
 [node name="Player" type="CharacterBody2D" groups=["Damageable", "Player"]]
 scale = Vector2(0.5, 0.5)
-collision_mask = 0
+collision_mask = 6
 script = ExtResource("1_58nv7")
 
 [node name="PlayerUi" parent="." instance=ExtResource("2_7c18t")]
+
+[node name="Score" parent="PlayerUi" instance=ExtResource("3_0ynrf")]
+offset_left = 19.0
+offset_top = 12.0
+offset_right = 19.0
+offset_bottom = 12.0
 
 [node name="Weapon_Manager" type="Node2D" parent="."]
 position = Vector2(-25, 2.5)
@@ -1464,11 +1475,11 @@ visible = false
 sprite_frames = SubResource("SpriteFrames_iw6yl")
 animation = &"0"
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
-visible = false
-polygon = PackedVector2Array(-8, -38, 7, -38, 11, -13, 35, 1, 40, -1, 44, -7, 49, -7, 46, 24, 42, 24, 40, 20, 35, 23, 13, 27, 6, 37, -7, 37, -14, 26, -36, 23, -42, 20, -43, 23, -45, 24, -47, 23, -50, -6, -45, -6, -42, -1, -37, 1, -12, -13)
-
 [node name="Timer" type="Timer" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 10)
+shape = SubResource("CapsuleShape2D_0jcg0")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 limit_smoothed = true

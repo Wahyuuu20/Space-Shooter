@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://b14vn0a6se563"]
+
+[ext_resource type="Texture2D" uid="uid://cptvgn4xah7aa" path="res://Asset/Space Shooter Extension/PNG/Sprites X2/Meteors/spaceMeteors_004.png" id="1_rlfi8"]
+[ext_resource type="Script" path="res://Scene/Meteor.gd" id="1_ycau6"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_s4r8e"]
+radius = 216.009
+
+[node name="Meteor" type="CharacterBody2D"]
+scale = Vector2(0.5, 0.5)
+collision_mask = 7
+script = ExtResource("1_ycau6")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_rlfi8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+shape = SubResource("CircleShape2D_s4r8e")

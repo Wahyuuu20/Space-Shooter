@@ -57,18 +57,21 @@ layout_mode = 2
 theme = SubResource("Theme_ylbds")
 action_mode = 0
 text = "Start"
+flat = true
 
 [node name="Help" type="Button" parent="CanvasLayer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme = SubResource("Theme_f4de2")
 action_mode = 0
 text = "Help"
+flat = true
 
 [node name="Quit" type="Button" parent="CanvasLayer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme = SubResource("Theme_unpmf")
 action_mode = 0
 text = "Quit"
+flat = true
 
 [connection signal="pressed" from="CanvasLayer/MarginContainer/VBoxContainer/Start" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="CanvasLayer/MarginContainer/VBoxContainer/Help" to="." method="_on_help_pressed"]

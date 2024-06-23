@@ -10,6 +10,7 @@
 [node name="Background_World" parent="." instance=ExtResource("1_3ppqx")]
 
 [node name="Player" parent="." instance=ExtResource("4_42s2o")]
+visible = false
 position = Vector2(1308, 726)
 scale = Vector2(0.2, 0.2)
 
@@ -18,3 +19,15 @@ position = Vector2(332, 2069)
 
 [node name="Enemy_4" parent="." instance=ExtResource("3_wl56k")]
 position = Vector2(4410, 2084)
+
+[node name="Enemy_5" parent="." instance=ExtResource("3_wl56k")]
+position = Vector2(376, 229)
+
+[node name="Enemy_6" parent="." instance=ExtResource("3_wl56k")]
+position = Vector2(4296, 219)
+
+[node name="Enemy_7" parent="." instance=ExtResource("3_wl56k")]
+position = Vector2(1813, 690)
+
+[node name="Enemy_8" parent="." instance=ExtResource("3_wl56k")]
+position = Vector2(2821, 747)
