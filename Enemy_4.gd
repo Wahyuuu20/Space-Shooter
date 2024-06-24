@@ -1,8 +1,11 @@
 extends CharacterBody2D
 class_name Enemy4
 
+@onready var enemy_projectile = preload("res://Scene/ProjcetileEnemy/ProjectileEnemy_3.tscn")
+@onready var gunpoint = get_node("Projectile")
 @onready var raycast = $Raycast/RayCast2D
 @onready var healthbar = $Healthbar_enemy
+@onready var timer = $TimerDelayFire
 
 var movedirection : Vector2
 var speed : float = 100
@@ -12,6 +15,7 @@ var health : int
 var player
 var state = idle
 var enamy3
+var firedelay:float=0.1
 
 enum{
 	idle,
@@ -35,7 +39,9 @@ func _process(delta:float):
 		random()
 		$Timer.start(wandertime)
 		
-
+	if raycast.is_colliding() and timer.is_stopped():
+		timer.start(firedelay)
+		loadprojectileenmey()
 		
 	match state:
 		idle:
@@ -48,8 +54,6 @@ func _process(delta:float):
 			position += (global.player_pos - position)/speed
 			RotaionDirectionPlayer(delta)
 			
-		shoot:
-			loadeprojectilenemy()	
 		
 	
 func random():
@@ -63,8 +67,12 @@ func Damage(value:int):
 		
 	healthbar.health = health
 
-func loadeprojectilenemy():
-	pass	
+func loadprojectileenmey():	
+	for child in gunpoint.get_children():
+			var projectileweapon = enemy_projectile.instantiate()	
+			projectileweapon.global_position = child.global_position
+			projectileweapon.global_rotation = global_rotation	
+			get_tree().current_scene.add_child(projectileweapon)
 
 
 func RotaionDirectionPlayer(delta):
