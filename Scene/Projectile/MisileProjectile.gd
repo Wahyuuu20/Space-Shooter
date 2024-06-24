@@ -17,13 +17,6 @@ func _on_area_entered(area):
 		get_tree().current_scene.add_child(effect)
 		queue_free()
 
-	
-func Projectile_screen_exited():
-	queue_free()
-
-
-
-
 func _on_body_entered(body):
 	if body.is_in_group("Damageable"):
 		body.Damage(Damage)
@@ -31,3 +24,7 @@ func _on_body_entered(body):
 		effect.global_position = global_position
 		get_tree().current_scene.add_child(effect)
 		queue_free()
+
+
+func _on_visible_on_screen_notifier_2d_screen_exited():
+	queue_free()
