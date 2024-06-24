@@ -1,6 +1,10 @@
 extends CharacterBody2D
 class_name Enemy3
 
+@onready var enemy_projectile = preload("res://Scene/ProjcetileEnemy/ProjectileEnemy_3.tscn")
+@onready var gunpoint = get_node("Projectile")
+@onready var timer = $TimerCollider
+
 @onready var raycast = $RayCast2D
 @onready var healthbar = $Healthbar_enemy
 signal killed
@@ -14,6 +18,7 @@ var health : int
 var speedchase :float= 50
 var enemy4
 var score
+var firedelay:float=0.1
 
 enum {
 	idle,
@@ -41,9 +46,10 @@ func _process(delta:float):
 	if $Timer.is_stopped():
 		random()
 		$Timer.start(wandertime)
-	
-#	if raycast.is_colliding():
-#		print("colliding")
+
+	if raycast.is_colliding() and timer.is_stopped():
+		timer.start(firedelay)
+		loadprojectileenmey()
 		
 	
 		
@@ -59,8 +65,6 @@ func _process(delta:float):
 			position += (global.player_pos - position)/speed
 			RotaionDirectionPlayer(delta)
 			
-		shoot:
-			loadprojectileenmey()	
 		
 				
 func random():
@@ -68,7 +72,11 @@ func random():
 	wandertime = randf_range(1,3)
 	
 func loadprojectileenmey():	
-	pass
+	for child in gunpoint.get_children():
+			var projectileweapon = enemy_projectile.instantiate()	
+			projectileweapon.global_position = child.global_position
+			projectileweapon.global_rotation = global_rotation	
+			get_tree().current_scene.add_child(projectileweapon)
 
 func RotaionDirectionPlayer(delta):
 	if player:

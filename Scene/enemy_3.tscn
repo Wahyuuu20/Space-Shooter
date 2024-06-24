@@ -12,9 +12,8 @@ height = 72.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_0gbbk"]
 
 [node name="Enemy_3" type="CharacterBody2D" groups=["Damageable", "Enemy3"]]
-light_mask = 2
 collision_layer = 4
-collision_mask = 3
+collision_mask = 15
 script = ExtResource("1_gbhi4")
 
 [node name="Healthbar_enemy" parent="." instance=ExtResource("2_xr4gg")]
@@ -52,17 +51,28 @@ texture = ExtResource("1_8d78t")
 visible = false
 shape = SubResource("CapsuleShape2D_jhi21")
 
+[node name="Projectile" type="Node2D" parent="."]
+position = Vector2(50, 19)
+rotation = -1.5708
+
+[node name="Right" type="Node2D" parent="Projectile"]
+position = Vector2(-1.99999, -2.00001)
+
+[node name="Left" type="Node2D" parent="Projectile"]
+position = Vector2(40, -0.999855)
+
 [node name="RayCast2D" type="RayCast2D" parent="."]
-visible = false
 position = Vector2(40, 0)
 rotation = -1.5708
-target_position = Vector2(-1, 200)
+target_position = Vector2(-1, 300)
 
 [node name="Detection" type="Node2D" parent="."]
 visible = false
 
 [node name="firstDetection" type="Area2D" parent="Detection"]
+scale = Vector2(20, 20)
 collision_layer = 4
+collision_mask = 9
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Detection/firstDetection"]
 scale = Vector2(30, 30)
@@ -74,9 +84,17 @@ shape = SubResource("CircleShape2D_0gbbk")
 scale = Vector2(15, 15)
 shape = SubResource("CircleShape2D_0gbbk")
 
+[node name="TimerCollider" type="Timer" parent="."]
+one_shot = true
+autostart = true
+
 [node name="Timer" type="Timer" parent="."]
 one_shot = true
 autostart = true
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+position = Vector2(-0.500004, -1.19209e-06)
+scale = Vector2(5.15, 5.2)
 
 [connection signal="body_entered" from="Detection/firstDetection" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Detection/firstDetection" to="." method="_on_area_2d_body_exited"]

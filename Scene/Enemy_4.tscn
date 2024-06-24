@@ -12,7 +12,7 @@ radius = 34.0147
 
 [node name="Enemy_4" type="CharacterBody2D" groups=["Damageable", "Enemy4"]]
 collision_layer = 2
-collision_mask = 5
+collision_mask = 15
 script = ExtResource("1_mgl1c")
 
 [node name="Healthbar_enemy" parent="." instance=ExtResource("2_j73my")]
@@ -63,23 +63,32 @@ visible = false
 rotation = 1.5708
 
 [node name="FirstDetection" type="Area2D" parent="Detection Area"]
+visible = false
 rotation = -1.5708
+scale = Vector2(20, 20)
 collision_layer = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Detection Area/FirstDetection"]
+visible = false
 scale = Vector2(30, 30)
 shape = SubResource("CircleShape2D_iiiv6")
 
 [node name="SecondDetection" type="Area2D" parent="Detection Area"]
+visible = false
 rotation = -1.5708
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Detection Area/SecondDetection"]
+visible = false
 scale = Vector2(15, 15)
 shape = SubResource("CircleShape2D_iiiv6")
 
 [node name="Timer" type="Timer" parent="."]
 one_shot = true
 autostart = true
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+position = Vector2(-3.5, 0.999996)
+scale = Vector2(4.75, 5.6)
 
 [connection signal="body_entered" from="Detection Area/FirstDetection" to="." method="_on_first_detection_body_entered"]
 [connection signal="body_exited" from="Detection Area/FirstDetection" to="." method="_on_first_detection_body_exited"]

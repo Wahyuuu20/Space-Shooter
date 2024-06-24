@@ -60,6 +60,7 @@ func _process(delta):
 	#RegenEnergy
 	RegenEnergy(delta)
 	
+
 	
 	
 
@@ -135,6 +136,7 @@ func Dash():
 				velocity.x = DashSpeed * 2 * directionBoost.x 
 				velocity.y = DashSpeed * 2 * directionBoost.y
 				decreaseStamina(3)
+
 				
 				
 				

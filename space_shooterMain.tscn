@@ -1,33 +1,27 @@
-[gd_scene load_steps=5 format=3 uid="uid://b0ud2xjim63py"]
+[gd_scene load_steps=7 format=3 uid="uid://b0ud2xjim63py"]
 
 [ext_resource type="PackedScene" uid="uid://dcfl8al3yj8d0" path="res://Scene/background_world.tscn" id="1_3ppqx"]
+[ext_resource type="Script" path="res://space_shooterMain.gd" id="1_vymha"]
 [ext_resource type="PackedScene" uid="uid://bronocnxpm18e" path="res://Scene/Enemy_4.tscn" id="3_wl56k"]
 [ext_resource type="PackedScene" uid="uid://gucyibcu53et" path="res://Scene/player.tscn" id="4_42s2o"]
 [ext_resource type="PackedScene" uid="uid://d4bg3x2jq5qny" path="res://Scene/enemy_3.tscn" id="4_gi1n2"]
+[ext_resource type="PackedScene" uid="uid://b14vn0a6se563" path="res://Scene/Meteor.tscn" id="5_vu4jq"]
 
 [node name="Space Shooter" type="Node2D"]
+script = ExtResource("1_vymha")
+enemy_scene = Array[PackedScene]([ExtResource("3_wl56k"), ExtResource("4_gi1n2")])
+
+[node name="TimerSpawnEnemy" type="Timer" parent="."]
+wait_time = 3.0
+autostart = true
 
 [node name="Background_World" parent="." instance=ExtResource("1_3ppqx")]
 
+[node name="EnemyContainer" type="Node2D" parent="."]
+
+[node name="Meteor" parent="." instance=ExtResource("5_vu4jq")]
+position = Vector2(1165, 1270)
+
 [node name="Player" parent="." instance=ExtResource("4_42s2o")]
-visible = false
-position = Vector2(1308, 726)
-scale = Vector2(0.2, 0.2)
 
-[node name="Enemy_3" parent="." instance=ExtResource("4_gi1n2")]
-position = Vector2(332, 2069)
-
-[node name="Enemy_4" parent="." instance=ExtResource("3_wl56k")]
-position = Vector2(4410, 2084)
-
-[node name="Enemy_5" parent="." instance=ExtResource("3_wl56k")]
-position = Vector2(376, 229)
-
-[node name="Enemy_6" parent="." instance=ExtResource("3_wl56k")]
-position = Vector2(4296, 219)
-
-[node name="Enemy_7" parent="." instance=ExtResource("3_wl56k")]
-position = Vector2(1813, 690)
-
-[node name="Enemy_8" parent="." instance=ExtResource("3_wl56k")]
-position = Vector2(2821, 747)
+[connection signal="timeout" from="TimerSpawnEnemy" to="." method="_on_timer_spawn_enemy_timeout"]
