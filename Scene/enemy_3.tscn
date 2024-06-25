@@ -15,6 +15,7 @@ height = 72.0
 collision_layer = 4
 collision_mask = 15
 script = ExtResource("1_gbhi4")
+points = 500
 
 [node name="Healthbar_enemy" parent="." instance=ExtResource("2_xr4gg")]
 offset_left = -49.0

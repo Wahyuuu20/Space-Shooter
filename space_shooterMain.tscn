@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://b0ud2xjim63py"]
+[gd_scene load_steps=11 format=3 uid="uid://b0ud2xjim63py"]
 
 [ext_resource type="PackedScene" uid="uid://dcfl8al3yj8d0" path="res://Scene/background_world.tscn" id="1_3ppqx"]
 [ext_resource type="Script" path="res://space_shooterMain.gd" id="1_vymha"]
@@ -6,17 +6,71 @@
 [ext_resource type="PackedScene" uid="uid://gucyibcu53et" path="res://Scene/player.tscn" id="4_42s2o"]
 [ext_resource type="PackedScene" uid="uid://d4bg3x2jq5qny" path="res://Scene/enemy_3.tscn" id="4_gi1n2"]
 [ext_resource type="PackedScene" uid="uid://y5sa7lp7lii" path="res://Scene/smallenemy.tscn" id="4_tgjoc"]
+[ext_resource type="PackedScene" uid="uid://bejyetlkmrhhs" path="res://Scene/Lobby/game_over_screen.tscn" id="5_osbhy"]
+[ext_resource type="PackedScene" uid="uid://cqgqwbfemqj5l" path="res://Scene/Lobby/score.tscn" id="6_xkocg"]
 [ext_resource type="AudioStream" uid="uid://bnmlu40ngi88o" path="res://Asset/Sound/n-Dimensions (Main Theme).mp3" id="7_u8rdy"]
+[ext_resource type="PackedScene" uid="uid://b14vn0a6se563" path="res://Scene/Meteor.tscn" id="8_fu3hm"]
 
 [node name="Space Shooter" type="Node2D"]
 script = ExtResource("1_vymha")
 enemy_scene = Array[PackedScene]([ExtResource("3_wl56k"), ExtResource("4_gi1n2"), ExtResource("4_tgjoc")])
 
+[node name="Background_World" parent="." instance=ExtResource("1_3ppqx")]
+
+[node name="Hud" type="CanvasLayer" parent="."]
+
+[node name="Score" parent="Hud" instance=ExtResource("6_xkocg")]
+size_flags_vertical = 4
+
+[node name="GameOverScreen" parent="Hud" instance=ExtResource("5_osbhy")]
+visible = false
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
 [node name="TimerSpawnEnemy" type="Timer" parent="."]
 wait_time = 3.0
 autostart = true
 
-[node name="Background_World" parent="." instance=ExtResource("1_3ppqx")]
+[node name="Meteor_Container" type="Node2D" parent="."]
+
+[node name="Meteor" parent="Meteor_Container" instance=ExtResource("8_fu3hm")]
+position = Vector2(539, 1693)
+
+[node name="Meteor2" parent="Meteor_Container" instance=ExtResource("8_fu3hm")]
+position = Vector2(1078, 2066)
+
+[node name="Meteor3" parent="Meteor_Container" instance=ExtResource("8_fu3hm")]
+position = Vector2(1078, 1154)
+
+[node name="Meteor4" parent="Meteor_Container" instance=ExtResource("8_fu3hm")]
+position = Vector2(1063, 529)
+
+[node name="Meteor5" parent="Meteor_Container" instance=ExtResource("8_fu3hm")]
+position = Vector2(2348, 403)
+
+[node name="Meteor6" parent="Meteor_Container" instance=ExtResource("8_fu3hm")]
+position = Vector2(3129, 615)
+
+[node name="Meteor7" parent="Meteor_Container" instance=ExtResource("8_fu3hm")]
+position = Vector2(2832, 1457)
+
+[node name="Meteor8" parent="Meteor_Container" instance=ExtResource("8_fu3hm")]
+position = Vector2(3447, 1155)
+
+[node name="Meteor9" parent="Meteor_Container" instance=ExtResource("8_fu3hm")]
+position = Vector2(2006, 1775)
+
+[node name="Meteor10" parent="Meteor_Container" instance=ExtResource("8_fu3hm")]
+position = Vector2(1769, 1009)
+
+[node name="Meteor11" parent="Meteor_Container" instance=ExtResource("8_fu3hm")]
+position = Vector2(3740, 1695)
+
+[node name="Meteor12" parent="Meteor_Container" instance=ExtResource("8_fu3hm")]
+position = Vector2(3952, 838)
+
+[node name="Meteor13" parent="Meteor_Container" instance=ExtResource("8_fu3hm")]
+position = Vector2(4018, 500)
 
 [node name="EnemyContainer" type="Node2D" parent="."]
 
@@ -37,6 +91,7 @@ remote_path = NodePath("../../Camera2D")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("7_u8rdy")
+volume_db = -15.0
 autoplay = true
 
 [connection signal="timeout" from="TimerSpawnEnemy" to="." method="_on_timer_spawn_enemy_timeout"]

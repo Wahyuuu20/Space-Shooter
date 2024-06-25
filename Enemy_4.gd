@@ -6,6 +6,9 @@ class_name Enemy4
 @onready var raycast = $Raycast/RayCast2D
 @onready var healthbar = $Healthbar_enemy
 @onready var timer = $TimerDelayFire
+@export var points = 0
+
+signal Killed(points)
 
 var movedirection : Vector2
 var speed : float = 100
@@ -63,6 +66,7 @@ func random():
 func Damage(value:int):
 	health -= value
 	if health < 1:
+		Killed.emit(points)
 		queue_free()
 		
 	healthbar.health = health

@@ -4,10 +4,11 @@ class_name Enemy3
 @onready var enemy_projectile = preload("res://Scene/ProjcetileEnemy/ProjectileEnemy_3.tscn")
 @onready var gunpoint = get_node("Projectile")
 @onready var timer = $TimerCollider
-
+@export var points = 0
 @onready var raycast = $RayCast2D
 @onready var healthbar = $Healthbar_enemy
-signal killed
+
+signal Killed(points)
 
 var player = null
 var movedirection : Vector2
@@ -103,7 +104,7 @@ func RotaionDirectionIdle(delta):
 func Damage(value:int):
 	health -= value	
 	if health <= 0:
-		killed.emit()
+		Killed.emit(points)
 		queue_free()
 		
 	healthbar.health = health	

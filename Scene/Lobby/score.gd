@@ -1,8 +1,8 @@
 extends Control
 
-@onready var scorelabel  = $Label
-var score = 0
+@onready var score  = $Label:
+	set(value):
+		score.text = "Score : "+ str(value)
 
-func _process(delta):
-	scorelabel.text = "Score : %d" % global.score
+
 	
