@@ -1,12 +1,21 @@
-[gd_scene load_steps=5 format=3 uid="uid://bjv588hsldhjm"]
+[gd_scene load_steps=8 format=3 uid="uid://bjv588hsldhjm"]
 
-[ext_resource type="PackedScene" uid="uid://d4bg3x2jq5qny" path="res://Scene/enemy_3.tscn" id="1_w7w6e"]
+[ext_resource type="Script" path="res://Scene/Test-Zone/test_play_ground.gd" id="1_b2ruu"]
+[ext_resource type="PackedScene" uid="uid://bejyetlkmrhhs" path="res://Scene/Lobby/game_over_screen.tscn" id="1_r0iso"]
+[ext_resource type="PackedScene" uid="uid://y5sa7lp7lii" path="res://Scene/smallenemy.tscn" id="2_ttc3f"]
 [ext_resource type="PackedScene" uid="uid://gucyibcu53et" path="res://Scene/player.tscn" id="2_xyego"]
 [ext_resource type="PackedScene" uid="uid://bronocnxpm18e" path="res://Scene/Enemy_4.tscn" id="3_6fabp"]
+[ext_resource type="AudioStream" uid="uid://bnmlu40ngi88o" path="res://Asset/Sound/n-Dimensions (Main Theme).mp3" id="6_7fgpq"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_yyf5p"]
 
 [node name="Test-PlayGround" type="Node2D"]
+script = ExtResource("1_b2ruu")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="GameOverScreen" parent="CanvasLayer" instance=ExtResource("1_r0iso")]
+visible = false
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 modulate = Color(0.780392, 0.521569, 0.443137, 1)
@@ -14,11 +23,27 @@ position = Vector2(4142.5, 1815.5)
 scale = Vector2(8301, 3647)
 texture = SubResource("CanvasTexture_yyf5p")
 
-[node name="Enemy_3" parent="." instance=ExtResource("1_w7w6e")]
-position = Vector2(1184, 2227)
-
-[node name="Enemy_4" parent="." instance=ExtResource("3_6fabp")]
-position = Vector2(561, 2227)
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(7467, 2948)
+scale = Vector2(0.5, 0.5)
+limit_left = 200
+limit_top = 200
+limit_right = 8265
+limit_bottom = 3440
+limit_smoothed = true
+editor_draw_limits = true
 
 [node name="Player" parent="." instance=ExtResource("2_xyego")]
-position = Vector2(852, 1955)
+position = Vector2(7467, 2948)
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="Player"]
+remote_path = NodePath("../../Camera2D")
+
+[node name="Smallenemy" parent="." instance=ExtResource("2_ttc3f")]
+position = Vector2(1245, 1648)
+
+[node name="Enemy_4" parent="." instance=ExtResource("3_6fabp")]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_7fgpq")
+autoplay = true

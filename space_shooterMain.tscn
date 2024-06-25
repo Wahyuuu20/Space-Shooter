@@ -1,15 +1,16 @@
-[gd_scene load_steps=7 format=3 uid="uid://b0ud2xjim63py"]
+[gd_scene load_steps=8 format=3 uid="uid://b0ud2xjim63py"]
 
 [ext_resource type="PackedScene" uid="uid://dcfl8al3yj8d0" path="res://Scene/background_world.tscn" id="1_3ppqx"]
 [ext_resource type="Script" path="res://space_shooterMain.gd" id="1_vymha"]
 [ext_resource type="PackedScene" uid="uid://bronocnxpm18e" path="res://Scene/Enemy_4.tscn" id="3_wl56k"]
 [ext_resource type="PackedScene" uid="uid://gucyibcu53et" path="res://Scene/player.tscn" id="4_42s2o"]
 [ext_resource type="PackedScene" uid="uid://d4bg3x2jq5qny" path="res://Scene/enemy_3.tscn" id="4_gi1n2"]
-[ext_resource type="PackedScene" uid="uid://b14vn0a6se563" path="res://Scene/Meteor.tscn" id="5_vu4jq"]
+[ext_resource type="PackedScene" uid="uid://y5sa7lp7lii" path="res://Scene/smallenemy.tscn" id="4_tgjoc"]
+[ext_resource type="AudioStream" uid="uid://bnmlu40ngi88o" path="res://Asset/Sound/n-Dimensions (Main Theme).mp3" id="7_u8rdy"]
 
 [node name="Space Shooter" type="Node2D"]
 script = ExtResource("1_vymha")
-enemy_scene = Array[PackedScene]([ExtResource("3_wl56k"), ExtResource("4_gi1n2")])
+enemy_scene = Array[PackedScene]([ExtResource("3_wl56k"), ExtResource("4_gi1n2"), ExtResource("4_tgjoc")])
 
 [node name="TimerSpawnEnemy" type="Timer" parent="."]
 wait_time = 3.0
@@ -19,9 +20,23 @@ autostart = true
 
 [node name="EnemyContainer" type="Node2D" parent="."]
 
-[node name="Meteor" parent="." instance=ExtResource("5_vu4jq")]
-position = Vector2(1165, 1270)
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(2122, 978)
+scale = Vector2(0.5, 0.5)
+limit_left = -10
+limit_top = -5
+limit_right = 4695
+limit_bottom = 2395
+editor_draw_limits = true
 
 [node name="Player" parent="." instance=ExtResource("4_42s2o")]
+position = Vector2(2122, 978)
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="Player"]
+remote_path = NodePath("../../Camera2D")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_u8rdy")
+autoplay = true
 
 [connection signal="timeout" from="TimerSpawnEnemy" to="." method="_on_timer_spawn_enemy_timeout"]

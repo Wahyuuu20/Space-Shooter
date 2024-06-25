@@ -1,15 +1,18 @@
 extends CharacterBody2D
 
-var movespeed = 100
+var movespeed = 10
 var player
+var health
 
-func _physics_process(delta):
-	position += (global.player_pos - position)/movespeed
+func _ready():
+	health = 1
+
+func _physics_process(_delta):
+	position += (global.player_pos - global_position)/movespeed
 	move_and_slide()
-	RotaionDirectionPlayer(delta)
+	look_at(global.player_pos)
 	
-func RotaionDirectionPlayer(delta):
-		var rotationSpeed = 20
-		var dir = global.player_pos
-		var angel = self.transform.x.angle_to(dir)
-		self.rotate(sign(angel)* min(delta*rotationSpeed, abs(angel)))	
+func Damage(value:int):
+	health -= value
+	if health <= 0:
+		queue_free()

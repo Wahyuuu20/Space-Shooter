@@ -113,11 +113,3 @@ func _on_first_detection_body_exited(body):
 	if body != player:
 		state = idle
 
-
-
-func _on_second_detection_body_entered(body):
-	pass # Replace with function body.
-
-
-func _on_second_detection_body_exited(body):
-	pass # Replace with function body.

@@ -3,7 +3,7 @@ extends Area2D
 
 @onready var bullet_effect = preload("res://Scene/Gun/BulletEffect/bullet_effect_enemy.tscn")
 
-var Damage: int = 1
+var Damage: int = 100
 var projectile_speed : float = 1000
 var direction := Vector2(1,0)
 

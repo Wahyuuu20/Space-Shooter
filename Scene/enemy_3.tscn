@@ -98,5 +98,3 @@ scale = Vector2(5.15, 5.2)
 
 [connection signal="body_entered" from="Detection/firstDetection" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Detection/firstDetection" to="." method="_on_area_2d_body_exited"]
-[connection signal="body_entered" from="Detection/SecondDetection" to="." method="_on_second_detection_body_entered"]
-[connection signal="body_exited" from="Detection/SecondDetection" to="." method="_on_second_detection_body_exited"]

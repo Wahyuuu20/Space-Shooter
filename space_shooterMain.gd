@@ -5,7 +5,6 @@ extends Node2D
 @onready var enemy_container = $EnemyContainer
 
 
-
 func _on_timer_spawn_enemy_timeout():
 	var e = enemy_scene.pick_random().instantiate()
 	e.global_position = Vector2(randf_range(194,4407),randf_range(164,2185)) 

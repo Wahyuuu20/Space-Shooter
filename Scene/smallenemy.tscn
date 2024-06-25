@@ -4,16 +4,21 @@
 [ext_resource type="Texture2D" uid="uid://di2pawex4ajwe" path="res://Asset/Space Shooter Extension/PNG/Sprites/Ships/spaceShips_001.png" id="1_wem2b"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3k0ko"]
-radius = 20.0
-height = 56.0
+radius = 15.0
+height = 82.0
 
 [node name="Smallenemy" type="CharacterBody2D" groups=["Damageable"]]
-rotation = -1.5708
+scale = Vector2(0.5, 0.5)
+collision_layer = 16
+collision_mask = 17
 script = ExtResource("1_3bolv")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+rotation = -1.5708
 texture = ExtResource("1_wem2b")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -4)
+visible = false
+position = Vector2(-7, -2)
+rotation = -1.5708
 shape = SubResource("CapsuleShape2D_3k0ko")

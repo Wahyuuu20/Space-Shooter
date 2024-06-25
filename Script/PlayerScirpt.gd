@@ -1,7 +1,9 @@
 extends CharacterBody2D
 class_name Player
-#Preload Projectile
 
+signal  Killed
+
+#Preload Projectil
 @onready var Healthbar = $PlayerUi/PlayerBar/Healthbar_Player
 @onready var Energybar = $PlayerUi/PlayerBar/Energy
 
@@ -69,7 +71,8 @@ func _process(delta):
 #Damage	
 func Damage(values):
 	health -= values
-	if health < 1:
+	if health <= 0:
+		Killed.emit()
 		Death()
 	Healthbar.health = health
 	

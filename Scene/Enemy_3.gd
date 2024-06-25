@@ -31,7 +31,7 @@ func _ready():
 	health = 100
 	healthbar.init_health(health)
 	
-	var enemy4 = get_tree().get_first_node_in_group("Enemy4")
+
 	
 	#Start Random
 	$Timer.start(wandertime)
@@ -125,10 +125,3 @@ func _on_area_2d_body_exited(body):
 	if body != player:
 		state = idle
 
-
-func _on_second_detection_body_entered(body):
-	pass # Replace with function body.
-
-
-func _on_second_detection_body_exited(body):
-	pass # Replace with function body.

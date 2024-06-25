@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://bejyetlkmrhhs"]
+[gd_scene load_steps=3 format=3 uid="uid://bejyetlkmrhhs"]
 
 [ext_resource type="FontFile" uid="uid://ccvy888hpoy8r" path="res://Asset/Font/ethnocentric rg.otf" id="1_yq0pa"]
+[ext_resource type="AudioStream" uid="uid://codsffrvuorvx" path="res://Asset/Sound/amb_01.ogg" id="2_qsxn0"]
 
 [node name="GameOverScreen" type="Control"]
 layout_mode = 3
@@ -51,3 +52,7 @@ theme_override_font_sizes/font_size = 37
 text = "Game Over
 "
 horizontal_alignment = 1
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_qsxn0")
+autoplay = true
