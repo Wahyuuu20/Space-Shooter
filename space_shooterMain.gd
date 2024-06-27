@@ -28,7 +28,6 @@ func _physics_process(delta):
 	elif time.wait_time < 0.5:
 		time.wait_time = 0.5
 	
-	print(time.wait_time)
 	
 func GameOverUi():
 	audio_player_level.stop()	

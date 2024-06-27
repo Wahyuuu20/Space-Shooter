@@ -39,34 +39,15 @@ func _ready():
 	
 	
 func _process(delta):
-	#Animate Damage Player
-	
-	#Print
-	#print(global.player_pos)
-#	print(velocity)
-#	print(rotation)
-	
-	
+
 	#Movement
 	Movement(delta)
 	
-	#Movement Boost
-	Boost()
-	
-	AimPlayer()
-	
-
 	#Dash
 	Dash()
 	
 	#RegenEnergy
-	RegenEnergy(delta)
-	
-
-	
-	
-
-	
+	RegenStamina(delta)
 	
 #Damage	
 func Damage(values):
@@ -81,7 +62,7 @@ func decreaseStamina(values: float):
 	Energybar.energy = energy
 			
 
-func RegenEnergy(delta):
+func RegenStamina(delta):
 	Energybar.energy = energy
 	if energy < 100:
 		energy = energy + regenEnergy + delta
@@ -93,10 +74,7 @@ func RegenEnergy(delta):
 #Player Death		
 func Death():
 	queue_free()		
-
-# DeleteNode			
-func DeleteNode():
-	queue_free()		
+	
 
 #Movement
 func Movement(delta):
@@ -112,26 +90,6 @@ func Movement(delta):
 	global.player_pos = global_position
 
 	
-#Aim
-func AimPlayer():
-	if Input.is_action_pressed("Aim"):
-		pass
-		
-		
-		
-	
-#MovementBoost
-func Boost():
-	#Movement Boost
-		var directionBoost:Vector2 = Input.get_vector("left","Right","Up","Down")	
-		if Input.is_action_pressed("Boost"):
-				vel.x = move_toward(velocity.x,BoostSpeed * directionBoost.x ,AccelBoost)	
-				vel.y = move_toward(velocity.y,BoostSpeed * directionBoost.y ,AccelBoost)
-				decreaseStamina(0.2)
-				
-				
-
-#Dash		
 func Dash():
 	#Movemnet Dash
 		var directionBoost:Vector2 = Input.get_vector("left","Right","Up","Down")	
@@ -139,7 +97,3 @@ func Dash():
 				velocity.x = DashSpeed * 2 * directionBoost.x 
 				velocity.y = DashSpeed * 2 * directionBoost.y
 				decreaseStamina(3)
-
-				
-				
-				

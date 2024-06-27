@@ -101,6 +101,7 @@ one_shot = true
 autostart = true
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+visible = false
 position = Vector2(-3.5, 0.999996)
 scale = Vector2(4.75, 5.6)
 

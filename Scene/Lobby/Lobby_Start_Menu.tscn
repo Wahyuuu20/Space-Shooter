@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://46qjym015ccc"]
+[gd_scene load_steps=10 format=3 uid="uid://46qjym015ccc"]
 
 [ext_resource type="Script" path="res://Scene/Lobby/Lobby_Start_Menu.gd" id="1_0icpb"]
 [ext_resource type="Texture2D" uid="uid://c40y0ae6w45ht" path="res://Asset/LOBBY.png" id="1_eorhp"]
@@ -15,9 +15,6 @@ font_size = 50
 [sub_resource type="Theme" id="Theme_ylbds"]
 default_font = ExtResource("3_j6krk")
 Button/styles/btto = SubResource("StyleBoxTexture_vhv4h")
-
-[sub_resource type="Theme" id="Theme_f4de2"]
-default_font = ExtResource("3_j6krk")
 
 [sub_resource type="Theme" id="Theme_unpmf"]
 default_font = ExtResource("3_j6krk")
@@ -60,13 +57,6 @@ action_mode = 0
 text = "Start"
 flat = true
 
-[node name="Help" type="Button" parent="CanvasLayer/MarginContainer/VBoxContainer"]
-layout_mode = 2
-theme = SubResource("Theme_f4de2")
-action_mode = 0
-text = "Help"
-flat = true
-
 [node name="Quit" type="Button" parent="CanvasLayer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme = SubResource("Theme_unpmf")
@@ -80,5 +70,4 @@ volume_db = 1.0
 autoplay = true
 
 [connection signal="pressed" from="CanvasLayer/MarginContainer/VBoxContainer/Start" to="." method="_on_start_pressed"]
-[connection signal="pressed" from="CanvasLayer/MarginContainer/VBoxContainer/Help" to="." method="_on_help_pressed"]
 [connection signal="pressed" from="CanvasLayer/MarginContainer/VBoxContainer/Quit" to="." method="_on_quit_pressed"]
