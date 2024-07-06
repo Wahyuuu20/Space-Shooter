@@ -1153,6 +1153,7 @@ texture = ExtResource("15_ytuf0")
 [node name="Timer" type="Timer" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2(0, 10)
 shape = SubResource("CapsuleShape2D_0jcg0")
 

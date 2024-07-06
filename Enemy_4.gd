@@ -11,7 +11,7 @@ class_name Enemy4
 signal Killed(points)
 
 var movedirection : Vector2
-var speed : float = 100
+var speed : float = 200
 var speedChase : float = 150
 var wandertime : float
 var health : int

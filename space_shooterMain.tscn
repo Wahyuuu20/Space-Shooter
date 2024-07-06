@@ -16,6 +16,7 @@ script = ExtResource("1_vymha")
 enemy_scene = Array[PackedScene]([ExtResource("3_wl56k"), ExtResource("4_gi1n2"), ExtResource("4_tgjoc")])
 
 [node name="Background_World" parent="." instance=ExtResource("1_3ppqx")]
+position = Vector2(-30, -45)
 
 [node name="Hud" type="CanvasLayer" parent="."]
 
@@ -37,16 +38,16 @@ autostart = true
 position = Vector2(539, 1693)
 
 [node name="Meteor2" parent="Meteor_Container" instance=ExtResource("8_fu3hm")]
-position = Vector2(1078, 2066)
+position = Vector2(1096, 1752)
 
 [node name="Meteor3" parent="Meteor_Container" instance=ExtResource("8_fu3hm")]
-position = Vector2(1078, 1154)
+position = Vector2(576, 752)
 
 [node name="Meteor4" parent="Meteor_Container" instance=ExtResource("8_fu3hm")]
-position = Vector2(1063, 529)
+position = Vector2(344, 208)
 
 [node name="Meteor5" parent="Meteor_Container" instance=ExtResource("8_fu3hm")]
-position = Vector2(2348, 403)
+position = Vector2(1736, 248)
 
 [node name="Meteor6" parent="Meteor_Container" instance=ExtResource("8_fu3hm")]
 position = Vector2(3129, 615)
@@ -58,29 +59,23 @@ position = Vector2(2832, 1457)
 position = Vector2(3447, 1155)
 
 [node name="Meteor9" parent="Meteor_Container" instance=ExtResource("8_fu3hm")]
-position = Vector2(2006, 1775)
+position = Vector2(2112, 1856)
 
 [node name="Meteor10" parent="Meteor_Container" instance=ExtResource("8_fu3hm")]
-position = Vector2(1769, 1009)
+position = Vector2(1176, 1032)
 
 [node name="Meteor11" parent="Meteor_Container" instance=ExtResource("8_fu3hm")]
-position = Vector2(3740, 1695)
-
-[node name="Meteor12" parent="Meteor_Container" instance=ExtResource("8_fu3hm")]
-position = Vector2(3952, 838)
-
-[node name="Meteor13" parent="Meteor_Container" instance=ExtResource("8_fu3hm")]
-position = Vector2(4018, 500)
+position = Vector2(3296, 1912)
 
 [node name="EnemyContainer" type="Node2D" parent="."]
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(2122, 978)
 scale = Vector2(0.5, 0.5)
-limit_left = -10
-limit_top = -5
-limit_right = 4695
-limit_bottom = 2395
+limit_left = -25
+limit_top = -50
+limit_right = 5315
+limit_bottom = 2930
 editor_draw_limits = true
 
 [node name="Player" parent="." instance=ExtResource("4_42s2o")]

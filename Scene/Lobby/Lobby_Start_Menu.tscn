@@ -7,8 +7,11 @@
 [ext_resource type="AudioStream" uid="uid://decggcxgj455d" path="res://Asset/Sound/ObservingTheStar.ogg" id="5_1bdfl"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_phj4f"]
+line_spacing = 1.0
 font = ExtResource("2_rb8nt")
 font_size = 50
+outline_size = 2
+outline_color = Color(0, 0, 0, 1)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_vhv4h"]
 
@@ -23,8 +26,8 @@ default_font = ExtResource("3_j6krk")
 script = ExtResource("1_0icpb")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(696, 383)
-scale = Vector2(1.04466, 1.03776)
+position = Vector2(684, 384)
+scale = Vector2(1.01171, 1.02083)
 texture = ExtResource("1_eorhp")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
@@ -53,16 +56,15 @@ layout_mode = 2
 [node name="Start" type="Button" parent="CanvasLayer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme = SubResource("Theme_ylbds")
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 action_mode = 0
 text = "Start"
-flat = true
 
 [node name="Quit" type="Button" parent="CanvasLayer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme = SubResource("Theme_unpmf")
 action_mode = 0
 text = "Quit"
-flat = true
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("5_1bdfl")
